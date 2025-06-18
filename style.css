@@ -354,3 +354,82 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* media query */
+@media (max-width: 768px) {
+  .hero {
+    padding: 30px 15px;
+    align-items: flex-end;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text h2,
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .btn-undangan {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
+  .section-kutipan blockquote {
+    font-size: 14px;
+  }
+
+  .section-mempelai {
+    padding: 20px 10px;
+  }
+
+  .photo-wrapper {
+    width: 150px;
+  }
+
+  .nama-mempelai {
+    font-size: 1.5rem;
+  }
+
+  .info-keluarga {
+    font-size: 0.9rem;
+  }
+
+  .section-save-date {
+    padding: 20px 10px;
+  }
+
+  .save-date-img img {
+    max-width: 80%;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .countdown div {
+    min-width: 70px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .detail-resepsi {
+    padding: 0 10px;
+  }
+
+  .detail-resepsi h3 {
+    font-size: 1.2rem;
+  }
+
+  .detail-resepsi p {
+    font-size: 0.9rem;
+  }
+
+  .btn-lokasi {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
