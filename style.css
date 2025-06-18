@@ -354,35 +354,20 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* media query */
-@media (max-width: 768px) {
-  .hero {
-    padding: 30px 15px;
-    align-items: flex-end;
-    text-align: center;
-  }
-
+/* ================= MOBILE (max-width: 480px) ================= */
+@media (max-width: 480px) {
   .hero-text h1 {
     font-size: 1.2rem;
   }
 
-  .hero-text h2,
-  .hero-text p {
+  .hero-text p,
+  .hero-text h2 {
     font-size: 0.9rem;
   }
 
   .btn-undangan {
-    font-size: 0.9rem;
     padding: 10px 20px;
-  }
-
-  .section-kutipan blockquote {
-    font-size: 14px;
-  }
-
-  .section-mempelai {
-    padding: 20px 10px;
+    font-size: 0.9rem;
   }
 
   .photo-wrapper {
@@ -390,46 +375,140 @@ body {
   }
 
   .nama-mempelai {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .info-keluarga {
     font-size: 0.9rem;
   }
 
-  .section-save-date {
-    padding: 20px 10px;
-  }
-
-  .save-date-img img {
-    max-width: 80%;
-  }
-
-  .countdown {
-    flex-wrap: wrap;
-    gap: 10px;
+  .save-date-title {
+    font-size: 1.2rem;
   }
 
   .countdown div {
-    min-width: 70px;
+    min-width: 45px;
     padding: 8px 10px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
-  .detail-resepsi {
-    padding: 0 10px;
+  .detail-resepsi h3 {
+    font-size: 1.1rem;
+  }
+
+  .detail-resepsi p,
+  .detail-resepsi .alamat {
+    font-size: 0.85rem;
+  }
+
+  .btn-lokasi {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* ================= MOBILE (max-width: 480px) ================= */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text p,
+  .hero-text h2 {
+    font-size: 0.9rem;
+  }
+
+  .btn-undangan {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .photo-wrapper {
+    width: 150px;
+  }
+
+  .nama-mempelai {
+    font-size: 1.4rem;
+  }
+
+  .info-keluarga {
+    font-size: 0.9rem;
+  }
+
+  .save-date-title {
+    font-size: 1.2rem;
+  }
+
+  .countdown div {
+    min-width: 45px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .detail-resepsi h3 {
+    font-size: 1.1rem;
+  }
+
+  .detail-resepsi p,
+  .detail-resepsi .alamat {
+    font-size: 0.85rem;
+  }
+
+  .btn-lokasi {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* ================= TABLET (481px - 768px) ================= */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-text p,
+  .hero-text h2 {
+    font-size: 1rem;
+  }
+
+  .btn-undangan {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .photo-wrapper {
+    width: 180px;
+  }
+
+  .nama-mempelai {
+    font-size: 1.6rem;
+  }
+
+  .info-keluarga {
+    font-size: 0.95rem;
+  }
+
+  .save-date-title {
+    font-size: 1.4rem;
+  }
+
+  .countdown div {
+    min-width: 50px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
   }
 
   .detail-resepsi h3 {
     font-size: 1.2rem;
   }
 
-  .detail-resepsi p {
+  .detail-resepsi p,
+  .detail-resepsi .alamat {
     font-size: 0.9rem;
   }
 
   .btn-lokasi {
-    font-size: 0.8rem;
-    padding: 6px 12px;
+    font-size: 0.9rem;
+    padding: 7px 14px;
   }
 }
