@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="lock-scroll">
+    <!-- Hero Section Start -->
+    <!-- Hero 1 -->
+    <section id="hero1" class="hero">
+      <div class="hero-overlay">
+        <div class="hero-text">
+          <p class="small animate-on-scroll">THE WEDDING OF</p>
+          <h1 class="animate-on-scroll">Nama Pria & Nama Wanita</h1>
+          <p class="animate-on-scroll">Kepada Yth.</p>
+          <h2 class="animate-on-scroll">Bapak/Ibu/Saudara/i</h2>
+          <button id="btnOpen" class="btn-undangan animate-on-scroll">
+            Buka Undangan
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero 2 -->
+    <section id="hero2" class="hero hidden">
+      <div class="hero-overlay">
+        <div class="hero-text">
+          <p class="small animate-on-scroll">THE WEDDING OF</p>
+          <h1 class="animate-on-scroll">Nama Pria & Nama Wanita</h1>
+          <p class="animate-on-scroll">Tanggal</p>
+          <h2>Sabtu, 12 Oktober 2025</h2>
+          <button id="btnSaveDate" class="btn-undangan">Save the Date</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kutipan -->
+    <section class="section-kutipan">
+      <span class="quote-icon">❝</span>
+      <blockquote>
+        “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
+        pasangan hidup dari jenismu sendiri.”
+      </blockquote>
+      <cite>Q.S. Ar-Rum: 21</cite>
+    </section>
+    <!-- Mempelai laki laki -->
+    <section class="section-mempelai animate-on-scroll">
+      <p class="invite-text animate-on-scroll">
+        Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta
+        kerabat sekalian untuk menghadiri acara pernikahan kami:
+      </p>
+
+      <div class="photo-wrapper animate-on-scroll">
+        <img src="img/Foto Pengantin 1.jpeg" alt="Foto Pengantin" />
+      </div>
+
+      <h2 class="nama-mempelai animate-on-scroll">Mempelai Laki Laki</h2>
+      <p class="info-keluarga animate-on-scroll">
+        Putra Kedua dari Bapak Syaripudin <br />& Ibu Siti Masitoh
+      </p>
+
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        class="ig-icon animate-on-scroll"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </section>
+
+    <!-- Mempelai Wanita -->
+    <section class="section-mempelai animate-on-scroll">
+      <!-- icon & -->
+      <div class="and-symbol animate-on-scroll">&</div>
+      <p class="invite-text animate-on-scroll">
+        Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta
+        kerabat sekalian untuk menghadiri acara pernikahan kami:
+      </p>
+
+      <div class="photo-wrapper animate-on-scroll">
+        <img src="img/Foto Pengantin 1.jpeg" alt="Foto Pengantin" />
+      </div>
+
+      <h2 class="nama-mempelai animate-on-scroll">Mempelai Wanita</h2>
+      <p class="info-keluarga animate-on-scroll">
+        Putra Kedua dari Bapak Syaripudin <br />& Ibu Siti Masitoh
+      </p>
+
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        class="ig-icon animate-on-scroll"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </section>
+    <!-- save date -->
+    <section class="section-save-date">
+      <div class="save-date-img animate-top">
+        <img src="img/Foto Pengantin 1.jpeg" alt="Save the Date" />
+        <h2 class="save-date-title">Save The Date</h2>
+      </div>
+
+      <div class="countdown animate-bottom">
+        <div><span id="days">0</span><br />Hari</div>
+        <div><span id="hours">0</span><br />Jam</div>
+        <div><span id="minutes">0</span><br />Menit</div>
+        <div><span id="seconds">0</span><br />Detik</div>
+      </div>
+
+      <div class="detail-resepsi animate-bottom">
+        <h3>Resepsi</h3>
+        <p>RABU, 16 APRIL 2025</p>
+        <p><strong>PUKUL : 10.00 WIB</strong></p>
+        <p class="alamat">
+          Tempat : Gedung Olahraga (GOR)<br />
+          Kp. Cikareumbi RT 01/RW 07 Ds. Cikadut Kec. Lembang<br />
+          Kab. Bandung Barat
+        </p>
+        <a href="https://maps.google.com" class="btn-lokasi" target="_blank">
+          📍 Lokasi Acara
+        </a>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
