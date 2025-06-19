@@ -355,12 +355,67 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+/* love story */
+.section-love-story {
+  background-color: #f8f5f0;
+  padding: 60px 20px;
+  color: #5a3e2b;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.title-love-story {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #8b6c4a;
+  font-family: "Playfair Display", serif;
+  position: relative;
+}
+
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.story-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.story-item h3 {
+  font-size: 1.2rem;
+  color: #8b6c4a;
+  margin-bottom: 10px;
+}
+
+.story-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Animasi Scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ================= MOBILE (max-width: 480px) ================= */
 @media (max-width: 480px) {
   .hero {
     height: 100svh;
-    align-items: flex-end; /* ganti dari flex-end ke center */
-    padding-bottom: 20px;
+    align-items: center; /* ganti dari flex-end ke center */
     overflow-y: auto;
   }
   .hero-text {
@@ -369,11 +424,13 @@ body {
 
   .hero-text h1 {
     font-size: 1.2rem;
+    transform: translateY(60px); /* geser dikit ke bawah */
   }
 
   .hero-text p,
   .hero-text h2 {
     font-size: 0.9rem;
+    transform: translateY(60px); /* geser dikit ke bawah */
   }
 
   .btn-undangan {
@@ -415,6 +472,17 @@ body {
   .btn-lokasi {
     font-size: 0.85rem;
     padding: 6px 12px;
+  }
+  .story-item {
+    padding: 16px;
+  }
+
+  .story-item h3 {
+    font-size: 1rem;
+  }
+
+  .story-item p {
+    font-size: 0.9rem;
   }
 }
 

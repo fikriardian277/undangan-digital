@@ -131,3 +131,21 @@ const observerSaveDate = new IntersectionObserver((entries) => {
 document.querySelectorAll(".animate-top, .animate-bottom").forEach((el) => {
   observerSaveDate.observe(el);
 });
+
+// love story
+document.addEventListener("DOMContentLoaded", function () {
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  animatedElements.forEach((el) => observer.observe(el));
+});
