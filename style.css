@@ -357,6 +357,12 @@ body {
 }
 /* ================= MOBILE (max-width: 480px) ================= */
 @media (max-width: 480px) {
+  .hero {
+    height: 100svh;
+    align-items: center; /* ganti dari flex-end ke center */
+    padding-bottom: 20px;
+    overflow-y: auto;
+  }
   .hero-text h1 {
     font-size: 1.2rem;
   }
