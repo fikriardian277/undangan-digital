@@ -27,6 +27,7 @@ body {
 
 .hero {
   height: 100vh;
+  min-height: 100svh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -457,6 +458,10 @@ body {
   .btn-lokasi {
     font-size: 0.85rem;
     padding: 6px 12px;
+  }
+  .hero {
+    min-height: 90vh; /* atau 80vh kalau masih terlalu tinggi */
+    padding-bottom: 60px; /* beri ruang untuk tombol tetap terlihat */
   }
 }
 
