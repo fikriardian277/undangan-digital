@@ -363,6 +363,10 @@ body {
     padding-bottom: 20px;
     overflow-y: auto;
   }
+  .hero-text {
+    transform: translateY(60px); /* geser dikit ke bawah */
+  }
+
   .hero-text h1 {
     font-size: 1.2rem;
   }
