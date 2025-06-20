@@ -59,7 +59,7 @@ body {
 #hero2 {
   background-image: url("img/Foto Pengantin 2.jpeg");
   opacity: 0;
-  transform: translateY(30px);
+
   pointer-events: none;
   z-index: 1;
 }
@@ -409,6 +409,50 @@ body {
 .animate-on-scroll.show {
   opacity: 1;
   transform: translateY(0);
+}
+/* galery */
+.section-gallery {
+  padding: 40px 20px;
+  background-color: #f8f5f0;
+  text-align: center;
+  color: #5a3e2b;
+}
+
+.gallery-intro {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.03);
+}
+
+.gallery-landscape img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-landscape img:hover {
+  transform: scale(1.03);
 }
 
 /* ================= MOBILE (max-width: 480px) ================= */

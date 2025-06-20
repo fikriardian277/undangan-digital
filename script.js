@@ -149,3 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   animatedElements.forEach((el) => observer.observe(el));
 });
+// lightbox untuk galeri
+src =
+  "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js";
