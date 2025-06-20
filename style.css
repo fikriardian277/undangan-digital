@@ -460,7 +460,7 @@ body {
   .hero {
     height: 100svh;
     display: flex;
-    justify-content: flex-start; /* kiri */
+    justify-content: center; /* kiri */
     align-items: flex-end; /* bawah */
     padding: 0 20px 50px 20px; /* jarak bawah dan kiri */
     overflow-y: auto;
