@@ -459,11 +459,15 @@ body {
 @media (max-width: 480px) {
   .hero {
     height: 100svh;
-    align-items: flex-end; /* ganti dari flex-end ke center */
+    display: flex;
+    justify-content: flex-start; /* kiri */
+    align-items: flex-end; /* bawah */
+    padding: 0 20px 50px 20px; /* jarak bawah dan kiri */
     overflow-y: auto;
   }
+
   .hero-text {
-    transform: translateY(60px); /* geser dikit ke bawah */
+    transform: none; /* gak perlu translateY */
   }
 
   .hero-text h1 {
