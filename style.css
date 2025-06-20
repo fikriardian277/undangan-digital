@@ -459,7 +459,7 @@ body {
 @media (max-width: 480px) {
   .hero {
     height: 100svh;
-    align-items: center; /* ganti dari flex-end ke center */
+    align-items: flex-end; /* ganti dari flex-end ke center */
     overflow-y: auto;
   }
   .hero-text {
@@ -468,13 +468,11 @@ body {
 
   .hero-text h1 {
     font-size: 1.2rem;
-    transform: translateY(60px); /* geser dikit ke bawah */
   }
 
   .hero-text p,
   .hero-text h2 {
     font-size: 0.9rem;
-    transform: translateY(60px); /* geser dikit ke bawah */
   }
 
   .btn-undangan {
