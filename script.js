@@ -146,9 +146,90 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     { threshold: 0.2 }
   );
+  // wedding gift
 
   animatedElements.forEach((el) => observer.observe(el));
 });
-// lightbox untuk galeri
-src =
-  "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js";
+const btnGift = document.getElementById("btnGift");
+const giftIntro = document.getElementById("giftIntro");
+const giftSection = document.getElementById("giftSection");
+
+btnGift.addEventListener("click", () => {
+  const isHidden = giftSection.style.display === "none";
+
+  giftIntro.style.display = isHidden ? "block" : "none";
+  giftSection.style.display = isHidden ? "block" : "none";
+
+  if (isHidden) {
+    giftIntro.scrollIntoView({ behavior: "smooth" });
+  }
+});
+// Scroll to top button
+document.addEventListener("DOMContentLoaded", () => {
+  const btnGift = document.getElementById("btnGift");
+  const giftSection = document.getElementById("giftSection");
+
+  let isVisible = false; // status awal disembunyikan
+
+  btnGift.addEventListener("click", () => {
+    isVisible = !isVisible;
+
+    if (isVisible) {
+      giftSection.style.display = "block";
+      giftSection.scrollIntoView({ behavior: "smooth" });
+      btnGift.innerText = "Wedding Gift";
+    } else {
+      giftSection.style.display = "none";
+      btnGift.innerText = "Wedding Gift";
+    }
+  });
+
+  // Fungsi untuk salin nomor rekening
+  window.copyRek = function (id) {
+    const nomor = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(nomor).then(() => {
+      alert("Nomor rekening berhasil disalin!");
+    });
+  };
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btnGift = document.getElementById("btnGift");
+  const giftSection = document.getElementById("giftSection");
+  const giftCards = document.querySelectorAll(".gift-card");
+
+  let isVisible = false;
+
+  btnGift.addEventListener("click", function () {
+    if (!isVisible) {
+      // Step 1: Tampilkan elemen
+      giftSection.style.display = "block";
+
+      // Step 2: Tunggu 1 frame, lalu animasikan masuk
+      requestAnimationFrame(() => {
+        giftSection.classList.add("show");
+        giftSection.classList.remove("hide");
+
+        giftCards.forEach((card, index) => {
+          setTimeout(() => card.classList.add("show"), index * 100);
+        });
+      });
+
+      isVisible = true;
+    } else {
+      // Step 1: Animasikan keluar
+      giftSection.classList.remove("show");
+      giftSection.classList.add("hide");
+
+      giftCards.forEach((card) => card.classList.remove("show"));
+
+      // Step 2: Setelah animasi selesai, baru sembunyikan
+      const transitionDuration = 800; // HARUS SAMA DENGAN di CSS
+      setTimeout(() => {
+        giftSection.style.display = "none";
+      }, transitionDuration);
+
+      isVisible = false;
+    }
+  });
+});

@@ -194,42 +194,42 @@
         <a
           href="img/Foto Pengantin 1.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 1.jpeg" alt="Gallery 1" />
         </a>
         <a
           href="img/Foto Pengantin 2.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 2.jpeg" alt="Gallery 2" />
         </a>
         <a
           href="img/Foto Pengantin 1.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 1.jpeg" alt="Gallery 3" />
         </a>
         <a
           href="img/Foto Pengantin 2.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 2.jpeg" alt="Gallery 4" />
         </a>
         <a
           href="img/Foto Pengantin 1.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 1.jpeg" alt="Gallery 5" />
         </a>
         <a
           href="img/Foto Pengantin 1.jpeg"
           class="gallery-item"
-          data-lightbox="gallery"
+          data-lightbox="gallery-grid"
         >
           <img src="img/Foto Pengantin 1.jpeg" alt="Gallery 6" />
         </a>
@@ -244,6 +244,49 @@
         <img src="img/Foto Pengantin 2.jpeg" alt="Gallery Landscape" />
       </a>
     </section>
+    <!-- wedding gift -->
+    <!-- Tombol -->
+    <div class="gift-wrapper">
+      <div id="giftButtonContainer" class="gift-button-container">
+        <h2>Wedding Gift</h2>
+        <p>
+          Kehadiran dan doa restu Anda merupakan anugerah terindah bagi kami.
+          Namun, apabila Anda tidak dapat hadir dan hendak memberikan tanda
+          kasih kepada kami, Anda dapat menggunakan fitur di bawah ini.
+        </p>
+        <button id="btnGift" class="btn-gift">Wedding Gift -></button>
+      </div>
+
+      <!-- Section Gift Card -->
+      <div id="giftSection" class="gift-section">
+        <div class="gift-card">
+          <div class="gift-overlay"></div>
+          <div class="gift-info">
+            <img src="img/bca.png" alt="BCA" class="bank-logo" />
+            <p class="no-rek" id="rek1">1370538464</p>
+            <p class="nama-rek">ISMI SIDRA OKTAVIANI</p>
+            <button class="btn-copy" onclick="copyRek('rek1')">📋 Copy</button>
+          </div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-overlay"></div>
+          <div class="gift-info">
+            <img src="img/bca.png" alt="BCA" class="bank-logo" />
+            <p class="no-rek" id="rek2">2080365368</p>
+            <p class="nama-rek">RIAN AGUSTRIANA</p>
+            <button class="btn-copy" onclick="copyRek('rek2')">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+      <section class="section-ucapan">
+        <h2 class="title-love-story animate-on-scroll">Ucapan</h2>
+        <p class="gallery-intro">
+          Kami sangat menghargai setiap ucapan dan doa dari Anda. Silakan
+          tinggalkan pesan Anda di sini.
+        </p>
+      </section>
+    </div>
 
     <script src="script.js"></script>
     <!-- Lightbox2 JS -->
