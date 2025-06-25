@@ -33,6 +33,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="lock-scroll">
+    <!-- music -->
+     <audio id="bgMusic" autoplay loop>
+  <source src="audio/laksana-surga.mp3" type="audio/mpeg" />
+  Browser Anda tidak mendukung pemutar audio.
+</audio>
+
     <!-- Hero Section Start -->
     <!-- Hero 1 -->
     <section id="hero1" class="hero">
@@ -248,13 +254,13 @@
     <!-- Tombol -->
     <div class="gift-wrapper">
       <div id="giftButtonContainer" class="gift-button-container">
-        <h2>Wedding Gift</h2>
-        <p>
+        <h2 class="animate-on-scroll">Wedding Gift</h2>
+        <p class="animate-on-scroll">
           Kehadiran dan doa restu Anda merupakan anugerah terindah bagi kami.
           Namun, apabila Anda tidak dapat hadir dan hendak memberikan tanda
           kasih kepada kami, Anda dapat menggunakan fitur di bawah ini.
         </p>
-        <button id="btnGift" class="btn-gift">Wedding Gift -></button>
+        <button id="btnGift" class="btn-gift fade-up delay-2">Wedding Gift -></button>
       </div>
 
       <!-- Section Gift Card -->
@@ -281,15 +287,15 @@
       </div>
       <!-- comment -->
 <section class="comment-section">
-    <h2>Ucapkan Sesuatu</h2>
-    <p>Berikan Ucapan & Doa Restu</p>
+    <h2 class="animate-top">Ucapkan Sesuatu</h2>
+    <p class="animate-top">Berikan Ucapan & Doa Restu</p>
 
-    <div class="comment-stats">
+    <div class="comment-stats animate-on-scroll">
       <div class="status hadir" id="hadirCount">0<br><span>Hadir</span></div>
       <div class="status tidak-hadir" id="tidakHadirCount">0<br><span>Tidak Hadir</span></div>
     </div>
 
-    <form id="commentForm">
+    <form class="animate-on-scroll" id="commentForm">
       <input type="text" id="name" placeholder="Nama" required />
       <textarea id="message" placeholder="Ucapan" required></textarea>
       <select id="kehadiran" required>
@@ -300,12 +306,45 @@
       <button type="submit">Kirim</button>
     </form>
 
-    <div id="commentsList">
+    <div class="animate-bottom" id="commentsList">
       <!-- Komentar muncul di sini -->
     </div>
   </section>
+  <!-- Penutup -->
+   <section id="penutup" class="penutup">
+      <div class="penutup-overlay">
+        <div class="penutup-text">
+          <img class="animate-top" src="img/Foto Pengantin 1.jpeg" alt="Penutup" />
+          <h2 class="small animate-on-scroll">Terimakasih</h2>
+          <p class="animate-on-scroll">Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kami.</p>
+          <h1 class="animate-on-scroll">Kami Yang Berbahagia</h1>
+          <h3 class="animate-on-scroll">Rian&Ismi</h3>
+          
+        </div>
+      </div>
+    </section>
+<!-- footer start -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/fikri.ar27/"
+          ><i data-feather="instagram"></i>
+        </a>
+      </div>
+      <div class="credit">
+        <p>by <a href="">Weddingkita</a></p>
+      </div>
+    </footer>
+    <!-- footer end -->
+     <!-- music -->
+      <button id="musicToggle" class="music-toggle">
+  <i data-feather="music"></i>
+</button>
 
 
+
+<script>
+  feather.replace();
+</script>
 
     <script src="script.js"></script>
   </body>

@@ -146,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     { threshold: 0.2 }
   );
+  // Gift
+
   // wedding gift
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -302,6 +304,41 @@ function loadComments() {
       console.error("Gagal fetch komentar:", error);
     });
 }
+
+// music section
+document.addEventListener("DOMContentLoaded", () => {
+  const bgMusic = document.getElementById("bgMusic");
+  const musicToggle = document.getElementById("musicToggle");
+
+  let isPlaying = false;
+
+  const startMusic = () => {
+    bgMusic.play();
+    isPlaying = true;
+    musicToggle.innerHTML = '<i data-feather="pause"></i>';
+    feather.replace();
+  };
+
+  const pauseMusic = () => {
+    bgMusic.pause();
+    isPlaying = false;
+    musicToggle.innerHTML = '<i data-feather="music"></i>';
+    feather.replace();
+  };
+
+  musicToggle.addEventListener("click", () => {
+    isPlaying ? pauseMusic() : startMusic();
+  });
+
+  // Jalankan musik otomatis jika user sudah interaksi
+  document.body.addEventListener(
+    "click",
+    () => {
+      if (!isPlaying) startMusic();
+    },
+    { once: true }
+  );
+});
 
 // Panggil saat awal buka
 loadComments();

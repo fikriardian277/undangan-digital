@@ -487,13 +487,6 @@ body {
   color: white;
 }
 
-.gift-button-container p {
-  font-size: 0.9rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
 /* gift Card */
 .gift-section {
   padding: 40px 20px;
@@ -675,6 +668,7 @@ form#commentForm button:hover {
 }
 #commentsList {
   max-height: 300px; /* bebas, bisa disesuaikan */
+  max-weidth: 500px; /* bebas, bisa disesuaikan */
   overflow-y: auto;
   padding-right: 5px;
 }
@@ -689,6 +683,80 @@ form#commentForm button:hover {
 
 #commentsList::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
+}
+/* Penutup */
+.penutup {
+  background-color: #f9f6f1;
+  text-align: center;
+  padding: 20px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #5a3e2b;
+}
+
+.penutup img {
+  width: 100%;
+  max-width: 300px;
+  border-top-left-radius: 50% 40%;
+  border-top-right-radius: 50% 40%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.penutup h2 {
+  margin-top: 10px;
+  font-size: 2rem;
+  color: #5a3e2b;
+}
+.penutup p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+.penutup h1 {
+  font-size: 1.2rem;
+  color: #8b6c4a;
+  margin-bottom: 20px;
+}
+.penutup h3 {
+  font-size: 2rem;
+  color: #6d5844;
+}
+/* footer */
+footer {
+  background-color: #fff;
+  text-align: center;
+  padding: 0.5rem 0 1.5rem;
+}
+footer .socials {
+  padding: 1rem 0;
+}
+footer .socials a {
+  color: #6d5844;
+  margin: 1rem;
+}
+footer .socials a:hover {
+  color: #5a3e2b;
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+footer .credit a {
+  color: #6d5844;
+  font-weight: 700;
+}
+
+/* music */
+.music-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #6d5844;
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  cursor: pointer;
 }
 
 /* ================= MOBILE (max-width: 480px) ================= */
