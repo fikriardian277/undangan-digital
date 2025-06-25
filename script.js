@@ -309,35 +309,42 @@ function loadComments() {
 document.addEventListener("DOMContentLoaded", () => {
   const bgMusic = document.getElementById("bgMusic");
   const musicToggle = document.getElementById("musicToggle");
-
+  const btnOpen = document.getElementById("btnOpen");
   let isPlaying = false;
 
+  // Feather icon
+  feather.replace();
+
   const startMusic = () => {
-    bgMusic.play();
-    isPlaying = true;
-    musicToggle.innerHTML = '<i data-feather="pause"></i>';
-    feather.replace();
+    bgMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        musicToggle.innerHTML = '<i data-feather="disc"></i>';
+        feather.replace();
+      })
+      .catch((err) => {
+        console.warn("Autoplay gagal:", err); // Ini gak masalah, sudah tertangani
+      });
   };
 
   const pauseMusic = () => {
     bgMusic.pause();
     isPlaying = false;
-    musicToggle.innerHTML = '<i data-feather="music"></i>';
+    musicToggle.innerHTML = '<i data-feather="stop-circle"></i>';
     feather.replace();
   };
 
+  // Klik tombol buka undangan
+  btnOpen.addEventListener("click", () => {
+    startMusic(); // Baru boleh main musik
+    musicToggle.style.display = "block";
+  });
+
+  // Klik toggle musik
   musicToggle.addEventListener("click", () => {
     isPlaying ? pauseMusic() : startMusic();
   });
-
-  // Jalankan musik otomatis jika user sudah interaksi
-  document.body.addEventListener(
-    "click",
-    () => {
-      if (!isPlaying) startMusic();
-    },
-    { once: true }
-  );
 });
 
 // Panggil saat awal buka

@@ -33,11 +33,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="lock-scroll">
-    <!-- music -->
-     <audio id="bgMusic" autoplay loop>
-  <source src="audio/laksana-surga.mp3" type="audio/mpeg" />
-  Browser Anda tidak mendukung pemutar audio.
-</audio>
+  
 
     <!-- Hero Section Start -->
     <!-- Hero 1 -->
@@ -65,8 +61,12 @@
           <h2>Sabtu, 12 Oktober 2025</h2>
           <button id="btnSaveDate" class="btn-undangan">Save the Date</button>
         </div>
-      </div>
+    
     </section>
+    <!-- music -->
+      <button id="musicToggle" class="music-toggle">
+  <i data-feather="disc" class="disc-icon"></i>
+</button>
 
     <!-- Kutipan -->
     <section class="section-kutipan">
@@ -335,10 +335,12 @@
       </div>
     </footer>
     <!-- footer end -->
-     <!-- music -->
-      <button id="musicToggle" class="music-toggle">
-  <i data-feather="music"></i>
-</button>
+       <!-- music -->
+    <audio id="bgMusic" loop>
+  <source src="audio/laksanasurga.mp3" type="audio/mpeg" />
+  Browser Anda tidak mendukung pemutar audio.
+</audio>
+    
 
 
 

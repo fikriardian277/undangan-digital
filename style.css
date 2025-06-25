@@ -668,7 +668,7 @@ form#commentForm button:hover {
 }
 #commentsList {
   max-height: 300px; /* bebas, bisa disesuaikan */
-  max-weidth: 500px; /* bebas, bisa disesuaikan */
+
   overflow-y: auto;
   padding-right: 5px;
 }
@@ -750,13 +750,28 @@ footer .credit a {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background: #6d5844;
+  background: none;
   border: none;
   border-radius: 50%;
-  padding: 0.8rem;
+  padding: 0.2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
   cursor: pointer;
+}
+.music-toggle:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px #6d5844aa);
+}
+
+.music-toggle svg.feather {
+  stroke: #b38867; /* Ubah warna garis icon */
+  width: 24px;
+  height: 24px;
+}
+
+/* Hover juga bisa ditambahkan */
+.music-toggle:hover svg.feather {
+  stroke: #fff;
 }
 
 /* ================= MOBILE (max-width: 480px) ================= */
