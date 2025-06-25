@@ -222,30 +222,69 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // comment section
+const commentForm = document.getElementById("commentForm");
+const commentsList = document.getElementById("commentsList");
+const hadirCount = document.getElementById("hadirCount");
+const tidakHadirCount = document.getElementById("tidakHadirCount");
 
+// Ganti dengan URL SheetDB kamu
+const SHEETDB_URL = "https://sheetdb.io/api/v1/bz0pznstwzfvx";
+
+// Handle kirim form
+commentForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // cegah reload
+
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const kehadiran = document.getElementById("kehadiran").value;
+
+  if (!name || !message || !kehadiran) return;
+
+  const data = {
+    data: {
+      Nama: name,
+      Ucapan: message,
+      Kehadiran: kehadiran,
+    },
+  };
+
+  fetch(SHEETDB_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      commentForm.reset();
+      loadComments(); // refresh komentar setelah kirim
+    })
+    .catch((err) => {
+      console.error("Gagal mengirim:", err);
+      alert("Gagal mengirim komentar. Coba lagi.");
+    });
+});
+
+// Ambil & tampilkan komentar
 function loadComments() {
-  fetch(
-    "https://script.google.com/macros/s/AKfycbwDGpwPFVDD7j68W2syYEMiv1uxXCbz-sIc2wLLwYYKCqgsqFppYVloOxpM3-VrQ4kF-w/exec"
-  )
+  fetch(SHEETDB_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log("DATA DARI SHEETS:", data); // CEK APA YANG DATANG
-
       commentsList.innerHTML = "";
-      hadir = 0;
-      tidakHadir = 0;
+      let hadir = 0;
+      let tidakHadir = 0;
 
       data.reverse().forEach((item) => {
-        const status = item.kehadiran?.toLowerCase().replace(/\s/g, "");
-        console.log(`Kehadiran: "${status}"`); // LIHAT APA ISINYA
+        const nama = item.Nama || "Anonim";
+        const ucapan = item.Ucapan || "";
+        const status = (item.Kehadiran || "").toLowerCase().replace(/\s/g, "");
 
         const comment = document.createElement("div");
         comment.classList.add("comment");
         comment.innerHTML = `
-          <strong>${item.nama} ${
+          <strong>${nama} ${
           status === "tidakhadir" || status === "tidak-hadir" ? "❌" : "✅"
         }</strong><br>
-          ${item.ucapan}
+          ${ucapan}
         `;
         commentsList.appendChild(comment);
 
@@ -263,43 +302,6 @@ function loadComments() {
       console.error("Gagal fetch komentar:", error);
     });
 }
-document.getElementById("commentForm").addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const kehadiran = document.getElementById("kehadiran").value;
-
-  if (!name || !message || !kehadiran) {
-    alert("Harap isi semua kolom!");
-    return;
-  }
-
-  fetch(
-    "https://script.google.com/macros/s/AKfycbwDGpwPFVDD7j68W2syYEMiv1uxXCbz-sIc2wLLwYYKCqgsqFppYVloOxpM3-VrQ4kF-w/exec",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nama: name,
-        ucapan: message,
-        kehadiran: kehadiran,
-      }),
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Berhasil kirim komentar:", data);
-      // Kosongkan form
-      document.getElementById("commentForm").reset();
-      // Load ulang komentar
-      loadComments();
-    })
-    .catch((err) => {
-      console.error("Gagal kirim komentar:", err);
-      alert("Gagal mengirim komentar. Coba lagi.");
-    });
-});
-window.addEventListener("DOMContentLoaded", loadComments);
+// Panggil saat awal buka
+loadComments();

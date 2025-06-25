@@ -280,34 +280,33 @@
         </div>
       </div>
       <!-- comment -->
-      <section class="comment-section">
-  <h2>Ucapkan Sesuatu</h2>
-  <p>Berikan Ucapan & Doa Restu</p>
+<section class="comment-section">
+    <h2>Ucapkan Sesuatu</h2>
+    <p>Berikan Ucapan & Doa Restu</p>
 
-  <div class="comment-stats">
-    <div class="status hadir" id="hadirCount">3<br><span>Hadir</span></div>
-    <div class="status tidak-hadir" id="tidakHadirCount">3<br><span>Tidak Hadir</span></div>
-  </div>
+    <div class="comment-stats">
+      <div class="status hadir" id="hadirCount">0<br><span>Hadir</span></div>
+      <div class="status tidak-hadir" id="tidakHadirCount">0<br><span>Tidak Hadir</span></div>
+    </div>
 
-  <form id="commentForm">
-    <input type="text" id="name" placeholder="Nama" required />
-    <textarea id="message" placeholder="Ucapan" required></textarea>
-    <select id="kehadiran" required>
-      <option value="" disabled selected>Konfirmasi Kehadiran</option>
-      <option value="hadir">Hadir</option>
-      <option value="tidak-hadir">Tidak Hadir</option>
-    </select>
-    <button type="submit">Kirim</button>
-  </form>
+    <form id="commentForm">
+      <input type="text" id="name" placeholder="Nama" required />
+      <textarea id="message" placeholder="Ucapan" required></textarea>
+      <select id="kehadiran" required>
+        <option value="" disabled selected>Konfirmasi Kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+      <button type="submit">Kirim</button>
+    </form>
 
-  <div id="commentsList">
-    <!-- Komentar akan ditampilkan di sini -->
-  </div>
-</section>
+    <div id="commentsList">
+      <!-- Komentar muncul di sini -->
+    </div>
+  </section>
+
 
 
     <script src="script.js"></script>
-    <!-- Lightbox2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
   </body>
 </html>
