@@ -598,22 +598,32 @@ body {
 }
 /* comment */
 .comment-section {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  background: #f5f5f5;
-  border-radius: 8px;
-  font-family: sans-serif;
+  padding: 50px 20px;
+
+  background: #8b6c4a;
+
+  font-family: "Poppins", sans-serif;
 }
 
 .comment-section h2 {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  text-align: center;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+}
+.comment-section p {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9;
 }
 
 .comment-stats {
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
+  justify-content: center;
 }
 
 .status {
@@ -657,11 +667,28 @@ form#commentForm button:hover {
 }
 
 #commentsList .comment {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 1px;
+  color: #fff;
+  font-family: poppins, sans-serif;
+  font-size: 0.8rem;
+}
+#commentsList {
+  max-height: 300px; /* bebas, bisa disesuaikan */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+#commentsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#commentsList::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+#commentsList::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
 }
 
 /* ================= MOBILE (max-width: 480px) ================= */
