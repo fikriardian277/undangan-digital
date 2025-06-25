@@ -346,6 +346,18 @@ document.addEventListener("DOMContentLoaded", () => {
     isPlaying ? pauseMusic() : startMusic();
   });
 });
+// URL KEPADA YTH
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("to");
+
+  if (nama) {
+    document.getElementById("ucapan").innerText = "Kepada Yth.";
+    document.getElementById("namaTamu").innerText = decodeURIComponent(
+      nama.replace(/\+/g, " ")
+    );
+  }
+});
 
 // Panggil saat awal buka
 loadComments();

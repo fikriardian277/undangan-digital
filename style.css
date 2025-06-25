@@ -752,9 +752,7 @@ footer .credit a {
   right: 1rem;
   background: none;
   border: none;
-  border-radius: 50%;
   padding: 0.2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
   cursor: pointer;
 }
