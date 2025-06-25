@@ -148,40 +148,22 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   // wedding gift
 
-  animatedElements.forEach((el) => observer.observe(el));
-});
-const btnGift = document.getElementById("btnGift");
-const giftIntro = document.getElementById("giftIntro");
-const giftSection = document.getElementById("giftSection");
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnGift = document.getElementById("btnGift");
+    const giftIntro = document.getElementById("giftIntro");
+    const giftSection = document.getElementById("giftSection");
 
-btnGift.addEventListener("click", () => {
-  const isHidden = giftSection.style.display === "none";
-
-  giftIntro.style.display = isHidden ? "block" : "none";
-  giftSection.style.display = isHidden ? "block" : "none";
-
-  if (isHidden) {
-    giftIntro.scrollIntoView({ behavior: "smooth" });
-  }
-});
-// Scroll to top button
-document.addEventListener("DOMContentLoaded", () => {
-  const btnGift = document.getElementById("btnGift");
-  const giftSection = document.getElementById("giftSection");
-
-  let isVisible = false; // status awal disembunyikan
-
-  btnGift.addEventListener("click", () => {
-    isVisible = !isVisible;
-
-    if (isVisible) {
+    btnGift.addEventListener("click", () => {
+      // Tampilkan section
+      giftIntro.style.display = "none";
       giftSection.style.display = "block";
+
+      // Scroll ke bagian hadiah
       giftSection.scrollIntoView({ behavior: "smooth" });
-      btnGift.innerText = "Wedding Gift";
-    } else {
-      giftSection.style.display = "none";
-      btnGift.innerText = "Wedding Gift";
-    }
+
+      // Sembunyikan tombol setelah diklik
+      btnGift.style.display = "none";
+    });
   });
 
   // Fungsi untuk salin nomor rekening
@@ -227,9 +209,97 @@ document.addEventListener("DOMContentLoaded", function () {
       const transitionDuration = 800; // HARUS SAMA DENGAN di CSS
       setTimeout(() => {
         giftSection.style.display = "none";
+        // Munculkan commentSection
+        commentSection.style.display = "block";
+        requestAnimationFrame(() => {
+          commentSection.classList.add("show");
+          commentSection.classList.remove("hide");
+        });
       }, transitionDuration);
 
       isVisible = false;
     }
   });
 });
+// comment section
+
+function loadComments() {
+  fetch(
+    "https://script.google.com/macros/s/AKfycbwDGpwPFVDD7j68W2syYEMiv1uxXCbz-sIc2wLLwYYKCqgsqFppYVloOxpM3-VrQ4kF-w/exec"
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("DATA DARI SHEETS:", data); // CEK APA YANG DATANG
+
+      commentsList.innerHTML = "";
+      hadir = 0;
+      tidakHadir = 0;
+
+      data.reverse().forEach((item) => {
+        const status = item.kehadiran?.toLowerCase().replace(/\s/g, "");
+        console.log(`Kehadiran: "${status}"`); // LIHAT APA ISINYA
+
+        const comment = document.createElement("div");
+        comment.classList.add("comment");
+        comment.innerHTML = `
+          <strong>${item.nama} ${
+          status === "tidakhadir" || status === "tidak-hadir" ? "❌" : "✅"
+        }</strong><br>
+          ${item.ucapan}
+        `;
+        commentsList.appendChild(comment);
+
+        if (status === "hadir") {
+          hadir++;
+        } else if (status === "tidakhadir" || status === "tidak-hadir") {
+          tidakHadir++;
+        }
+      });
+
+      hadirCount.innerHTML = `${hadir}<br><span>Hadir</span>`;
+      tidakHadirCount.innerHTML = `${tidakHadir}<br><span>Tidak Hadir</span>`;
+    })
+    .catch((error) => {
+      console.error("Gagal fetch komentar:", error);
+    });
+}
+document.getElementById("commentForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const kehadiran = document.getElementById("kehadiran").value;
+
+  if (!name || !message || !kehadiran) {
+    alert("Harap isi semua kolom!");
+    return;
+  }
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbwDGpwPFVDD7j68W2syYEMiv1uxXCbz-sIc2wLLwYYKCqgsqFppYVloOxpM3-VrQ4kF-w/exec",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nama: name,
+        ucapan: message,
+        kehadiran: kehadiran,
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Berhasil kirim komentar:", data);
+      // Kosongkan form
+      document.getElementById("commentForm").reset();
+      // Load ulang komentar
+      loadComments();
+    })
+    .catch((err) => {
+      console.error("Gagal kirim komentar:", err);
+      alert("Gagal mengirim komentar. Coba lagi.");
+    });
+});
+window.addEventListener("DOMContentLoaded", loadComments);

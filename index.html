@@ -279,14 +279,32 @@
           </div>
         </div>
       </div>
-      <section class="section-ucapan">
-        <h2 class="title-love-story animate-on-scroll">Ucapan</h2>
-        <p class="gallery-intro">
-          Kami sangat menghargai setiap ucapan dan doa dari Anda. Silakan
-          tinggalkan pesan Anda di sini.
-        </p>
-      </section>
-    </div>
+      <!-- comment -->
+      <section class="comment-section">
+  <h2>Ucapkan Sesuatu</h2>
+  <p>Berikan Ucapan & Doa Restu</p>
+
+  <div class="comment-stats">
+    <div class="status hadir" id="hadirCount">3<br><span>Hadir</span></div>
+    <div class="status tidak-hadir" id="tidakHadirCount">3<br><span>Tidak Hadir</span></div>
+  </div>
+
+  <form id="commentForm">
+    <input type="text" id="name" placeholder="Nama" required />
+    <textarea id="message" placeholder="Ucapan" required></textarea>
+    <select id="kehadiran" required>
+      <option value="" disabled selected>Konfirmasi Kehadiran</option>
+      <option value="hadir">Hadir</option>
+      <option value="tidak-hadir">Tidak Hadir</option>
+    </select>
+    <button type="submit">Kirim</button>
+  </form>
+
+  <div id="commentsList">
+    <!-- Komentar akan ditampilkan di sini -->
+  </div>
+</section>
+
 
     <script src="script.js"></script>
     <!-- Lightbox2 JS -->
