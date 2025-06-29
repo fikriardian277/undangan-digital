@@ -29,11 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const NO_REK_2 = "0987654321";
   const NAMA_REK_2 = "a.n. Siti Badriah";
 
+  // -- Konfigurasi Music --
+  const LINK_MUSIK = "audio/laksanasurga.mp3";
+
+  // -- Konfigurasi Gambar --
+  const GAMBAR = {
+    cover: "assets/cover.jpg",
+    mempelai_pria: "assets/mempelai-pria.jpg",
+    mempelai_wanita: "assets/mempelai-wanita.jpg",
+    prewedding_utama: "assets/prewedding-utama.jpg",
+    prewedding_penutup: "assets/prewedding-penutup.jpg",
+    galeri: [
+      "assets/galeri-1.jpg",
+      "assets/galeri-2.jpg",
+      "assets/galeri-3.jpg",
+      "assets/galeri-4.jpg",
+      "assets/galeri-5.jpg",
+      "assets/galeri-6.jpg",
+    ],
+    galeri_landscape: "assets/galeri-landscape.jpg",
+    logo_bank: "assets/logo-bca.png",
+    bg_gift: "assets/bg-gift.jpeg",
+  };
   // =========================================================================
   // KODE JEMBATAN (JANGAN DIUBAH)
   // Fungsi untuk mengisi semua data dari konfigurasi ke HTML
   // =========================================================================
   function populateWeddingData() {
+    // Bagian Music
+    document.querySelector("#bgMusic source").src = LINK_MUSIK;
     // BAGIAN BARU: Mengisi data untuk Hero 1 & 2
     const hero1Names = document.getElementById("hero1-names");
     const hero2Names = document.getElementById("hero2-names");
@@ -60,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ortuWanita) ortuWanita.innerText = ORTU_WANITA;
     if (igWanita) igWanita.href = IG_WANITA;
 
-    // Resepsi (kode yang sudah ada)
+    // Resepsi
     const tanggalResepsi = document.getElementById("tanggal-resepsi");
     const waktuResepsi = document.getElementById("waktu-resepsi");
     const lokasiResepsi = document.getElementById("lokasi-resepsi");
@@ -70,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lokasiResepsi) lokasiResepsi.innerHTML = LOKASI_ACARA_TEKS;
     if (linkLokasi) linkLokasi.href = LINK_LOKASI_GMAPS;
 
-    // Hadiah (kode yang sudah ada)
+    // Hadiah
     const rek1 = document.getElementById("rek1");
     const namaRek1 = document.getElementById("nama-rek1");
     if (rek1) rek1.innerText = NO_REK_1;
@@ -81,10 +105,62 @@ document.addEventListener("DOMContentLoaded", () => {
     if (rek2) rek2.innerText = NO_REK_2;
     if (namaRek2) namaRek2.innerText = NAMA_REK_2;
 
-    // Penutup (kode yang sudah ada)
+    // Penutup
     const namaPenutup = document.getElementById("nama-penutup");
     if (namaPenutup)
       namaPenutup.innerText = `${NAMA_PANGGILAN_PRIA} & ${NAMA_PANGGILAN_WANITA}`;
+    // 2. MENGISI DATA GAMBAR (Kode Baru)
+    // ====================================
+    // Set background cover
+    document.getElementById(
+      "hero1"
+    ).style.backgroundImage = `url('${GAMBAR.cover}')`;
+    document.getElementById(
+      "hero2"
+    ).style.backgroundImage = `url('${GAMBAR.cover}')`;
+
+    // Set foto mempelai
+    document.getElementById("img-mempelai-pria").src = GAMBAR.mempelai_pria;
+    document.getElementById("img-mempelai-wanita").src = GAMBAR.mempelai_wanita;
+
+    // Set foto prewedding
+    document.getElementById("img-prewedding-utama").src =
+      GAMBAR.prewedding_utama;
+    document.getElementById("img-prewedding-penutup").src =
+      GAMBAR.prewedding_penutup;
+
+    // Set logo bank dan background gift
+    document.getElementById("logo-bank-1").src = GAMBAR.logo_bank;
+    document.getElementById("logo-bank-2").src = GAMBAR.logo_bank;
+    document.getElementById(
+      "gift-card-1"
+    ).style.backgroundImage = `url('${GAMBAR.bg_gift}')`;
+    document.getElementById(
+      "gift-card-2"
+    ).style.backgroundImage = `url('${GAMBAR.bg_gift}')`;
+
+    // Mengisi galeri foto secara dinamis
+    const galleryContainer = document.getElementById("gallery-grid-container");
+    galleryContainer.innerHTML = ""; // Kosongkan dulu
+    GAMBAR.galeri.forEach((foto) => {
+      const link = document.createElement("a");
+      link.href = foto;
+      link.className = "gallery-item";
+      link.dataset.lightbox = "gallery-grid"; // Untuk lightbox
+
+      const img = document.createElement("img");
+      img.src = foto;
+      img.alt = "Galeri Foto Pernikahan";
+
+      link.appendChild(img);
+      galleryContainer.appendChild(link);
+    });
+
+    // Mengisi galeri landscape
+    const landscapeContainer = document.getElementById(
+      "gallery-landscape-container"
+    );
+    landscapeContainer.innerHTML = `<a href="${GAMBAR.galeri_landscape}" class="gallery-landscape" data-lightbox="gallery"><img src="${GAMBAR.galeri_landscape}" alt="Galeri Foto Landscape"></a>`;
   }
 
   // Panggil fungsi di atas agar semua data langsung terisi saat halaman dimuat

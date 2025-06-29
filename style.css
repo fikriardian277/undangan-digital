@@ -58,7 +58,6 @@ body {
 
 /* --- PERUBAHAN PENTING DI SINI --- */
 #hero1 {
-  background-image: url("img/foto-3.jpeg");
   position: fixed; /* HANYA COVER YANG FIXED */
   top: 0;
   left: 0;
@@ -75,7 +74,6 @@ body {
 }
 
 #hero2 {
-  background-image: url("img/foto-3.jpeg");
   /* HAPUS SEMUA POSITION, Z-INDEX, DLL. BIARKAN SEPERTI SECTION BIASA */
 }
 
@@ -444,7 +442,6 @@ body {
 
 .gift-card {
   position: relative;
-  background-image: url(img/bg.jpeg);
   background-size: cover;
   background-position: center;
   width: 100%;
