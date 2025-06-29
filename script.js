@@ -1,321 +1,26 @@
-const btnOpen = document.getElementById("btnOpen");
-const hero1 = document.getElementById("hero1");
-const hero2 = document.getElementById("hero2");
-
-btnOpen.addEventListener("click", () => {
-  // 1. Hide hero 1
-  hero1.classList.add("hide");
-
-  // 2. Show hero 2
-  hero2.classList.add("show");
-
-  // 3. Unlock scroll
-  document.body.classList.remove("lock-scroll");
-
-  // 4. Scroll ke atas biar fix posisi
-  window.scrollTo({ top: 0, behavior: "auto" });
-});
-// hero section
-document.addEventListener("DOMContentLoaded", function () {
-  const animatedElements = document.querySelectorAll(".animate-on-scroll");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show"); // supaya animasi muncul ulang saat masuk lagi
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
-
-  animatedElements.forEach((el) => observer.observe(el));
-});
-
-// quotes section
-document.addEventListener("DOMContentLoaded", function () {
-  const kutipanSection = document.querySelector(".section-kutipan");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          kutipanSection.classList.add("show");
-        } else {
-          kutipanSection.classList.remove("show"); // reset saat keluar layar
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
-
-  observer.observe(kutipanSection);
-});
-// save date
-document.getElementById("btnSaveDate").addEventListener("click", function () {
-  const url =
-    "https://www.google.com/calendar/render?action=TEMPLATE" +
-    "&text=Pernikahan+Nama+Pria+dan+Wanita" +
-    "&dates=20251012T090000/20251012T110000" +
-    "&details=Undangan+pernikahan+kami+yang+akan+diselenggarakan+di+lokasi+terlampir.+Kami+berharap+kehadiran+Anda." +
-    "&location=Gedung+Pernikahan+Bahagia,+Bandung";
-  window.open(url, "_blank");
-});
-// mempelai laki laki
-// Animasi Scroll untuk elemen dengan class 'animate-on-scroll'
-function animateOnScroll() {
-  const elements = document.querySelectorAll(".animate-on-scroll");
-  elements.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top <= window.innerHeight - 50) {
-      el.classList.add("visible");
-    }
-  });
-}
-// section dan
-// Sudah ada sebelumnya:
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
-
-document
-  .querySelectorAll(".animate-on-scroll")
-  .forEach((el) => observer.observe(el));
-// save date
-// Countdown Timer
-const targetDate = new Date("July 1, 2025 08:30:00").getTime();
-
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  document.getElementById("days").innerText = days < 0 ? 0 : days;
-  document.getElementById("hours").innerText = hours < 0 ? 0 : hours;
-  document.getElementById("minutes").innerText = minutes < 0 ? 0 : minutes;
-  document.getElementById("seconds").innerText = seconds < 0 ? 0 : seconds;
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown(); // panggil langsung saat load
-
-// Observer untuk animasi
-const observerSaveDate = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    } else {
-      entry.target.classList.remove("visible");
-    }
-  });
-});
-
-document.querySelectorAll(".animate-top, .animate-bottom").forEach((el) => {
-  observerSaveDate.observe(el);
-});
-
-// love story
-document.addEventListener("DOMContentLoaded", function () {
-  const animatedElements = document.querySelectorAll(".animate-on-scroll");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-  // Gift
-
-  // wedding gift
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnGift = document.getElementById("btnGift");
-    const giftIntro = document.getElementById("giftIntro");
-    const giftSection = document.getElementById("giftSection");
-
-    btnGift.addEventListener("click", () => {
-      // Tampilkan section
-      giftIntro.style.display = "none";
-      giftSection.style.display = "block";
-
-      // Scroll ke bagian hadiah
-      giftSection.scrollIntoView({ behavior: "smooth" });
-
-      // Sembunyikan tombol setelah diklik
-      btnGift.style.display = "none";
-    });
-  });
-
-  // Fungsi untuk salin nomor rekening
-  window.copyRek = function (id) {
-    const nomor = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(nomor).then(() => {
-      alert("Nomor rekening berhasil disalin!");
-    });
-  };
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btnGift = document.getElementById("btnGift");
-  const giftSection = document.getElementById("giftSection");
-  const giftCards = document.querySelectorAll(".gift-card");
-
-  let isVisible = false;
-
-  btnGift.addEventListener("click", function () {
-    if (!isVisible) {
-      // Step 1: Tampilkan elemen
-      giftSection.style.display = "block";
-
-      // Step 2: Tunggu 1 frame, lalu animasikan masuk
-      requestAnimationFrame(() => {
-        giftSection.classList.add("show");
-        giftSection.classList.remove("hide");
-
-        giftCards.forEach((card, index) => {
-          setTimeout(() => card.classList.add("show"), index * 100);
-        });
-      });
-
-      isVisible = true;
-    } else {
-      // Step 1: Animasikan keluar
-      giftSection.classList.remove("show");
-      giftSection.classList.add("hide");
-
-      giftCards.forEach((card) => card.classList.remove("show"));
-
-      // Step 2: Setelah animasi selesai, baru sembunyikan
-      const transitionDuration = 800; // HARUS SAMA DENGAN di CSS
-      setTimeout(() => {
-        giftSection.style.display = "none";
-        // Munculkan commentSection
-        commentSection.style.display = "block";
-        requestAnimationFrame(() => {
-          commentSection.classList.add("show");
-          commentSection.classList.remove("hide");
-        });
-      }, transitionDuration);
-
-      isVisible = false;
-    }
-  });
-});
-// comment section
-const commentForm = document.getElementById("commentForm");
-const commentsList = document.getElementById("commentsList");
-const hadirCount = document.getElementById("hadirCount");
-const tidakHadirCount = document.getElementById("tidakHadirCount");
-
-// Ganti dengan URL SheetDB kamu
-const SHEETDB_URL = "https://sheetdb.io/api/v1/bz0pznstwzfvx";
-
-// Handle kirim form
-commentForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // cegah reload
-
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const kehadiran = document.getElementById("kehadiran").value;
-
-  if (!name || !message || !kehadiran) return;
-
-  const data = {
-    data: {
-      Nama: name,
-      Ucapan: message,
-      Kehadiran: kehadiran,
-    },
-  };
-
-  fetch(SHEETDB_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then(() => {
-      commentForm.reset();
-      loadComments(); // refresh komentar setelah kirim
-    })
-    .catch((err) => {
-      console.error("Gagal mengirim:", err);
-      alert("Gagal mengirim komentar. Coba lagi.");
-    });
-});
-
-// Ambil & tampilkan komentar
-function loadComments() {
-  fetch(SHEETDB_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      commentsList.innerHTML = "";
-      let hadir = 0;
-      let tidakHadir = 0;
-
-      data.reverse().forEach((item) => {
-        const nama = item.Nama || "Anonim";
-        const ucapan = item.Ucapan || "";
-        const status = (item.Kehadiran || "").toLowerCase().replace(/\s/g, "");
-
-        const comment = document.createElement("div");
-        comment.classList.add("comment");
-        comment.innerHTML = `
-          <strong>${nama} ${
-          status === "tidakhadir" || status === "tidak-hadir" ? "❌" : "✅"
-        }</strong><br>
-          ${ucapan}
-        `;
-        commentsList.appendChild(comment);
-
-        if (status === "hadir") {
-          hadir++;
-        } else if (status === "tidakhadir" || status === "tidak-hadir") {
-          tidakHadir++;
-        }
-      });
-
-      hadirCount.innerHTML = `${hadir}<br><span>Hadir</span>`;
-      tidakHadirCount.innerHTML = `${tidakHadir}<br><span>Tidak Hadir</span>`;
-    })
-    .catch((error) => {
-      console.error("Gagal fetch komentar:", error);
-    });
-}
-
-// music section
 document.addEventListener("DOMContentLoaded", () => {
+  // =========================================================================
+  // KONFIGURASI UTAMA - SESUAIKAN DI SINI
+  // =========================================================================
+  const NAMA_PRIA = "Diki Gunawan";
+  const NAMA_WANITA = "Meliana";
+  const TANGGAL_ACARA_ISO = "2025-10-12T10:00:00"; // Format: TAHUN-BULAN-HARI T JAM:MENIT:DETIK
+  const LOKASI_ACARA = "Gedung Olahraga (GOR), Jl. Lewo Babakan, Tasikmalaya";
+  // URL Google Apps Script untuk mengirim dan mengambil komentar
+  const GAS_URL =
+    "https://script.google.com/macros/s/AKfycbzMHvkCoo5mDUoEpO4mj8TOYY6HV0GzoBysEHJFY840aDRyIOnm3nZTX9AWBK06kVbz/exec";
+
+  // =========================================================================
+  // FUNGSI BUKA UNDANGAN & MUSIK
+  // =========================================================================
+  const btnOpen = document.getElementById("btnOpen");
+  const hero1 = document.getElementById("hero1");
+  const mainContent = document.getElementById("main-content"); // Target <main> sekarang
   const bgMusic = document.getElementById("bgMusic");
   const musicToggle = document.getElementById("musicToggle");
-  const btnOpen = document.getElementById("btnOpen");
   let isPlaying = false;
 
-  // Feather icon
-  feather.replace();
-
-  const startMusic = () => {
+  function startMusic() {
     bgMusic
       .play()
       .then(() => {
@@ -323,41 +28,243 @@ document.addEventListener("DOMContentLoaded", () => {
         musicToggle.innerHTML = '<i data-feather="disc"></i>';
         feather.replace();
       })
-      .catch((err) => {
-        console.warn("Autoplay gagal:", err); // Ini gak masalah, sudah tertangani
-      });
-  };
+      .catch((err) => console.warn("Autoplay musik gagal oleh browser:", err));
+  }
 
-  const pauseMusic = () => {
-    bgMusic.pause();
-    isPlaying = false;
-    musicToggle.innerHTML = '<i data-feather="stop-circle"></i>';
+  function toggleMusic() {
+    if (isPlaying) {
+      bgMusic.pause();
+      isPlaying = false;
+      musicToggle.innerHTML = '<i data-feather="pause-circle"></i>';
+    } else {
+      bgMusic.play();
+      isPlaying = true;
+      musicToggle.innerHTML = '<i data-feather="disc"></i>';
+    }
     feather.replace();
-  };
+  }
 
-  // Klik tombol buka undangan
   btnOpen.addEventListener("click", () => {
-    startMusic(); // Baru boleh main musik
-    musicToggle.style.display = "block";
+    // 1. Sembunyikan cover secara perlahan
+    hero1.classList.add("hide");
+
+    // 2. Tampilkan konten utama
+    mainContent.classList.remove("hidden");
+
+    // 3. Buka kunci scroll
+    document.body.classList.remove("lock-scroll");
+
+    // 4. Setelah transisi cover selesai, hapus dari DOM agar tidak mengganggu
+    setTimeout(() => {
+      hero1.style.display = "none";
+    }, 1000);
+
+    // 5. Putar musik dan tampilkan tombolnya
+    startMusic();
+    musicToggle.style.display = "grid";
   });
 
-  // Klik toggle musik
-  musicToggle.addEventListener("click", () => {
-    isPlaying ? pauseMusic() : startMusic();
-  });
-});
-// URL KEPADA YTH
-document.addEventListener("DOMContentLoaded", () => {
+  musicToggle.addEventListener("click", toggleMusic);
+  // =========================================================================
+  // NAMA TAMU DARI URL
+  // =========================================================================
   const params = new URLSearchParams(window.location.search);
-  const nama = params.get("to");
-
-  if (nama) {
-    document.getElementById("ucapan").innerText = "Kepada Yth.";
+  const guestName = params.get("to");
+  if (guestName) {
     document.getElementById("namaTamu").innerText = decodeURIComponent(
-      nama.replace(/\+/g, " ")
+      guestName.replace(/\+/g, " ")
     );
   }
-});
 
-// Panggil saat awal buka
-loadComments();
+  // =========================================================================
+  // ANIMASI SAAT SCROLL (SATU OBSERVER UNTUK SEMUA)
+  // =========================================================================
+  const animationObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // Ini adalah satu-satunya baris yang diubah.
+        // 'toggle' akan menambah/menghapus kelas 'show' secara otomatis
+        // saat elemen masuk/keluar dari layar.
+        entry.target.classList.toggle("show", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.25 }
+  ); // Elemen akan (re)animasi saat 25% terlihat
+
+  // Mengamati semua elemen yang perlu dianimasikan
+  document
+    .querySelectorAll(
+      ".animate-on-scroll, .section-kutipan, .animate-top, .animate-bottom, .and-symbol"
+    )
+    .forEach((el) => {
+      animationObserver.observe(el);
+    });
+  // =========================================================================
+  // COUNTDOWN TIMER
+  // =========================================================================
+  const targetDate = new Date(TANGGAL_ACARA_ISO).getTime();
+  const countdownInterval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      document.querySelector(".countdown").innerHTML =
+        "<h4>Acara Telah Berlangsung</h4>";
+      return;
+    }
+
+    document.getElementById("days").innerText = Math.floor(
+      distance / (1000 * 60 * 60 * 24)
+    );
+    document.getElementById("hours").innerText = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    document.getElementById("minutes").innerText = Math.floor(
+      (distance % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    document.getElementById("seconds").innerText = Math.floor(
+      (distance % (1000 * 60)) / 1000
+    );
+  }, 1000);
+
+  // =========================================================================
+  // TOMBOL SAVE THE DATE
+  // =========================================================================
+  document.getElementById("btnSaveDate").addEventListener("click", () => {
+    const googleCalendarDate = new Date(TANGGAL_ACARA_ISO)
+      .toISOString()
+      .replace(/-|:|\.\d\d\d/g, "");
+    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+${encodeURIComponent(
+      NAMA_PRIA
+    )}+dan+${encodeURIComponent(
+      NAMA_WANITA
+    )}&dates=${googleCalendarDate}/${googleCalendarDate}&details=Undangan+pernikahan+kami.+Kami+berharap+kehadiran+Anda.&location=${encodeURIComponent(
+      LOKASI_ACARA
+    )}`;
+    window.open(url, "_blank");
+  });
+
+  // =========================================================================
+  // BAGIAN HADIAH (GIFT SECTION)
+  // =========================================================================
+  const btnGift = document.getElementById("btnGift");
+  const giftButtonContainer = document.getElementById("giftButtonContainer");
+  const giftSection = document.getElementById("giftSection");
+  const giftCards = document.querySelectorAll(".gift-card");
+
+  btnGift.addEventListener("click", () => {
+    // Sembunyikan container tombol dan tampilkan section gift
+    giftButtonContainer.style.display = "none";
+    giftSection.classList.add("show");
+
+    // Tampilkan kartu satu per satu dengan delay
+    giftCards.forEach((card, index) => {
+      setTimeout(() => card.classList.add("show"), index * 200);
+    });
+  });
+
+  document.querySelectorAll(".btn-copy").forEach((button) => {
+    button.addEventListener("click", function () {
+      const rekId = this.dataset.rekId;
+      const nomor = document.getElementById(rekId).innerText;
+      navigator.clipboard
+        .writeText(nomor)
+        .then(() => {
+          alert(`Nomor rekening ${nomor} berhasil disalin!`);
+        })
+        .catch((err) => {
+          alert("Gagal menyalin. Coba lagi.");
+          console.error("Copy error:", err);
+        });
+    });
+  });
+
+  // =========================================================================
+  // FORM KOMENTAR & RSVP
+  // =========================================================================
+  const commentForm = document.getElementById("commentForm");
+  const commentsList = document.getElementById("commentsList");
+  const hadirCountEl = document.getElementById("hadirCount").firstChild;
+  const tidakHadirCountEl =
+    document.getElementById("tidakHadirCount").firstChild;
+
+  // Fungsi untuk mengirim komentar
+  commentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const submitButton = this.querySelector("button");
+    submitButton.disabled = true;
+    submitButton.innerText = "Mengirim...";
+
+    // --- PERUBAHAN UTAMA DI SINI ---
+    // Mengambil data langsung dari elemen berdasarkan ID-nya. Ini lebih andal.
+    const data = {
+      Nama: document.getElementById("name").value,
+      Ucapan: document.getElementById("message").value,
+      Kehadiran: document.getElementById("kehadiran").value,
+    };
+    // --- AKHIR PERUBAHAN ---
+
+    fetch(GAS_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "text/plain;charset=utf-8" }, // Disesuaikan untuk GAS
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.result === "success") {
+          alert("Ucapan berhasil terkirim! Terima kasih.");
+          commentForm.reset();
+          loadComments(); // Muat ulang komentar setelah berhasil mengirim
+        } else {
+          throw new Error(response.message || "Unknown error");
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Terjadi kesalahan, ucapan gagal terkirim.");
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.innerText = "Kirim Ucapan";
+      });
+  });
+
+  // Fungsi untuk memuat komentar dari Google Sheet
+  function loadComments() {
+    fetch(GAS_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        commentsList.innerHTML = ""; // Kosongkan daftar sebelum diisi
+        let hadir = 0;
+        let tidakHadir = 0;
+
+        data.forEach((comment) => {
+          if (comment.Kehadiran === "Hadir") hadir++;
+          if (comment.Kehadiran === "Tidak Hadir") tidakHadir++;
+
+          const commentDiv = document.createElement("div");
+          commentDiv.className = "comment";
+          commentDiv.innerHTML = `
+            <p class="comment-name">${comment.Nama} <span class="comment-status">${comment.Kehadiran}</span></p>
+            <p class="comment-message">${comment.Ucapan}</p>
+          `;
+          commentsList.prepend(commentDiv); // Tampilkan komentar baru di paling atas
+        });
+
+        hadirCountEl.textContent = hadir;
+        tidakHadirCountEl.textContent = tidakHadir;
+      })
+      .catch((err) => {
+        console.error("Gagal memuat komentar:", err);
+        commentsList.innerHTML =
+          "<p>Gagal memuat ucapan. Coba segarkan halaman.</p>";
+      });
+  }
+
+  // Muat komentar saat halaman pertama kali dibuka
+  loadComments();
+
+  // Inisialisasi Feather Icons
+  feather.replace();
+});

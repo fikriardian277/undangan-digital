@@ -2,6 +2,8 @@
   --Background: #f8f5f0;
   --text: #5a3e2b;
   --accent: #ff5722;
+  --primary-brown: #8b6c4a;
+  --dark-brown: #6d5844;
 }
 
 * {
@@ -21,22 +23,25 @@ body {
 .lock-scroll {
   overflow: hidden;
 }
-.hero-text h1 {
-  font-family: "Playfair Display", serif;
+
+.hidden {
+  display: none;
 }
 
+/* Hero & Animasi Awal */
+/* Hero & Animasi Awal */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   min-height: 100svh;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: relative; /* UBAH JADI RELATIVE */
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: 40px 20px;
   text-align: center;
-  transition: all 1s ease;
+  color: var(--text);
 }
 
 .hero::before {
@@ -46,44 +51,47 @@ body {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 50%,
-    rgba(214, 207, 207, 1)
+    rgba(0, 0, 0, 0.5)
   );
   z-index: 1;
 }
 
+/* --- PERUBAHAN PENTING DI SINI --- */
 #hero1 {
   background-image: url("img/foto-3.jpeg");
-  z-index: 2;
+  position: fixed; /* HANYA COVER YANG FIXED */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#hero1.hide {
+  opacity: 0;
+  visibility: hidden; /* Sembunyikan sepenuhnya */
+  pointer-events: none;
 }
 
 #hero2 {
   background-image: url("img/foto-3.jpeg");
-  opacity: 0;
-
-  pointer-events: none;
-  z-index: 1;
-}
-
-#hero2.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-#hero1.hide {
-  display: none;
+  /* HAPUS SEMUA POSITION, Z-INDEX, DLL. BIARKAN SEPERTI SECTION BIASA */
 }
 
 .hero-text {
   position: relative;
   z-index: 2;
-  color: var(--text);
+  color: white;
   max-width: 600px;
 }
+
 .hero-text h1 {
+  font-family: "Playfair Display", serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
+
 .hero-text p,
 .hero-text h2 {
   font-size: 1rem;
@@ -93,62 +101,54 @@ body {
   margin-top: 20px;
   padding: 12px 24px;
   background: white;
-  color: #5a3e2b;
+  color: var(--text);
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   border: none;
 }
-.animate-on-scroll {
+/* --- AKHIR PERUBAHAN PENTING --- */
+
+/* Animasi Umum */
+.animate-on-scroll,
+.animate-top,
+.animate-bottom,
+.section-kutipan,
+.and-symbol {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.animate-on-scroll.show {
+.animate-on-scroll.show,
+.section-kutipan.show,
+.and-symbol.show {
   opacity: 1;
   transform: translateY(0);
 }
-.hero-text p.small {
-  transition-delay: 0.1s;
+
+.animate-on-scroll {
+  transform: translateY(30px);
 }
-.hero-text h1 {
-  transition-delay: 0.2s;
+.animate-top {
+  transform: translateY(-30px);
 }
-.hero-text p:nth-of-type(2) {
-  transition-delay: 0.3s;
-}
-.hero-text h2 {
-  transition-delay: 0.4s;
-}
-.hero-text button {
-  transition-delay: 0.5s;
+.animate-bottom {
+  transform: translateY(30px);
 }
 
-/* Kutipan */
+.animate-top.show,
+.animate-bottom.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Kutipan */
 .section-kutipan {
   background-color: #9b7c66;
   padding: 40px 20px;
   text-align: center;
   color: white;
   font-family: Georgia, serif;
-}
-
-/* Efek awal sebelum muncul */
-.section-kutipan .quote-icon,
-.section-kutipan blockquote,
-.section-kutipan cite {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Saat muncul */
-.section-kutipan.show .quote-icon,
-.section-kutipan.show blockquote,
-.section-kutipan.show cite {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .section-kutipan blockquote {
@@ -161,7 +161,6 @@ body {
 
 .section-kutipan .quote-icon {
   font-size: 40px;
-  color: white;
   margin-bottom: 20px;
   display: block;
 }
@@ -172,14 +171,22 @@ body {
   font-style: normal;
   font-weight: bold;
 }
-/* Section Mempelai */
+
+/* Section Mempelai & Simbol '&' */
 .section-mempelai {
   text-align: center;
   padding: 10px 20px;
-  background-color: #f9f6f1;
-  font-family: "Poppins", sans-serif;
-  color: #5a3e2b;
-  margin-bottom: 0rem;
+  background-color: var(--Background);
+  color: var(--text);
+}
+
+.and-symbol {
+  font-size: 2.5rem;
+  color: var(--primary-brown);
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  padding: 30px 0;
+  background-color: var(--Background);
 }
 
 .invite-text {
@@ -201,25 +208,24 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 20px;
 }
 
 .nama-mempelai {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #8b6c4a;
+  color: var(--primary-brown);
   margin-bottom: 10px;
 }
 
 .info-keluarga {
   font-size: 1rem;
-  color: #6d5844;
+  color: var(--dark-brown);
   margin-bottom: 20px;
 }
 
 .ig-icon {
   font-size: 1.2rem;
-  background-color: #8b6c4a;
+  background-color: var(--primary-brown);
   color: white;
   width: 40px;
   height: 40px;
@@ -229,47 +235,18 @@ body {
   text-decoration: none;
   display: inline-block;
   transition: transform 0.3s ease;
-  margin-bottom: 0rem;
 }
 
 .ig-icon:hover {
   transform: scale(1.1);
 }
 
-/* Animasi masuk dari bawah */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* section & */
-.and-symbol {
-  font-size: 2.5rem;
-  color: #8b6c4a;
-  font-family: "Playfair Display", serif;
-  text-align: center;
-  margin: 30px 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.and-symbol.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* save date */
+/* Section Save Date */
 .section-save-date {
-  background-color: #f9f6f1;
+  background-color: var(--Background);
   text-align: center;
   padding: 40px 20px;
-  font-family: "Poppins", sans-serif;
-  color: #5a3e2b;
+  color: var(--text);
 }
 
 .save-date-img img {
@@ -285,7 +262,6 @@ body {
 .save-date-title {
   margin-top: 10px;
   font-size: 1.5rem;
-  color: #5a3e2b;
 }
 
 .countdown {
@@ -296,7 +272,7 @@ body {
 }
 
 .countdown div {
-  background-color: #8b6c4a;
+  background-color: var(--primary-brown);
   color: white;
   padding: 10px 15px;
   border-radius: 8px;
@@ -306,7 +282,7 @@ body {
 
 .detail-resepsi h3 {
   font-size: 1.4rem;
-  color: #8b6c4a;
+  color: var(--primary-brown);
   margin-bottom: 5px;
 }
 
@@ -316,7 +292,7 @@ body {
 
 .detail-resepsi .alamat {
   font-size: 0.9rem;
-  color: #6d5844;
+  color: var(--dark-brown);
   line-height: 1.5;
 }
 
@@ -326,53 +302,33 @@ body {
   gap: 5px;
   margin-top: 10px;
   padding: 8px 15px;
-  border: #8b6c4a;
-  border-radius: 70px;
+  border: 1px solid var(--primary-brown);
+  border-radius: 20px;
   color: #fff;
   text-decoration: none;
   font-size: 0.9rem;
-  background-color: #8b6c4a;
-  transition: color 0.3s ease, color 0.3s ease;
+  background-color: var(--primary-brown);
+  transition: all 0.3s ease;
 }
 
 .btn-lokasi:hover {
   background-color: #fff;
-  color: #8b6c4a;
+  color: var(--primary-brown);
 }
 
-/* Animasi masuk */
-.animate-top {
-  opacity: 0;
-  transform: translateY(-30px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-bottom {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-top.visible,
-.animate-bottom.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* love story */
+/* Section Love Story */
 .section-love-story {
-  background-color: #f8f5f0;
+  background-color: var(--Background);
   padding: 60px 20px;
-  color: #5a3e2b;
+  color: var(--text);
   text-align: center;
-  font-family: "Poppins", sans-serif;
 }
 
 .title-love-story {
   font-size: 2rem;
   margin-bottom: 40px;
-  color: #8b6c4a;
+  color: var(--primary-brown);
   font-family: "Playfair Display", serif;
-  position: relative;
 }
 
 .story-timeline {
@@ -388,12 +344,11 @@ body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  text-align: center;
 }
 
 .story-item h3 {
   font-size: 1.2rem;
-  color: #8b6c4a;
+  color: var(--primary-brown);
   margin-bottom: 10px;
 }
 
@@ -402,23 +357,12 @@ body {
   line-height: 1.6;
 }
 
-/* Animasi Scroll */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-on-scroll.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* galery */
+/* Section Gallery */
 .section-gallery {
   padding: 40px 20px;
-  background-color: #f8f5f0;
+  background-color: var(--Background);
   text-align: center;
-  color: #5a3e2b;
+  color: var(--text);
 }
 
 .gallery-intro {
@@ -435,123 +379,102 @@ body {
   margin-bottom: 20px;
 }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.03);
-}
-
+.gallery-item img,
 .gallery-landscape img {
   width: 100%;
-  max-width: 600px;
   height: auto;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
+.gallery-item img:hover,
 .gallery-landscape img:hover {
   transform: scale(1.03);
-}
-/* wedding gift */
-.btn-gift {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  border: 1px solid #8b6c4a;
-  border-radius: 20px;
-  color: #8b6c4a;
-  text-decoration: none;
-  font-size: 0.9rem;
-  background-color: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.btn-gift:hover {
-  background-color: #8b6c4a;
-  color: #fff;
+/* Section Wedding Gift */
+.gift-wrapper {
+  background-color: var(--primary-brown);
 }
 
 .gift-button-container {
-  margin-top: 1rem;
   text-align: center;
   color: #ffffff;
-  background-color: #8b6c4a;
-  padding: 80px 10px; /* padding atas dan bawah */
+  padding: 80px 20px;
 }
 
 .gift-button-container h2 {
   font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   margin-bottom: 10px;
-  color: white;
 }
 
-/* gift Card */
+.btn-gift {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-gift:hover {
+  background-color: #fff;
+  color: var(--primary-brown);
+}
+
 .gift-section {
   padding: 40px 20px;
-  background-color: #8b6c4a;
-  transform: scaleY(0);
-  transform-origin: top;
+  background-color: var(--primary-brown);
+  display: none; /* Default state */
   opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
-  overflow: hidden;
-  height: auto;
-  display: none; /* default hidden */
+  transition: opacity 0.8s ease;
 }
 
 .gift-section.show {
   display: block;
-  transform: scaleY(1);
   opacity: 1;
 }
 
-.gift-section.hide {
-  transform: scaleY(0);
-  opacity: 0;
-}
-
-/* jangan diubah kecuali ini */
 .gift-card {
   position: relative;
   background-image: url(img/bg.jpeg);
   background-size: cover;
   background-position: center;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   height: 200px;
   margin: 20px auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transform: scale(0.5);
   opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .gift-card.show {
-  transform: scale(1);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .gift-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 1;
-  border-radius: 16px;
 }
 
 .gift-info {
   position: relative;
   z-index: 2;
-  color: black;
+  color: white;
   padding: 20px;
   text-align: left;
 }
@@ -564,14 +487,14 @@ body {
 }
 
 .no-rek {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: bold;
   margin: 80px 0 4px;
   letter-spacing: 1px;
 }
 
 .nama-rek {
-  font-size: 12px;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
@@ -580,12 +503,12 @@ body {
   align-items: center;
   gap: 5px;
   position: absolute;
-  bottom: 2px;
-  right: 20px;
+  bottom: 16px;
+  right: 16px;
   background-color: #ffffff88;
   color: #000;
   border: none;
-  padding: 5px 8px;
+  padding: 5px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
@@ -596,89 +519,111 @@ body {
 .btn-copy:hover {
   background-color: #ffffffcc;
 }
-/* comment */
+
+/* Section Komentar */
 .comment-section {
   padding: 50px 20px;
-
-  background: #8b6c4a;
-
+  background: var(--primary-brown);
   font-family: "Poppins", sans-serif;
+  color: white;
 }
 
 .comment-section h2 {
   margin-bottom: 3px;
   text-align: center;
-  color: #fff;
   font-family: "Playfair Display", serif;
   font-size: 1.8rem;
 }
 .comment-section p {
   margin-bottom: 1rem;
   text-align: center;
-  color: #fff;
-  font-size: 0.9;
+  font-size: 0.9rem;
 }
 
 .comment-stats {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   justify-content: center;
 }
 
 .status {
-  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.2);
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   min-width: 80px;
   text-align: center;
   font-weight: bold;
 }
 
-form#commentForm {
+#commentForm {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
-form#commentForm input,
-form#commentForm textarea,
-form#commentForm select {
-  padding: 10px;
+#commentForm input,
+#commentForm textarea,
+#commentForm select {
+  padding: 12px;
   font-size: 14px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
 }
 
-form#commentForm button {
-  padding: 10px;
+#commentForm button {
+  padding: 12px;
   font-weight: bold;
-  background-color: #007bff;
-  color: white;
+  background-color: white;
+  color: var(--primary-brown);
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-form#commentForm button:hover {
-  background-color: #0056b3;
+#commentForm button:hover {
+  background-color: #f0e9e0;
+}
+
+#commentsList {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
 #commentsList .comment {
-  padding: 5px;
-  margin-bottom: 1px;
-  color: #fff;
-  font-family: poppins, sans-serif;
-  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
-#commentsList {
-  max-height: 300px; /* bebas, bisa disesuaikan */
 
-  overflow-y: auto;
-  padding-right: 5px;
+#commentsList .comment-name {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
+
+#commentsList .comment-status {
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#commentsList .comment-message {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 #commentsList::-webkit-scrollbar {
   width: 6px;
 }
@@ -691,220 +636,132 @@ form#commentForm button:hover {
 #commentsList::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
 }
-/* Penutup */
+
+/* Penutup & Footer */
 .penutup {
-  background-color: #f9f6f1;
+  background-color: var(--Background);
   text-align: center;
-  padding: 20px 20px;
-  font-family: "Poppins", sans-serif;
-  color: #5a3e2b;
+  padding: 60px 20px;
+  color: var(--text);
 }
 
 .penutup img {
   width: 100%;
   max-width: 300px;
-  border-top-left-radius: 50% 40%;
-  border-top-right-radius: 50% 40%;
+  border-radius: 50%;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-.penutup h2 {
-  margin-top: 10px;
+
+.penutup .small {
   font-size: 2rem;
-  color: #5a3e2b;
 }
 .penutup p {
   font-size: 1rem;
   margin: 10px 0;
+  max-width: 600px;
+  margin-inline: auto;
 }
 .penutup h1 {
   font-size: 1.2rem;
-  color: #8b6c4a;
-  margin-bottom: 20px;
+  color: var(--primary-brown);
+  margin: 20px 0 10px;
 }
 .penutup h3 {
   font-size: 2rem;
-  color: #6d5844;
+  font-family: "Great Vibes", cursive;
+  color: var(--dark-brown);
 }
-/* footer */
+
 footer {
   background-color: #fff;
   text-align: center;
-  padding: 0.5rem 0 1.5rem;
+  padding: 1rem 0 1.5rem;
 }
 footer .socials {
   padding: 1rem 0;
 }
 footer .socials a {
-  color: #6d5844;
+  color: var(--dark-brown);
   margin: 1rem;
 }
 footer .socials a:hover {
-  color: #5a3e2b;
+  color: var(--text);
 }
-
 footer .credit {
   font-size: 0.8rem;
 }
 footer .credit a {
-  color: #6d5844;
+  color: var(--dark-brown);
   font-weight: 700;
 }
 
-/* music */
+/* Music Toggle */
 .music-toggle {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background: none;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
   border: none;
-  padding: 0.2rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   z-index: 999;
   cursor: pointer;
+  display: none; /* Muncul via JS */
+  place-items: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 .music-toggle:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 4px #6d5844aa);
+  transform: scale(1.1);
 }
 
 .music-toggle svg.feather {
-  stroke: #b38867; /* Ubah warna garis icon */
-  width: 24px;
-  height: 24px;
+  stroke: var(--dark-brown);
+  width: 20px;
+  height: 20px;
 }
 
-/* Hover juga bisa ditambahkan */
-.music-toggle:hover svg.feather {
-  stroke: #fff;
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .photo-wrapper {
+    width: 180px;
+  }
+  .nama-mempelai {
+    font-size: 1.6rem;
+  }
 }
 
-/* ================= MOBILE (max-width: 480px) ================= */
 @media (max-width: 480px) {
-  .hero {
-    height: 100svh;
-    display: flex;
-    justify-content: center; /* kiri */
-    align-items: flex-end; /* bawah */
-    padding: 0 20px 50px 20px; /* jarak bawah dan kiri */
-    overflow-y: auto;
-  }
-
-  .hero-text {
-    transform: none; /* gak perlu translateY */
-  }
-
   .hero-text h1 {
     font-size: 1.2rem;
   }
-
   .hero-text p,
   .hero-text h2 {
     font-size: 0.9rem;
   }
-
   .btn-undangan {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
-
   .photo-wrapper {
     width: 150px;
   }
-
   .nama-mempelai {
     font-size: 1.4rem;
   }
-
-  .info-keluarga {
-    font-size: 0.9rem;
-  }
-
-  .save-date-title {
-    font-size: 1.2rem;
-  }
-
   .countdown div {
     min-width: 45px;
     padding: 8px 10px;
     font-size: 0.75rem;
   }
-
-  .detail-resepsi h3 {
-    font-size: 1.1rem;
-  }
-
-  .detail-resepsi p,
-  .detail-resepsi .alamat {
-    font-size: 0.85rem;
-  }
-
-  .btn-lokasi {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-  }
-  .story-item {
-    padding: 16px;
-  }
-
-  .story-item h3 {
-    font-size: 1rem;
-  }
-
-  .story-item p {
-    font-size: 0.9rem;
-  }
-}
-
-/* ================= TABLET (481px - 768px) ================= */
-@media (min-width: 481px) and (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 1.4rem;
-  }
-
-  .hero-text p,
-  .hero-text h2 {
-    font-size: 1rem;
-  }
-
-  .btn-undangan {
-    padding: 12px 24px;
-    font-size: 1rem;
-  }
-
-  .photo-wrapper {
-    width: 180px;
-  }
-
-  .nama-mempelai {
-    font-size: 1.6rem;
-  }
-
-  .info-keluarga {
-    font-size: 0.95rem;
-  }
-
-  .save-date-title {
-    font-size: 1.4rem;
-  }
-
-  .countdown div {
-    min-width: 50px;
-    padding: 10px 12px;
-    font-size: 0.85rem;
-  }
-
-  .detail-resepsi h3 {
-    font-size: 1.2rem;
-  }
-
-  .detail-resepsi p,
-  .detail-resepsi .alamat {
-    font-size: 0.9rem;
-  }
-
-  .btn-lokasi {
-    font-size: 0.9rem;
-    padding: 7px 14px;
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
