@@ -1,11 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
   // =========================================================================
-  // KONFIGURASI UTAMA - SESUAIKAN DI SINI
+  // KONFIGURASI UTAMA - SEMUA DATA KLIEN DIUBAH DI SINI
   // =========================================================================
-  const NAMA_PRIA = "Diki Gunawan";
-  const NAMA_WANITA = "Meliana";
-  const TANGGAL_ACARA_ISO = "2025-10-12T10:00:00"; // Format: TAHUN-BULAN-HARI T JAM:MENIT:DETIK
-  const LOKASI_ACARA = "Gedung Olahraga (GOR), Jl. Lewo Babakan, Tasikmalaya";
+  const NAMA_PRIA = "Fikri Ardian";
+  const NAMA_PANGGILAN_PRIA = "Fikri";
+  const ORTU_PRIA = "Putra Kedua dari Bapak Dedi & Ibu Suartika";
+  const IG_PRIA = "https://instagram.com/DIKI";
+
+  const NAMA_WANITA = "Siti Badriah";
+  const NAMA_PANGGILAN_WANITA = "siti";
+  const ORTU_WANITA = "Putri Kedua dari Bapak Herman & Ibu Nani";
+  const IG_WANITA = "https://instagram.com/MELIANA";
+
+  // Format Tanggal: YYYY-MM-DDTHH:MM:SS (contoh: 2025-12-31T10:00:00)
+  const TANGGAL_ACARA_ISO = "2025-08-01T08:00:00";
+  const TANGGAL_RESEPSI_TEKS = "JUM'AT, 01 AGUSTUS 2025";
+  const WAKTU_RESEPSI_TEKS = "PUKUL : 08.00 WIB - Selesai";
+
+  const LOKASI_ACARA_TEKS = `
+    Tempat : Gedung Olahraga (GOR)<br />
+    Jl. Lewo Babakan 66-60, Linggajaya, Kec. Mangkubumi<br />
+    Kota Tasikmalaya
+  `;
+  const LINK_LOKASI_GMAPS = "https://maps.app.goo.gl/LINK_DARI_Maps";
+
+  const NO_REK_1 = "1234567890";
+  const NAMA_REK_1 = "a.n. Fikri Ardian";
+  const NO_REK_2 = "0987654321";
+  const NAMA_REK_2 = "a.n. Siti Badriah";
+
+  // =========================================================================
+  // KODE JEMBATAN (JANGAN DIUBAH)
+  // Fungsi untuk mengisi semua data dari konfigurasi ke HTML
+  // =========================================================================
+  function populateWeddingData() {
+    // BAGIAN BARU: Mengisi data untuk Hero 1 & 2
+    const hero1Names = document.getElementById("hero1-names");
+    const hero2Names = document.getElementById("hero2-names");
+    const hero2Date = document.getElementById("hero2-date");
+
+    const combinedNames = `${NAMA_PRIA} & ${NAMA_WANITA}`;
+
+    if (hero1Names) hero1Names.innerHTML = combinedNames;
+    if (hero2Names) hero2Names.innerHTML = combinedNames;
+    if (hero2Date) hero2Date.innerText = TANGGAL_RESEPSI_TEKS;
+
+    // Mempelai (kode yang sudah ada)
+    const namaPria = document.getElementById("nama-pria");
+    const ortuPria = document.getElementById("ortu-pria");
+    const igPria = document.getElementById("ig-pria");
+    if (namaPria) namaPria.innerText = NAMA_PRIA;
+    if (ortuPria) ortuPria.innerText = ORTU_PRIA;
+    if (igPria) igPria.href = IG_PRIA;
+
+    const namaWanita = document.getElementById("nama-wanita");
+    const ortuWanita = document.getElementById("ortu-wanita");
+    const igWanita = document.getElementById("ig-wanita");
+    if (namaWanita) namaWanita.innerText = NAMA_WANITA;
+    if (ortuWanita) ortuWanita.innerText = ORTU_WANITA;
+    if (igWanita) igWanita.href = IG_WANITA;
+
+    // Resepsi (kode yang sudah ada)
+    const tanggalResepsi = document.getElementById("tanggal-resepsi");
+    const waktuResepsi = document.getElementById("waktu-resepsi");
+    const lokasiResepsi = document.getElementById("lokasi-resepsi");
+    const linkLokasi = document.getElementById("link-lokasi");
+    if (tanggalResepsi) tanggalResepsi.innerText = TANGGAL_RESEPSI_TEKS;
+    if (waktuResepsi) waktuResepsi.innerHTML = WAKTU_RESEPSI_TEKS;
+    if (lokasiResepsi) lokasiResepsi.innerHTML = LOKASI_ACARA_TEKS;
+    if (linkLokasi) linkLokasi.href = LINK_LOKASI_GMAPS;
+
+    // Hadiah (kode yang sudah ada)
+    const rek1 = document.getElementById("rek1");
+    const namaRek1 = document.getElementById("nama-rek1");
+    if (rek1) rek1.innerText = NO_REK_1;
+    if (namaRek1) namaRek1.innerText = NAMA_REK_1;
+
+    const rek2 = document.getElementById("rek2");
+    const namaRek2 = document.getElementById("nama-rek2");
+    if (rek2) rek2.innerText = NO_REK_2;
+    if (namaRek2) namaRek2.innerText = NAMA_REK_2;
+
+    // Penutup (kode yang sudah ada)
+    const namaPenutup = document.getElementById("nama-penutup");
+    if (namaPenutup)
+      namaPenutup.innerText = `${NAMA_PANGGILAN_PRIA} & ${NAMA_PANGGILAN_WANITA}`;
+  }
+
+  // Panggil fungsi di atas agar semua data langsung terisi saat halaman dimuat
+  populateWeddingData();
+
   // URL Google Apps Script untuk mengirim dan mengambil komentar
   const GAS_URL =
     "https://script.google.com/macros/s/AKfycbzMHvkCoo5mDUoEpO4mj8TOYY6HV0GzoBysEHJFY840aDRyIOnm3nZTX9AWBK06kVbz/exec";

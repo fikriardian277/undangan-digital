@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Undangan Pernikahan Diki & Meliana</title>
 
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +35,9 @@
       <div class="hero-overlay">
         <div class="hero-text">
           <p class="small animate-on-scroll">THE WEDDING OF</p>
-          <h1 class="animate-on-scroll">Diki Gunawan & Meliana</h1>
+          <h1 id="hero1-names" class="animate-on-scroll">
+            Diki Gunawan & Meliana
+          </h1>
           <p id="ucapan" class="animate-on-scroll">Kepada Yth.</p>
           <h2 id="namaTamu" class="animate-on-scroll">Bapak/Ibu/Saudara/i</h2>
           <button id="btnOpen" class="btn-undangan animate-on-scroll">
@@ -48,9 +51,11 @@
         <div class="hero-overlay">
           <div class="hero-text">
             <p class="small animate-on-scroll">THE WEDDING OF</p>
-            <h1 class="animate-on-scroll">Diki Gunawan & Meliana</h1>
+            <h1 id="hero2-names" class="animate-on-scroll">
+              Diki Gunawan & Meliana
+            </h1>
             <p class="animate-on-scroll">Tanggal</p>
-            <h2>Sabtu, 12 Oktober 2025</h2>
+            <h2 id="hero2-date">Sabtu, 12 Oktober 2025</h2>
             <button id="btnSaveDate" class="btn-undangan">Save the Date</button>
           </div>
         </div>
@@ -81,10 +86,13 @@
         <div class="photo-wrapper">
           <img src="img/foto-12.jpg" alt="Foto Diki Gunawan" />
         </div>
-        <h2 class="nama-mempelai">Diki Gunawan</h2>
-        <p class="info-keluarga">Putra Kedua dari Bapak Dedi & Ibu Suartika</p>
+        <h2 class="nama-mempelai" id="nama-pria">Diki Gunawan</h2>
+        <p class="info-keluarga" id="ortu-pria">
+          Putra Kedua dari Bapak Dedi & Ibu Suartika
+        </p>
         <a
           href="https://www.instagram.com/NAMA_IG_DIKI"
+          id="ig-pria"
           target="_blank"
           class="ig-icon"
         >
@@ -98,12 +106,13 @@
         <div class="photo-wrapper">
           <img src="img/foto-13.jpg" alt="Foto Meliana" />
         </div>
-        <h2 class="nama-mempelai">Meliana</h2>
-        <p class="info-keluarga">
+        <h2 class="nama-mempelai" id="nama-wanita">Meliana</h2>
+        <p class="info-keluarga" id="ortu-wanita">
           Putri Kedua dari Bapak Saepuloh & Ibu Isbiati
         </p>
         <a
           href="https://www.instagram.com/NAMA_IG_MELIANA"
+          id="ig-wanita"
           target="_blank"
           class="ig-icon"
         >
@@ -126,15 +135,16 @@
 
         <div class="detail-resepsi animate-bottom">
           <h3>Resepsi</h3>
-          <p>SABTU, 12 OKTOBER 2025</p>
-          <p><strong>PUKUL : 10.00 WIB - Selesai</strong></p>
-          <p class="alamat">
+          <p id="tanggal-resepsi">SABTU, 12 OKTOBER 2025</p>
+          <p id="waktu-resepsi"><strong>PUKUL : 10.00 WIB - Selesai</strong></p>
+          <p class="alamat" id="lokasi-resepsi">
             Tempat : Gedung Olahraga (GOR)<br />
             Jl. Lewo Babakan 66-60, Linggajaya, Kec. Mangkubumi<br />
             Kota Tasikmalaya
           </p>
           <a
             href="https://maps.app.goo.gl/LOKASI_ANDA"
+            id="link-lokasi"
             class="btn-lokasi"
             target="_blank"
           >
@@ -256,7 +266,7 @@
             <div class="gift-info">
               <img src="img/bca.png" alt="BCA" class="bank-logo" />
               <p class="no-rek" id="rek1">1234567890</p>
-              <p class="nama-rek">a.n. Diki Gunawan</p>
+              <p class="nama-rek" id="nama-rek1">a.n. Diki Gunawan</p>
               <button class="btn-copy" data-rek-id="rek1">
                 <i data-feather="copy" width="14" height="14"></i>Salin
               </button>
@@ -267,7 +277,7 @@
             <div class="gift-info">
               <img src="img/bca.png" alt="BCA" class="bank-logo" />
               <p class="no-rek" id="rek2">0987654321</p>
-              <p class="nama-rek">a.n. Meliana</p>
+              <p class="nama-rek" id="nama-rek2">a.n. Meliana</p>
               <button class="btn-copy" data-rek-id="rek2">
                 <i data-feather="copy" width="14" height="14"></i>Salin
               </button>
@@ -317,7 +327,7 @@
           kami.
         </p>
         <h1 class="animate-on-scroll">Kami Yang Berbahagia</h1>
-        <h3 class="animate-on-scroll">Diki & Meli</h3>
+        <h3 class="animate-on-scroll" id="nama-penutup">Diki & Meli</h3>
       </section>
 
       <footer>
