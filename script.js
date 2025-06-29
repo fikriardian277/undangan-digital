@@ -56,8 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fungsi untuk mengisi semua data dari konfigurasi ke HTML
   // =========================================================================
   function populateWeddingData() {
-    // Bagian Music
-    document.querySelector("#bgMusic source").src = LINK_MUSIK;
+    // bagian music
+    const bgMusic = document.getElementById("bgMusic");
+    if (bgMusic) {
+      const musicSource = bgMusic.querySelector("source");
+      if (musicSource) musicSource.src = LINK_MUSIK;
+      bgMusic.load(); // PERINTAH PENTING UNTUK MEMUAT ULANG AUDIO
+    }
     // BAGIAN BARU: Mengisi data untuk Hero 1 & 2
     const hero1Names = document.getElementById("hero1-names");
     const hero2Names = document.getElementById("hero2-names");

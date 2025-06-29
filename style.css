@@ -1,5 +1,5 @@
 :root {
-  --Background: #f8f5f0;
+  --Background: #fff;
   --text: #5a3e2b;
   --accent: #ff5722;
   --primary-brown: #8b6c4a;
@@ -71,10 +71,6 @@ body {
   opacity: 0;
   visibility: hidden; /* Sembunyikan sepenuhnya */
   pointer-events: none;
-}
-
-#hero2 {
-  /* HAPUS SEMUA POSITION, Z-INDEX, DLL. BIARKAN SEPERTI SECTION BIASA */
 }
 
 .hero-text {
