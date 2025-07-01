@@ -11,6 +11,16 @@ const EVENT_DETAILS = {
   mapUrl: "https://maps.app.goo.gl/LOKASI_ANDA",
   description: "Kami mengundang Anda untuk hadir di hari bahagia kami.",
 };
+/* =================================================================
+   KONFIGURASI BACKEND - Ganti untuk setiap klien
+================================================================= */
+const BACKEND_CONFIG = {
+  // Ganti dengan URL Apps Script-mu
+  appsScriptUrl:
+    "https://script.google.com/macros/s/AKfycbyurMNoASVFb2Xykk9TgxaGfix_V5YqGs4SejCIAbFmCBx1v66kpGC24mzUHrXBS5qu/exec",
+  // Ganti dengan nama tab di Google Sheet untuk klien ini
+  sheetName: "minimalis",
+};
 
 /* =================================================================
    LOGIKA UTAMA WEBSITE
@@ -110,4 +120,114 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Jalankan countdown setiap detik
   const interval = setInterval(countdown, 1000);
+  // --- Fungsi untuk Lightbox Galeri ---
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault(); // Mencegah link terbuka secara normal
+
+      const imageUrl = this.href;
+
+      // Buat elemen untuk lightbox
+      const lightbox = document.createElement("div");
+      lightbox.className = "lightbox-overlay";
+
+      const image = document.createElement("img");
+      image.src = imageUrl;
+
+      lightbox.appendChild(image);
+      document.body.appendChild(lightbox);
+
+      // Hapus lightbox saat diklik di mana saja
+      lightbox.addEventListener("click", () => {
+        document.body.removeChild(lightbox);
+      });
+    });
+  });
+  // --- Fungsi untuk Tombol Salin Rekening ---
+  document.querySelectorAll(".copy-button").forEach((button) => {
+    button.addEventListener("click", function () {
+      const targetId = this.dataset.target;
+      const accountNumber = document.querySelector(targetId).innerText;
+
+      navigator.clipboard
+        .writeText(accountNumber)
+        .then(() => {
+          // Beri feedback ke pengguna
+          const buttonText = this.querySelector("span");
+          buttonText.innerText = "Tersalin!";
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            buttonText.innerText = "Salin";
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error("Gagal menyalin: ", err);
+          alert("Gagal menyalin nomor rekening.");
+        });
+    });
+  });
+  // --- Fungsi untuk Buku Tamu (Guestbook) ---
+  const commentForm = document.getElementById("comment-form");
+  const commentsList = document.getElementById("comments-list");
+
+  // Fungsi untuk memuat komentar dari Google Sheet
+  function loadComments() {
+    if (!commentsList) return; // Hentikan jika elemen tidak ada
+    // Tambahkan nama sheet sebagai parameter di URL
+    fetch(`${BACKEND_CONFIG.appsScriptUrl}?sheet=${BACKEND_CONFIG.sheetName}`)
+      .then((response) => response.json())
+      .then((data) => {
+        commentsList.innerHTML = ""; // Kosongkan daftar sebelum diisi ulang
+        if (data && data.length > 0) {
+          data.forEach((comment) => {
+            const commentDiv = document.createElement("div");
+            commentDiv.className = "comment-item";
+            commentDiv.innerHTML = `
+                            <p class="name">${comment.Nama} <span class="status">${comment.Kehadiran}</span></p>
+                            <p class="message">${comment.Ucapan}</p>
+                        `;
+            commentsList.appendChild(commentDiv);
+          });
+        }
+      })
+      .catch((error) => console.error("Error loading comments:", error));
+  }
+
+  // Fungsi untuk mengirim komentar
+  if (commentForm) {
+    commentForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.innerText = "Mengirim...";
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      data.sheetName = BACKEND_CONFIG.sheetName; // Tambahkan nama sheet ke data yang dikirim
+
+      fetch(BACKEND_CONFIG.appsScriptUrl, {
+        method: "POST",
+        mode: "no-cors", // Diperlukan untuk beberapa konfigurasi Apps Script
+        body: JSON.stringify(data),
+      })
+        .then(() => {
+          alert("Ucapan berhasil terkirim! Terima kasih.");
+          commentForm.reset();
+          // Tunggu sebentar agar data di sheet terupdate sebelum dimuat ulang
+          setTimeout(loadComments, 2000);
+        })
+        .catch((error) => {
+          console.error("Error submitting comment:", error);
+          alert("Gagal mengirim ucapan. Silakan coba lagi.");
+        })
+        .finally(() => {
+          submitButton.disabled = false;
+          submitButton.innerText = "Kirim Ucapan";
+        });
+    });
+  }
+
+  // Muat komentar saat halaman pertama kali dibuka
+  loadComments();
 });
