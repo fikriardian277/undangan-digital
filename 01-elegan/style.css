@@ -1,5 +1,5 @@
 :root {
-  --Background: #fdf6e3; /* Ivory/Cream yang hangat */
+  --Background: #fff; /* Ivory/Cream yang hangat */
   --text: #333333; /* Abu-abu sangat gelap, lebih lembut dari hitam */
   --accent: #c0a062; /* Aksen Emas (untuk highlight jika perlu) */
   --primary-brown: #af8f53; /* Emas yang lebih matang untuk tombol & judul */
@@ -365,7 +365,7 @@ body {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-bottom: 20px;
 }
