@@ -1,5 +1,5 @@
 /* =================================================================
-   1. Pengaturan Dasar & Variabel
+   1. PENGATURAN DASAR & VARIABEL
 ================================================================= */
 :root {
   --primary-accent: #2c3e50;
@@ -18,11 +18,45 @@ body {
   font-family: var(--font-body);
   background-color: #2c3e50;
   color: #333;
-  overflow: hidden;
+  overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
+  overflow-y: hidden; /* Sembunyikan scrollbar di awal */
 }
 
 /* =================================================================
-   2. Gaya untuk Hero Section & Animasi
+   2. GAYA UMUM & CONTAINER
+================================================================= */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: -3.5rem;
+  margin-bottom: 4rem;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2.5rem;
+  color: #f0f0f0;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* =================================================================
+   3. GAYA HERO SECTION (COVER & MAIN)
 ================================================================= */
 .hero {
   min-height: 100vh;
@@ -51,12 +85,7 @@ body {
   z-index: 2;
 }
 
-#hero-cover {
-  background-image: url("assets/images/cover.jpg");
-}
-
 #hero-main {
-  background-image: url("assets/images/galeri-1.jpg");
   opacity: 0;
   animation: hero-main-fade-in 1.5s ease-out forwards;
   animation-delay: 0.5s;
@@ -66,7 +95,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("assets/images/galeri-2.jpg");
+
   background-size: cover;
   background-position: center;
   opacity: 0;
@@ -74,6 +103,606 @@ body {
   z-index: 0;
 }
 
+.hero-content p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin: 0.5rem 0 1rem 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content .guest-info {
+  margin-top: 0.5rem;
+}
+
+.hero-content .guest-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.hero-content button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-accent);
+  background-color: var(--text-color-light);
+  border: none;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-content button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#save-the-date {
+  background-color: transparent;
+  border: 2px solid var(--text-color-light);
+  color: var(--text-color-light);
+}
+
+#save-the-date:hover {
+  background-color: var(--text-color-light);
+  color: var(--primary-accent);
+}
+
+/* =================================================================
+   4. GAYA SECTION KONTEN (KUTIPAN, MEMPELAI, DLL)
+================================================================= */
+#kutipan,
+#mempelai,
+#save-the-date-section,
+#love-story,
+#gallery,
+#guestbook,
+#penutup,
+#wedding-gift {
+  padding: 6rem 2rem;
+}
+
+#kutipan {
+  background-size: cover;
+  background-position: center;
+}
+
+.glass-panel blockquote {
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+  border-left: 4px solid var(--text-color-light);
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color-light);
+}
+
+.glass-panel cite {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+  margin-top: 1.5rem;
+  color: var(--text-color-light);
+}
+
+/* --- Section Mempelai --- */
+#mempelai {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+  text-align: center;
+}
+.mempelai-intro {
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+.mempelai-intro h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.mempelai-intro p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.mempelai-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.mempelai-card {
+  max-width: 300px;
+}
+.mempelai-photo {
+  width: 200px;
+  height: 250px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  overflow: hidden;
+  margin: 0 auto 1.5rem auto;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.mempelai-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mempelai-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+}
+.mempelai-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+.separator {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--primary-accent);
+}
+
+/* --- Section Save The Date --- */
+#save-the-date-section {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+  text-align: center;
+}
+#save-the-date-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+#save-the-date-section .sub-heading {
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.countdown-box {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 90px;
+}
+.countdown-box span {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: bold;
+}
+.event-details {
+  margin-top: 2rem;
+}
+.event-details h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.event-details p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.event-details p span {
+  text-align: left;
+}
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 12px 24px;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+.map-button:hover {
+  transform: scale(1.05);
+}
+
+/* --- Section Love Story --- */
+#love-story {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+}
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  top: 15px;
+  bottom: 15px;
+  left: 10px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -38px;
+  top: 5px;
+  background-color: white;
+  border: 4px solid var(--primary-accent);
+  border-radius: 50%;
+  z-index: 1;
+}
+.timeline-content {
+  text-align: left;
+}
+.timeline-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  margin-bottom: 0.5rem;
+}
+
+/* --- Section Galeri --- */
+#gallery {
+  background-color: #2c3e50;
+  color: var(--text-color-light);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.gallery-item {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  cursor: pointer;
+  animation: lightbox-fade-in 0.5s ease;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Section Wedding Gift --- */
+#wedding-gift {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+}
+.gift-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.gift-card {
+  text-align: center;
+  max-width: 320px;
+  flex-grow: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.bank-logo {
+  max-height: 35px;
+  margin-bottom: 1rem;
+}
+.account-number {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+.copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px 24px;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.copy-button:hover {
+  background-color: #56457a;
+}
+
+/* --- Section Buku Tamu --- */
+#guestbook {
+  background-color: #2c3e50;
+  color: var(--text-color-light);
+}
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#comment-form input,
+#comment-form textarea,
+#comment-form select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+#comment-form ::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+#comment-form select option {
+  background: #333;
+  color: white;
+}
+#comment-form button {
+  padding: 12px 24px;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+#comments-list {
+  margin-top: 3rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.comment-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+.comment-item .name {
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.comment-item .status {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: var(--primary-accent);
+  text-transform: uppercase;
+}
+.comment-item .message {
+  color: #e0e0e0;
+  white-space: pre-wrap;
+}
+
+/* --- Section Penutup --- */
+#penutup {
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+  text-align: center;
+}
+.closing-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 5px solid var(--primary-accent);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.closing-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thank-you-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color-light);
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.thank-you-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+.closing-greeting {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.couple-names {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-accent);
+}
+
+/* --- Footer --- */
+footer {
+  padding: 1rem;
+  background-color: var(--primary-accent);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+footer .socials {
+  margin-bottom: 1rem;
+}
+footer .socials a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer .socials a:hover {
+  color: var(--primary-accent);
+}
+footer .credit {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+footer .credit .fa-heart {
+  color: var(--text-color-light);
+  margin: 0 0.25rem;
+}
+
+/* --- Tombol Musik --- */
+#music-toggle-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--primary-accent);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+#music-toggle-btn.hidden {
+  display: none;
+}
+#music-toggle-btn:hover {
+  transform: scale(1.1);
+}
+#music-toggle-btn.playing .fa-compact-disc {
+  animation: spin 3s linear infinite;
+}
+
+/* =================================================================
+   15. ANIMASI & TRANSISI GLOBAL
+================================================================= */
+main.hidden {
+  display: none;
+}
+.hero.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: text-fade-up 1s ease-out forwards;
+}
+.hero-content h1.animate-text {
+  animation-delay: 1s;
+}
+.hero-content .date-info.animate-text {
+  animation-delay: 1.2s;
+}
+.hero-content button.animate-text {
+  animation-delay: 1.4s;
+}
+
+/* =================================================================
+   16. KEYFRAMES
+================================================================= */
 @keyframes fade-slideshow {
   0% {
     opacity: 0;
@@ -101,22 +730,6 @@ body {
   }
 }
 
-.animate-text {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: text-fade-up 1s ease-out forwards;
-}
-
-.hero-content h1.animate-text {
-  animation-delay: 1s;
-}
-.hero-content .date-info.animate-text {
-  animation-delay: 1.2s;
-}
-.hero-content button.animate-text {
-  animation-delay: 1.4s;
-}
-
 @keyframes text-fade-up {
   from {
     opacity: 0;
@@ -128,429 +741,13 @@ body {
   }
 }
 
-.hero-content p {
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
-.hero-content h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  margin: 0.5rem 0 1rem 0;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-}
-.hero-content .guest-info {
-  margin-top: 0.5rem;
-}
-.hero-content .guest-name {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.hero-content button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 14px 28px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--primary-accent);
-  background-color: var(--text-color-light);
-  border: none;
-  cursor: pointer;
-  margin-top: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.hero-content button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-#save-the-date {
-  background-color: transparent;
-  border: 2px solid var(--text-color-light);
-  color: var(--text-color-light);
-}
-#save-the-date:hover {
-  background-color: var(--text-color-light);
-  color: var(--primary-accent);
-}
-
-/* =================================================================
-   3. Gaya untuk Konten & Animasi
-================================================================= */
-main.hidden {
-  display: none;
-}
-.hero.hidden {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease-out, visibility 1s ease-out;
-}
-
-/* KUNCI #1 (DIPERBAIKI): Section dibuat full-width */
-#kutipan,
-#mempelai {
-  padding: 6rem 2rem; /* Hanya atur padding vertikal dan horizontal */
-}
-
-#kutipan {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("assets/images/galeri-1.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-/* KUNCI #2 (BARU): Wadah untuk konten agar tidak terlalu lebar */
-.container {
-  max-width: 800px; /* Lebar maksimal konten di laptop */
-  margin: 0 auto; /* Posisikan di tengah */
-}
-
-.glass-panel {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 2.5rem;
-  color: #f0f0f0;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-}
-
-.glass-panel blockquote {
-  font-size: 1.1rem;
-  font-style: italic;
-  text-align: center;
-  border-left: 4px solid var(--text-color-light);
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-color-light);
-}
-.glass-panel cite {
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  font-style: normal;
-  margin-top: 1.5rem;
-  color: var(--text-color-light);
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.animate-on-scroll.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =================================================================
-  5. Gaya untuk Section Mempelai (DIPERBAIKI)
-================================================================= */
-#mempelai {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("assets/images/galeri-2.jpg");
-  background-size: cover;
-  background-position: center;
-  color: var(--text-color-light);
-  text-align: center;
-}
-
-.mempelai-intro {
-  max-width: 600px;
-  margin: 0 auto 3rem auto;
-}
-
-.mempelai-intro h2 {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.mempelai-intro p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.mempelai-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.mempelai-card {
-  max-width: 300px;
-}
-
-.mempelai-photo {
-  width: 200px;
-  height: 250px;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  overflow: hidden;
-  margin: 0 auto 1.5rem auto;
-  border: 4px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.mempelai-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.mempelai-card h3 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--text-color-light);
-}
-
-.mempelai-card p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.social-icon {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-accent);
-  color: var(--text-color-light);
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: scale(1.1);
-}
-
-.separator {
-  font-family: var(--font-heading);
-  font-size: 3rem;
-  color: var(--primary-accent);
-}
-/* =================================================================
-   6. Gaya untuk Section Save The Date
-================================================================= */
-#save-the-date-section {
-  /* Gunakan gambar latar yang berbeda, misalnya dari galeri-5 */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("assets/images/galeri-2.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 6rem 2rem;
-  color: var(--text-color-light);
-  text-align: center;
-}
-
-#save-the-date-section h2 {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-#save-the-date-section .sub-heading {
-  font-size: 1rem;
-  margin-bottom: 3rem;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-.countdown-box {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  border-radius: 10px;
-  min-width: 90px;
-}
-
-.countdown-box span {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.event-details {
-  margin-top: 2rem;
-}
-
-.event-details h3 {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.event-details p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  /* align-items: center; -- Ganti ini */
-  align-items: flex-start; /* KUNCI PERBAIKAN: Sejajarkan dari atas */
-  justify-content: center;
-  gap: 0.75rem;
-}
-.map-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 12px 24px;
-  background-color: var(--primary-accent);
-  color: var(--text-color-light);
-  text-decoration: none;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.map-button:hover {
-  transform: scale(1.05);
-}
-/* =================================================================
-   7. Gaya untuk Section Love Story
-================================================================= */
-#love-story {
-  /* Gunakan gambar latar yang berbeda, misalnya dari galeri-2 */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url("assets/images/galeri-2.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 4rem 2rem;
-  color: var(--text-color-light);
-}
-
-.section-title {
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 4rem;
-}
-
-.timeline {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-left: 40px; /* Memberi ruang untuk garis dan titik */
-}
-
-/* Garis vertikal di kiri timeline */
-.timeline::before {
-  content: "";
-  position: absolute;
-  width: 4px;
-  background-color: rgba(255, 255, 255, 0.3);
-  top: 15px;
-  bottom: 15px;
-  left: 10px; /* Posisikan garis di sisi kiri */
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 3rem; /* Jarak antar cerita */
-}
-
-/* Hapus margin bawah untuk item terakhir agar rapi */
-.timeline-item:last-child {
-  margin-bottom: 0;
-}
-
-/* Lingkaran di garis timeline untuk setiap item */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: -38px; /* Posisikan lingkaran di atas garis vertikal */
-  top: 5px;
-  background-color: white;
-  border: 4px solid var(--primary-accent);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-content {
-  /* Kita hanya perlu memastikan teksnya rata kiri */
-  text-align: left;
-}
-
-.timeline-content h3 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--text-color-light);
-  margin-bottom: 0.5rem;
-}
-/* =================================================================
-   8. Gaya untuk Section Galeri
-================================================================= */
-#gallery {
-  /* Kita gunakan warna solid gelap agar foto lebih menonjol */
-  background-color: #2c3e50;
-  padding: 4rem 2rem;
-  color: var(--text-color-light);
-}
-.section-title {
-  font-size: 2rem;
-}
-.section-subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: -3.5rem; /* Tarik sedikit ke atas agar lebih dekat dengan judul */
-  margin-bottom: 4rem;
-}
-
-.gallery-grid {
-  display: grid;
-  /* Membuat grid yang responsif secara otomatis */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.gallery-item {
-  display: block;
-  overflow: hidden;
-  border-radius: 16px; /* Samakan dengan radius panel kaca */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1); /* Efek zoom saat disentuh */
-}
-/* Gaya untuk Lightbox */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 2rem;
-  cursor: pointer;
-  animation: lightbox-fade-in 0.5s ease;
-}
-
-.lightbox-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes lightbox-fade-in {
@@ -561,257 +758,50 @@ main.hidden {
     opacity: 1;
   }
 }
+
 /* =================================================================
-   9. Gaya untuk Section Wedding Gift
+   17. ATURAN RESPONSIVE (UNTUK LAYAR KECIL / HP)
 ================================================================= */
-#wedding-gift {
-  /* Gunakan gambar latar yang berbeda, misalnya dari galeri-2 */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("assets/images/galeri-2.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 4rem 2rem;
-  color: var(--text-color-light);
-}
-
-.gift-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap; /* Agar rapi di layar kecil */
-}
-
-.gift-card {
-  text-align: center;
-  max-width: 320px;
-  flex-grow: 1;
-  /* PERBAIKAN: Kurangi padding vertikal untuk membuatnya lebih pendek */
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.bank-logo {
-  max-height: 40px;
-  margin-bottom: 0.5rem;
-}
-
-.account-number {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-.copy-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  padding: 12px 24px;
-  background-color: var(--primary-accent);
-  color: var(--text-color-light);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.copy-button:hover {
-  background-color: #56457a; /* Warna ungu lebih gelap */
-}
-/* =================================================================
-   10. Gaya untuk Section Buku Tamu
-================================================================= */
-#guestbook {
-  /* Kita gunakan warna solid gelap agar konsisten */
-  background-color: #2c3e50;
-  padding: 4rem 2rem;
-  color: var(--text-color-light);
-}
-
-.guestbook-form-container {
-  /* Kita gunakan lagi panel kaca yang sudah ada */
-  text-align: left; /* Pastikan konten form rata kiri */
-}
-
-#comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#comment-form input,
-#comment-form textarea,
-#comment-form select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-family: var(--font-body);
-  font-size: 1rem;
-}
-
-/* Mengubah warna teks placeholder */
-#comment-form ::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Mengatur agar opsi di dropdown terbaca */
-#comment-form select option {
-  background: #333;
-  color: white;
-}
-
-#comment-form button {
-  padding: 12px 24px;
-  background-color: var(--primary-accent);
-  color: var(--text-color-light);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-#comment-form button:hover {
-  background-color: var(--primary-accent);
-}
-
-#comments-list {
-  margin-top: 1rem;
-  /* KUNCI #1: Batasi tinggi maksimal kotak komentar */
-  max-height: 400px;
-  /* KUNCI #2: Tampilkan scrollbar vertikal jika kontennya lebih panjang */
-  overflow-y: auto;
-  padding-right: 10px; /* Memberi sedikit ruang untuk scrollbar */
-}
-
-.comment-item {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-  text-align: left;
-}
-
-.comment-item .name {
-  font-weight: bold;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.comment-item .status {
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background-color: var(--primary-accent);
-  text-transform: uppercase;
-}
-
-.comment-item .message {
-  color: #e0e0e0;
-  white-space: pre-wrap; /* Agar baris baru di komentar tetap tampil */
-}
-/* =================================================================
-   11. Gaya untuk Section Penutup
-================================================================= */
-#penutup {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("assets/images/galeri-1.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 6rem 2rem 8rem 2rem;
-  color: var(--text-color-light);
-  text-align: center;
-}
-
-.closing-photo {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto; /* Hapus margin bawah dari sini */
-  border: 5px solid var(--primary-accent);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.closing-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* GAYA BARU UNTUK "TERIMAKASIH" */
-.thank-you-title {
-  font-family: var(--font-heading);
-  font-size: 2rem; /* Dibuat lebih besar */
-  font-weight: bold;
-  color: var(--text-color-light);
-  margin-top: 2.5rem; /* Jarak dari foto */
-  margin-bottom: 1.5rem;
-}
-
-.thank-you-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-}
-
-.closing-greeting {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.couple-names {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--primary-accent);
-}
-/* =================================================================
-   12. Gaya untuk Footer
-================================================================= */
-footer {
-  padding: 2.5rem;
-  background-color: var(--primary-accent);
-  color: rgba(255, 255, 255, 0.6);
-  text-align: center;
-}
-
-/* Gaya BARU untuk ikon sosial */
-footer .socials {
-  margin-bottom: 1rem; /* Jarak ke teks di bawahnya */
-}
-
-footer .socials a {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.5rem; /* Ukuran ikon */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer .socials a:hover {
-  color: var(--primary-accent); /* Warna berubah saat disentuh */
-}
-
-/* Gaya untuk teks kredit */
-footer .credit {
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-}
-
-footer .credit .fa-heart {
-  color: var(--text-color-light);
-  margin: 0 0.25rem;
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem 4rem 1.5rem;
+  }
+  #kutipan,
+  #mempelai,
+  #save-the-date-section,
+  #love-story,
+  #gallery,
+  #guestbook,
+  #penutup {
+    padding: 4rem 1rem;
+  }
+  .glass-panel {
+    padding: 1.5rem;
+  }
+  .mempelai-intro h2,
+  .section-title {
+    font-size: 2rem;
+  }
+  .mempelai-card h3 {
+    font-size: 1.5rem;
+  }
+  .mempelai-photo {
+    width: 160px;
+    height: 200px;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+  }
+  .separator {
+    font-size: 3rem;
+  }
+  .countdown-box {
+    min-width: 65px;
+    padding: 0.5rem;
+  }
+  .countdown-box span {
+    font-size: 1.8rem;
+  }
+  .countdown-box p {
+    font-size: 0.7rem;
+  }
 }
