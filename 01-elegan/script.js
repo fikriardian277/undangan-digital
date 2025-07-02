@@ -3,21 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // KONFIGURASI UTAMA - SEMUA DATA KLIEN DIUBAH DI SINI
   // =========================================================================
 
-  const NAMA_PRIA = "Muhammad Rizky Pratama";
+  const NAMA_PRIA = "Ryan Muhammad";
   const NAMA_PANGGILAN_PRIA = "Rizky";
   const ORTU_PRIA =
     "Putra Kedua dari Bapak H. Andi Pratama & Ibu Hj. Siti Mariam";
   const IG_PRIA = "https://instagram.com/Rizky";
 
-  const NAMA_WANITA = "Aulia Rahmawati";
+  const NAMA_WANITA = "Neni Nuraeni";
   const NAMA_PANGGILAN_WANITA = "Aulia";
   const ORTU_WANITA =
     "Putri Kedua dari Bapak H. Bambang Suhendar & Hj. Nurhayati";
   const IG_WANITA = "https://instagram.com/Aulia";
 
   // Format Tanggal: YYYY-MM-DDTHH:MM:SS (contoh: 2025-12-31T10:00:00)
-  const TANGGAL_ACARA_ISO = "2025-08-01T08:00:00";
-  const TANGGAL_RESEPSI_TEKS = "JUM'AT, 01 AGUSTUS 2025";
+  const TANGGAL_ACARA_ISO = "2025-07-03T09:00:00";
+  const TANGGAL_RESEPSI_TEKS = "Sabtu, 02 Agustus 2025";
   const WAKTU_RESEPSI_TEKS = "PUKUL : 08.00 WIB - Selesai";
 
   const LOKASI_ACARA_TEKS = `
