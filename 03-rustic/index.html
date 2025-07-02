@@ -3,239 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Undangan Pernikahan</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
-    <!-- Kait untuk Favicon (Ikon Tab Browser) -->
-    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+
+    <!-- Font Awesome untuk Ikon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
+    <!-- File CSS Utama kita -->
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <audio id="background-music" loop>
-      <source id="music-source" src="" type="audio/mpeg" />
-    </audio>
-    <button id="music-toggle-btn" class="hidden">
-      <i class="fas fa-compact-disc"></i>
+    <!-- Wadah untuk semua konten agar bisa digeser -->
+    <div class="stage-container">
+      <!-- =================================================================
+        SCENE 1: HALAMAN PEMBUKA (COVER)
+        ================================================================== -->
+      <section id="hero-cover" class="hero">
+        <div class="hero-content">
+          <p class="animate-fade-up">The Wedding Of</p>
+          <h1 class="animate-fade-up">Nama Pasangan</h1>
+          <div class="guest-info animate-fade-up">
+            <p>Kepada Yth.</p>
+            <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+    KONTEN UTAMA
+    ================================================================== -->
+      <main id="main-content">
+        <!-- Bagian 2: Hero Utama (Hero 2) -->
+        <section id="hero-main" class="hero">
+          <div class="hero-content">
+            <p class="animate-text">We Are Getting Married</p>
+            <h1 class="animate-text">Nama Pasangan</h1>
+            <div class="date-info animate-text">
+              <p>Sabtu, 12 Oktober 2025</p>
+            </div>
+            <button id="save-the-date" class="animate-text">
+              <i class="fas fa-calendar-check"></i>
+              <span>Save The Date</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- =================================================================
+        Bagian 3: Kutipan Ayat Suci
+        ================================================================== -->
+        <section id="kutipan" class="content-section">
+          <div class="container">
+            <!-- Kita ganti 'rustic-panel' dengan 'quote-wrapper' yang lebih spesifik -->
+            <div class="quote-wrapper animate-on-scroll">
+              <blockquote>
+                “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+                untukmu pasangan hidup dari jenismu sendiri...”
+              </blockquote>
+              <cite>Q.S. Ar-Rum: 21</cite>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section selanjutnya akan berada di bawah sini -->
+      </main>
+    </div>
+    <!-- Penutup .stage-container -->
+
+    <!-- =================================================================
+    TOMBOL BUKA UNDANGAN VERTIKAL
+    ================================================================== -->
+    <button id="open-invitation" class="vertical-button">
+      <i class="fas fa-envelope-open"></i>
+      <span class="vertical-text">Buka</span>
     </button>
 
-    <section id="hero-cover" class="hero">
-      <div class="hero-content">
-        <p>The Wedding Of</p>
-        <h1 id="cover-couple-names"></h1>
-        <div class="guest-info">
-          <p>Kepada Yth.</p>
-          <p class="guest-name" id="guest-name">Bapak/Ibu/Saudara/i</p>
-        </div>
-        <button id="open-invitation">
-          <i class="fas fa-envelope-open"></i>
-          <span>Buka Undangan</span>
-        </button>
-      </div>
-    </section>
-
-    <main id="main-content" class="hidden">
-      <section id="hero-main" class="hero">
-        <div class="hero-content">
-          <p class="animate-text">We Are Getting Married</p>
-          <h1 class="animate-text" id="main-couple-names"></h1>
-          <div class="date-info animate-text">
-            <p id="event-date"></p>
-          </div>
-          <button id="save-the-date" class="animate-text">
-            <i class="fas fa-calendar-check"></i>
-            <span>Save The Date</span>
-          </button>
-        </div>
-      </section>
-
-      <section id="kutipan">
-        <div class="container">
-          <div class="glass-panel animate-on-scroll">
-            <blockquote id="quote-text"></blockquote>
-            <cite id="quote-source"></cite>
-          </div>
-        </div>
-      </section>
-
-      <section id="mempelai">
-        <div class="container">
-          <div class="mempelai-intro animate-on-scroll">
-            <h2>The Happy Couple</h2>
-            <p>
-              Dengan memohon rahmat dan rida-Nya, kami bermaksud mengundang Anda
-              untuk menghadiri acara pernikahan putra dan putri kami:
-            </p>
-          </div>
-          <div class="mempelai-container">
-            <div class="mempelai-card glass-panel animate-on-scroll">
-              <div class="mempelai-photo">
-                <img id="groom-photo" src="" alt="Foto Mempelai Pria" />
-              </div>
-              <h3 id="groom-name"></h3>
-              <p id="groom-parents"></p>
-              <a
-                id="groom-instagram"
-                href="#"
-                class="social-icon"
-                target="_blank"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
-            <div class="separator animate-on-scroll">&</div>
-            <div class="mempelai-card glass-panel animate-on-scroll">
-              <div class="mempelai-photo">
-                <img id="bride-photo" src="" alt="Foto Mempelai Wanita" />
-              </div>
-              <h3 id="bride-name"></h3>
-              <p id="bride-parents"></p>
-              <a
-                id="bride-instagram"
-                href="#"
-                class="social-icon"
-                target="_blank"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="save-the-date-section">
-        <div class="container">
-          <div class="glass-panel animate-on-scroll">
-            <h2>Save The Date</h2>
-            <p class="sub-heading">Jangan sampai terlewat momen bahagia kami</p>
-            <div class="countdown">
-              <div class="countdown-box">
-                <span id="days">00</span>
-                <p>Hari</p>
-              </div>
-              <div class="countdown-box">
-                <span id="hours">00</span>
-                <p>Jam</p>
-              </div>
-              <div class="countdown-box">
-                <span id="minutes">00</span>
-                <p>Menit</p>
-              </div>
-              <div class="countdown-box">
-                <span id="seconds">00</span>
-                <p>Detik</p>
-              </div>
-            </div>
-            <div class="event-details">
-              <h3 id="event-title"></h3>
-              <p>
-                <i class="fas fa-calendar-alt"></i
-                ><span id="event-date-detail"></span>
-              </p>
-              <p>
-                <i class="fas fa-clock"></i><span id="event-time-detail"></span>
-              </p>
-              <p>
-                <i class="fas fa-map-marker-alt"></i
-                ><span id="event-location-detail"></span>
-              </p>
-              <a href="#" id="map-button" class="map-button" target="_blank">
-                <i class="fas fa-map"></i> Lihat Peta
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="love-story">
-        <div class="container">
-          <h2 class="section-title animate-on-scroll">Our Love Story</h2>
-          <div class="timeline" id="timeline-container"></div>
-        </div>
-      </section>
-
-      <section id="gallery">
-        <div class="container">
-          <h2 class="section-title animate-on-scroll">Our Moments</h2>
-          <p class="section-subtitle animate-on-scroll">
-            Kenangan manis yang akan selalu kami ingat.
-          </p>
-          <div class="gallery-grid" id="gallery-grid-container"></div>
-        </div>
-      </section>
-
-      <section id="wedding-gift">
-        <div class="container">
-          <h2 class="section-title animate-on-scroll">Wedding Gift</h2>
-          <p class="section-subtitle animate-on-scroll">
-            Doa restu Anda adalah hadiah terindah bagi kami...
-          </p>
-          <div class="gift-container" id="gift-container"></div>
-        </div>
-      </section>
-
-      <section id="guestbook">
-        <div class="container">
-          <h2 class="section-title animate-on-scroll">Guest Book</h2>
-          <p class="section-subtitle animate-on-scroll">
-            Your prayers and wishes mean the world to us.
-          </p>
-          <div class="guestbook-form-container glass-panel animate-on-scroll">
-            <form id="comment-form">
-              <input type="text" name="Nama" placeholder="Nama Anda" required />
-              <textarea
-                name="Ucapan"
-                rows="4"
-                placeholder="Tulis ucapan dan doa Anda di sini..."
-                required
-              ></textarea>
-              <select name="Kehadiran" required>
-                <option value="" disabled selected>Konfirmasi Kehadiran</option>
-                <option value="Hadir">Hadir</option>
-                <option value="Tidak Hadir">Tidak Hadir</option>
-              </select>
-              <button type="submit">Kirim Ucapan</button>
-            </form>
-          </div>
-          <div id="comments-list" class="animate-on-scroll"></div>
-        </div>
-      </section>
-
-      <section id="penutup">
-        <div class="container">
-          <div class="closing-photo animate-on-scroll">
-            <img id="closing-photo" src="" alt="Foto Penutup" />
-          </div>
-          <h2 class="thank-you-title animate-on-scroll">Terimakasih</h2>
-          <p class="thank-you-text animate-on-scroll"></p>
-          <p class="closing-greeting animate-on-scroll">
-            Kami yang berbahagia,
-          </p>
-          <h3
-            class="couple-names animate-on-scroll"
-            id="closing-couple-names"
-          ></h3>
-        </div>
-      </section>
-
-      <footer>
-        <div class="socials">
-          <a id="footer-instagram" href="#" target="_blank"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
-        <p class="credit" id="footer-credit"></p>
-      </footer>
-    </main>
-
+    <!-- File JavaScript -->
     <script src="app.js"></script>
   </body>
 </html>
