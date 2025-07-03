@@ -71,6 +71,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .cover-background {
@@ -255,7 +257,11 @@ button.envelope-paper:hover {
     5. BAGIAN KONTEN UTAMA (#main-content)
 ================================================================= */
 #main-content {
-  /* Tidak perlu style khusus, hanya sebagai wadah */
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+#main-content.fade-in {
+  opacity: 1;
 }
 
 /* --- Gaya Umum untuk Section di dalam #main-content --- */
@@ -297,6 +303,23 @@ button.envelope-paper:hover {
 #hero-main h1 {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8vw, 5rem);
+}
+.btn-save-date {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-save-date:hover {
+  background-color: #7b5a4f;
+  transform: scale(1.05);
 }
 
 /* --- Section: Kutipan (#kutipan) --- */

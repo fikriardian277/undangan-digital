@@ -8,6 +8,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const openButton = document.getElementById("open-invitation");
   const heroCover = document.getElementById("hero-cover");
   const mainContent = document.getElementById("main-content");
+  const btnSaveDate = document.getElementById("btnSaveDate");
+
+  if (btnSaveDate) {
+    const namaPria = "Reyhan";
+    const namaWanita = "Risna";
+    const tanggalMulai = new Date("2025-07-04T10:00:00+07:00");
+    const tanggalSelesai = new Date("2025-07-04T18:00:00+07:00");
+    const lokasi = "Jl. Contoh Alamat, Kota";
+    const deskripsi = "Undangan Pernikahan Reyhan & Risna";
+
+    const start = tanggalMulai.toISOString().replace(/[-:]|\.\d{3}/g, "");
+    const end = tanggalSelesai.toISOString().replace(/[-:]|\.\d{3}/g, "");
+
+    const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+${encodeURIComponent(
+      namaPria
+    )}+dan+${encodeURIComponent(
+      namaWanita
+    )}&dates=${start}/${end}&details=${encodeURIComponent(
+      deskripsi
+    )}&location=${encodeURIComponent(lokasi)}&sf=true&output=xml`;
+
+    btnSaveDate.href = calendarUrl;
+  }
 
   if (invitationOpener && openButton && heroCover && mainContent) {
     // --- TAHAP 1: Animasi amplop muncul dari bawah (OTOMATIS) ---
@@ -35,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1200); // Sesuaikan dengan durasi transisi fly-away
     });
   }
+  mainContent.classList.remove("hidden");
+  mainContent.classList.add("fade-in");
 
   // === Logika Nama Tamu (Sama seperti sebelumnya) ===
   const urlParams = new URLSearchParams(window.location.search);
