@@ -249,12 +249,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Fungsi Countdown (DIPERBAIKI FINAL) ---
+  // ✅ KODE PERBAIKAN (BENAR)
   const initCountdown = () => {
     const daysEl = document.getElementById("days"),
       hoursEl = document.getElementById("hours"),
       minutesEl = document.getElementById("minutes"),
       secondsEl = document.getElementById("seconds");
+
+    // 1. DEKLARASIKAN VARIABEL DI SINI DENGAN 'let'
+    let countdownInterval;
 
     if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
       console.error("Satu atau lebih elemen countdown tidak ditemukan.");
@@ -263,13 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const targetDate = new Date(CLIENT_DATA.acara.tanggalISO_UTC).getTime();
 
-    // Pemeriksaan apakah tanggal valid
     if (isNaN(targetDate)) {
-      console.error(
-        "Format tanggal di CLIENT_DATA.acara.tanggalISO_UTC salah. Harusnya 'YYYY-MM-DDTHH:MM:SS'"
-      );
-      document.querySelector(".countdown").innerHTML =
-        "<h4>Error Format Tanggal</h4>";
+      // ... (kode error format tanggal)
       return;
     }
 
@@ -278,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const distance = targetDate - now;
 
       if (distance < 0) {
-        clearInterval(countdownInterval);
+        clearInterval(countdownInterval); // <-- Baris ini sekarang aman
         document.querySelector(".countdown").innerHTML =
           "<h4>Acara Telah Berlangsung</h4>";
         return;
@@ -296,7 +294,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     updateCountdown(); // Panggil sekali agar tidak ada kedipan
-    const countdownInterval = setInterval(updateCountdown, 1000);
+    // 2. HILANGKAN 'const' DAN LANGSUNG ISI VARIABEL YANG SUDAH DIDEKLARASIKAN
+    countdownInterval = setInterval(updateCountdown, 1000);
   };
   initCountdown();
 

@@ -1,70 +1,87 @@
 /* =================================================================
-   LOGIKA INTERAKTIF UNTUK TEMA RUSTIC (VERSI GESER)
+   LOGIKA INTERAKTIF UNTUK TEMA RUSTIC (VERSI GESER)
 ================================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Seleksi elemen yang dibutuhkan
   const openButton = document.getElementById("open-invitation");
   const stageContainer = document.querySelector(".stage-container");
+
   // --- Fungsi untuk Save The Date ---
   const saveDateButton = document.getElementById("save-the-date");
   if (saveDateButton) {
     saveDateButton.addEventListener("click", () => {
-      // (Kita akan isi logika Google Calendar di sini nanti jika diperlukan)
       alert("Tombol Save The Date diklik!");
     });
-  }
+  } // --- Nama Tamu dari URL ---
 
-  // --- Nama Tamu dari URL ---
   const urlParams = new URLSearchParams(window.location.search);
   const guest = urlParams.get("to");
   const guestNameElement = document.querySelector(".guest-name");
   if (guest && guestNameElement) {
     guestNameElement.innerText = guest.replace(/\+/g, " ");
-  }
+  } // --- Fungsi Buka Undangan (Geser) ---
 
-  // --- Fungsi Buka Undangan (Geser) ---
   if (openButton && stageContainer) {
     openButton.addEventListener("click", () => {
-      // 1. Tambahkan class untuk memicu animasi geser
       stageContainer.classList.add("slide-active");
-
-      // 2. Sembunyikan tombol setelah diklik
       openButton.classList.add("hidden");
     });
   }
-
-  // (Tambahkan logika untuk tombol Save The Date dan lainnya di sini jika perlu)
 });
-// --- Fungsi untuk SCROLL HORIZONTAL YANG SMOOTH ---
+
+// --- Fungsi untuk SCROLL HORIZONTAL (Mouse & Touch) ---
 const mainContentArea = document.getElementById("main-content");
 if (mainContentArea) {
   let targetScroll = 0;
   let currentScroll = 0;
-  const easeFactor = 0.08; // Angka kecil untuk efek yang sangat halus
+  const easeFactor = 0.08;
 
-  // Saat mouse di-scroll, kita hanya update targetnya
+  // Variabel baru untuk logika sentuhan (touch)
+  let isDragging = false;
+  let startX;
+  let scrollLeftStart; // 1. EVENT LISTENER UNTUK MOUSE SCROLL
+
   mainContentArea.addEventListener("wheel", (event) => {
     event.preventDefault();
     targetScroll += event.deltaY;
-
-    // Batasi agar target tidak scroll melebihi batas
     const maxScroll = mainContentArea.scrollWidth - mainContentArea.clientWidth;
     targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
   });
 
-  // Fungsi animasi yang berjalan terus-menerus
+  // 2. EVENT LISTENERS BARU UNTUK SENTUHAN (TOUCH)
+  mainContentArea.addEventListener("touchstart", (event) => {
+    isDragging = true;
+    startX = event.touches[0].pageX; // Posisi X awal jari
+    scrollLeftStart = currentScroll; // Posisi scroll saat ini
+  });
+
+  mainContentArea.addEventListener("touchmove", (event) => {
+    if (!isDragging) return;
+    event.preventDefault(); // Mencegah scroll vertikal halaman saat menggeser
+
+    const currentX = event.touches[0].pageX;
+    const walk = currentX - startX; // Seberapa jauh jari digeser
+
+    // Update target scroll berdasarkan pergeseran jari
+    targetScroll = scrollLeftStart - walk;
+
+    const maxScroll = mainContentArea.scrollWidth - mainContentArea.clientWidth;
+    targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+  });
+
+  mainContentArea.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+  mainContentArea.addEventListener("touchcancel", () => {
+    isDragging = false;
+  }); // 3. FUNGSI ANIMASI (TETAP SAMA)
+
   const smoothScroll = () => {
-    // Gerakkan posisi saat ini (currentScroll) sedikit demi sedikit menuju target
     currentScroll += (targetScroll - currentScroll) * easeFactor;
-
-    // Terapkan posisi baru ke scrollbar
     mainContentArea.scrollLeft = currentScroll;
-
-    // Minta browser untuk menjalankan fungsi ini lagi di frame berikutnya
     requestAnimationFrame(smoothScroll);
   };
 
-  // Mulai loop animasi
   smoothScroll();
 }
