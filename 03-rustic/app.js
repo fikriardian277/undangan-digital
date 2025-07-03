@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- TAHAP 3: Pengguna mengklik tombol "Buka Undangan" ---
     openButton.addEventListener("click", () => {
       // 1. Buat amplop terbang ke atas
-      invitationOpener.classList.add("fly-away");
+      invitationOpener.classList.add("drop-down");
 
       // 2. Tampilkan konten utama (fade in)
       mainContent.classList.remove("hidden");
