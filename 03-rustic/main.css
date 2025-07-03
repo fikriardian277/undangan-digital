@@ -1,5 +1,5 @@
 /* =================================================================
-   1. PENGATURAN DASAR & VARIABEL (TEMA RUSTIC)
+    1. PENGATURAN DASAR & VARIABEL
 ================================================================= */
 :root {
   --primary-accent: #8d6e63;
@@ -17,308 +17,318 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
   font-family: var(--font-body);
   color: var(--text-color-dark);
+  background-color: var(--background-color);
+  overflow: hidden; /* Mencegah scroll di awal */
 }
 
 /* =================================================================
-   2. PANGGUNG & EFEK GESER
+    2. KELAS BANTU & TRANSISI
 ================================================================= */
-.stage-container {
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+/* =================================================================
+    3. SECTION: COVER PEMBUKA (#hero-cover)
+================================================================= */
+#hero-cover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200%; /* Lebar untuk dua "scene": cover dan main */
-  height: 100%;
-  display: flex;
-  transition: transform 1.2s cubic-bezier(0.86, 0, 0.07, 1);
-}
-
-.stage-container.slide-active {
-  transform: translateX(-50%);
-}
-
-#hero-cover,
-#main-content {
-  width: 50%; /* Setiap scene lebarnya setengah dari panggung */
-  height: 100%;
-  flex-shrink: 0;
-}
-
-/* KUNCI #1: Ubah main-content menjadi flexbox horizontal */
-#main-content {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* Hapus scroll-snap agar scroll lebih bebas */
-  /* background-image, size, dan attachment dihapus dari sini */
-  background-color: var(
-    --background-color
-  ); /* Hanya warna dasar sebagai fallback */
-}
-
-/* Setiap section di dalam main-content akan menjadi satu halaman penuh */
-#main-content > section {
   width: 100%;
   height: 100%;
-  flex-shrink: 0;
-  /* HAPUS BARIS INI: scroll-snap-align: start; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-/* =================================================================
-   3. GAYA HERO SECTION (UMUM)
-================================================================= */
-.hero {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  padding: 2rem;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  z-index: 100;
   overflow: hidden;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
 }
-
-.hero::before {
+#hero-cover::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /* shorthand untuk top, bottom, left, right: 0 */
+
+  /* KUNCI: Tambahkan baris ini */
+  background-color: rgba(0, 0, 0, 0.3);
+
+  z-index: 3; /* Pastikan lapisan ini di atas gambar, di bawah teks */
+}
+
+/* --- Lapisan Latar Belakang di dalam #hero-cover --- */
+.cover-background,
+.cover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-background {
+  background-image: url("assets/images/cover-rustic.jpg");
+  background-size: cover;
+  background-position: center;
   z-index: 1;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(245, 245, 245, 0.2);
-  z-index: 2;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-}
-
-/* --- Gaya Khusus untuk HERO COVER --- */
-#hero-cover {
-  padding: 2rem 80px 2rem 2rem;
-  background-image: url("assets/images/cover-rustic.jpg");
-  justify-content: flex-start;
-  align-items: flex-end;
-  text-align: left;
-}
-
-#hero-cover::before {
+.cover-overlay {
   background-image: url("assets/images/mempelai-pria.jpg");
   background-size: cover;
   background-position: center;
   mask-image: linear-gradient(to left, black 60%, transparent 100%);
   -webkit-mask-image: linear-gradient(to left, black 60%, transparent 100%);
+  z-index: 2;
 }
 
-/* --- Gaya Khusus untuk HERO MAIN --- */
-#hero-main {
-  background-image: url("assets/images/cover-rustic.jpg");
-}
+/* --- Konten Teks di dalam #hero-cover --- */
+.hero-content {
+  position: absolute; /* <-- KUNCI UTAMA */
+  top: 65%; /* Atur posisi dari atas */
+  left: 50%; /* Atur posisi dari kiri */
+  transform: translate(-50%, -50%); /* Trik agar posisi pas di tengah */
 
-/* --- Gaya Khusus untuk KUTIPAN --- */
-/* --- Gaya Khusus untuk KUTIPAN --- */
-#kutipan {
-  background-color: var(--background-color);
-  background-size: cover;
-  background-position: center;
+  width: 90%; /* Lebar blok teks, agar tidak terlalu panjang di layar besar */
+  color: var(--text-color-light);
+  z-index: 4;
 }
-
-/* KUNCI #2: Gaya Panel Rustic (Pengganti Glass Panel) */
-.rustic-panel {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 2.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  color: var(--text-color-dark);
-}
-
-.rustic-panel blockquote {
-  font-size: 1.2rem;
-  font-style: italic;
-  border-left: 4px solid var(--primary-accent);
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.rustic-panel cite {
-  display: block;
-  font-weight: bold;
-  font-style: normal;
-  margin-top: 1.5rem;
-  color: var(--primary-accent);
-  text-align: right;
-}
-
 .hero-content p {
-  font-size: 1.2rem;
-}
-.hero-content h1 {
-  font-family: var(--font-script);
-  font-size: clamp(3.5rem, 12vw, 7rem);
-  font-weight: 700;
-  margin: 0.5rem 0 1.5rem 0;
-  line-height: 1.2;
-}
-.hero-content .guest-info {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-.hero-content .guest-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-#save-the-date {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 14px 32px;
   font-size: 1rem;
-  font-weight: bold;
+  margin-bottom: 0.5rem;
   color: var(--text-color-light);
-  background-color: var(--primary-accent);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease;
-}
-#save-the-date:hover {
-  background-color: var(--text-color-dark);
 }
 
-/* =================================================================
-   4. GAYA TOMBOL VERTIKAL
-================================================================= */
-.vertical-button {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 60px;
-  background-color: var(--primary-accent);
-  border: none;
+#hero-cover h1 {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 7vw, 4.5rem);
   color: var(--text-color-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.8s ease-in-out, background-color 0.3s ease;
-}
-.vertical-button:hover {
-  background-color: var(--text-color-dark);
-}
-.vertical-button i {
-  font-size: 1.5rem;
-}
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-.vertical-button.hidden {
-  transform: translateX(100%);
 }
 
-/* =================================================================
-   5. ANIMASI
-================================================================= */
-.animate-fade-up,
-.animate-text {
+.guest-info {
+  color: var(--text-color-light);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.guest-info p {
+  margin: 0;
+}
+.guest-info .guest-name {
+  font-weight: 700;
+}
+/* --- Animasi Masuk untuk Konten Teks di Cover --- */
+.hero-content > p,
+#hero-cover h1,
+.guest-info {
+  /* State awal: transparan dan sedikit di bawah */
   opacity: 0;
-  transform: translateY(20px);
+
+  /* Definisikan animasi */
+  animation-name: fadeUp;
+  animation-duration: 1.2s; /* Durasi animasi */
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  animation-fill-mode: forwards; /* Tetap di state akhir setelah selesai */
 }
 
-.animate-fade-up {
-  animation: fade-up-in 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.stage-container.slide-active .animate-text {
-  animation: fade-up-in 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.hero-content > p.animate-fade-up {
+/* Atur jeda untuk setiap elemen agar muncul berurutan */
+.hero-content > p {
   animation-delay: 0.5s;
 }
-.hero-content > h1.animate-fade-up {
-  animation-delay: 0.7s;
-}
-.hero-content > .guest-info.animate-fade-up {
-  animation-delay: 0.9s;
-}
-
-.stage-container.slide-active #hero-main p.animate-text {
+#hero-cover h1 {
   animation-delay: 0.8s;
 }
-.stage-container.slide-active #hero-main h1.animate-text {
-  animation-delay: 1s;
-}
-.stage-container.slide-active #hero-main .date-info.animate-text {
-  animation-delay: 1.2s;
-}
-.stage-container.slide-active #hero-main button.animate-text {
-  animation-delay: 1.4s;
+.guest-info {
+  animation-delay: 1.1s;
 }
 
-@keyframes fade-up-in {
+/* Definisikan keyframes untuk animasinya */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+/* =================================================================
+    4. BAGIAN AMPLOP ANIMASI (di dalam #hero-cover)
+================================================================= */
+#invitation-opener {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, 200px);
+  opacity: 0;
+  transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1s ease;
+}
+
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+}
+
+.envelope-back {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-accent);
+  border: 1px solid var(--text-color-dark);
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background-color: var(--primary-accent);
+  border-left: 1px solid var(--text-color-dark);
+  border-right: 1px solid var(--text-color-dark);
+  border-top: 1px solid var(--text-color-dark);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  transform-origin: top center;
+  z-index: 1;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+button.envelope-paper {
+  position: absolute;
+  bottom: 0;
+  width: 96%;
+  left: 2%;
+  height: 95%;
+  background-color: #fdfaf5;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  border: none;
+  color: var(--text-color-dark);
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px 20px 20px;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s,
+    box-shadow 0.3s ease;
+}
+button.envelope-paper:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Kelas Kontrol Animasi untuk Amplop --- */
+#invitation-opener.is-visible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+#invitation-opener.is-opening .envelope-flap {
+  transform: rotateX(180deg);
+}
+#invitation-opener.is-opening .envelope-paper {
+  transform: translateY(-70px);
+}
+#invitation-opener.fly-away {
+  transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    opacity 1s ease-out;
+  transform: translateY(-150vh) rotate(-30deg) scale(0.7);
+  opacity: 0;
+}
 
 /* =================================================================
-   6. ATURAN RESPONSIVE
+    5. BAGIAN KONTEN UTAMA (#main-content)
 ================================================================= */
-@media (max-width: 480px) {
-  #hero-cover {
-    padding: 1.5rem 70px 1.5rem 1.5rem;
+#main-content {
+  /* Tidak perlu style khusus, hanya sebagai wadah */
+}
+
+/* --- Gaya Umum untuk Section di dalam #main-content --- */
+.content-section {
+  padding: 6rem 2rem;
+  text-align: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+}
+
+/* =================================================================
+    6. GAYA SPESIFIK PER SECTION
+================================================================= */
+
+/* --- Section: Main Hero (#hero-main) --- */
+.hero-main-vertical {
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("assets/images/mempelai-pria.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color-light);
+}
+
+#hero-main h1 {
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 8vw, 5rem);
+}
+
+/* --- Section: Kutipan (#kutipan) --- */
+.rustic-panel {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+/* =================================================================
+    7. ATURAN RESPONSIVE (MEDIA QUERIES)
+================================================================= */
+@media (max-width: 768px) {
+  /* Style untuk tablet di sini */
+  .content-section h2 {
+    font-size: 2rem;
   }
-  .hero-content h1 {
+}
+
+@media (max-width: 480px) {
+  /* Style untuk HP di sini */
+  #hero-cover h1 {
     font-size: clamp(3rem, 15vw, 4.5rem);
   }
-  .hero-content p {
-    font-size: 1rem;
+
+  .envelope {
+    /* Sedikit memperkecil amplop di layar HP */
+    transform: scale(0.9);
   }
-  .hero-content .guest-name {
-    font-size: 1rem;
-  }
-  .vertical-button {
-    width: 50px;
-  }
-  .vertical-button i {
-    font-size: 1.2rem;
-  }
-  .vertical-text {
-    font-size: 0.9rem;
+
+  .content-section {
+    padding: 4rem 1rem;
   }
 }

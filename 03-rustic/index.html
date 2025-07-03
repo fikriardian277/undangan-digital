@@ -3,91 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Undangan Pernikahan</title>
+    <title>Undangan Pernikahan Rustic</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Font Awesome untuk Ikon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-    <!-- File CSS Utama kita -->
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <!-- Wadah untuk semua konten agar bisa digeser -->
-    <div class="stage-container">
-      <!-- =================================================================
-        SCENE 1: HALAMAN PEMBUKA (COVER)
-        ================================================================== -->
-      <section id="hero-cover" class="hero">
-        <div class="hero-content">
-          <p class="animate-fade-up">The Wedding Of</p>
-          <h1 class="animate-fade-up">Nama Pasangan</h1>
-          <div class="guest-info animate-fade-up">
-            <p>Kepada Yth.</p>
-            <p class="guest-name">Bapak/Ibu/Saudara/i</p>
-          </div>
+    <section id="hero-cover" class="hero">
+      <div class="cover-background"></div>
+      <div class="cover-overlay"></div>
+
+      <div class="hero-content">
+        <p>The Wedding Of</p>
+        <h1 id="cover-couple-names">
+          Reyhan <br />&<br />
+          Risna
+        </h1>
+        <div class="guest-info">
+          <p>Kepada Yth.</p>
+          <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+        </div>
+      </div>
+
+      <div id="invitation-opener">
+        <div class="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-flap"></div>
+          <button id="open-invitation" class="envelope-paper">Buka</button>
+        </div>
+      </div>
+    </section>
+
+    <main id="main-content" class="hidden">
+      <section id="hero-main" class="content-section hero-main-vertical">
+        <p>We Are Getting Married</p>
+        <h1 id="main-couple-names">Reyhan & Risna</h1>
+        <p>Jumat, 4 Juli 2025</p>
+      </section>
+      <section id="kutipan" class="content-section">
+        <div class="container rustic-panel">
+          <blockquote>
+            “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+            untukmu pasangan hidup dari jenismu sendiri...”
+          </blockquote>
+          <cite>Q.S. Ar-Rum: 21</cite>
         </div>
       </section>
+    </main>
 
-      <!-- =================================================================
-    KONTEN UTAMA
-    ================================================================== -->
-      <main id="main-content">
-        <!-- Bagian 2: Hero Utama (Hero 2) -->
-        <section id="hero-main" class="hero">
-          <div class="hero-content">
-            <p class="animate-text">We Are Getting Married</p>
-            <h1 class="animate-text">Nama Pasangan</h1>
-            <div class="date-info animate-text">
-              <p>Sabtu, 12 Oktober 2025</p>
-            </div>
-            <button id="save-the-date" class="animate-text">
-              <i class="fas fa-calendar-check"></i>
-              <span>Save The Date</span>
-            </button>
-          </div>
-        </section>
-
-        <!-- =================================================================
-        Bagian 3: Kutipan Ayat Suci
-        ================================================================== -->
-        <section id="kutipan" class="content-section">
-          <div class="container">
-            <!-- Kita ganti 'rustic-panel' dengan 'quote-wrapper' yang lebih spesifik -->
-            <div class="quote-wrapper animate-on-scroll">
-              <blockquote>
-                “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-                untukmu pasangan hidup dari jenismu sendiri...”
-              </blockquote>
-              <cite>Q.S. Ar-Rum: 21</cite>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section selanjutnya akan berada di bawah sini -->
-      </main>
-    </div>
-    <!-- Penutup .stage-container -->
-
-    <!-- =================================================================
-    TOMBOL BUKA UNDANGAN VERTIKAL
-    ================================================================== -->
-    <button id="open-invitation" class="vertical-button">
-      <i class="fas fa-envelope-open"></i>
-      <span class="vertical-text">Buka</span>
-    </button>
-
-    <!-- File JavaScript -->
     <script src="app.js"></script>
   </body>
 </html>
