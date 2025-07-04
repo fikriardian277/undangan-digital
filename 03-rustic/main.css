@@ -1228,7 +1228,338 @@ button.envelope-paper:hover {
     transform: translateY(0);
   }
 }
+/* =================================================================
+   12. SECTION: GALERI (GAYA KOLASE RUSTIC)
+================================================================= */
+#gallery-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+    url("assets/images/wood-texture.jpeg"); /* Ganti dengan tekstur kayu Anda */
+  background-size: cover;
+  padding: 2rem;
+  overflow: hidden;
+}
 
+#gallery-section h2 {
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: var(--text-color-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#gallery-section .sub-heading {
+  color: #eee;
+  margin-bottom: 3rem;
+}
+
+/* Wadah utama untuk kolase */
+.gallery-collage {
+  display: grid;
+  /* Membuat 8 kolom untuk fleksibilitas penempatan */
+  grid-template-columns: repeat(8, 1fr);
+  /* Baris akan dibuat otomatis dengan tinggi minimum */
+  grid-auto-rows: minmax(100px, auto);
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  transform: rotate(-1.5deg); /* Miringkan sedikit seluruh papan */
+}
+
+.gallery-collage .gallery-item {
+  background-color: #fff;
+  padding: 10px;
+  padding-bottom: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden; /* Pastikan gambar tetap di dalam border */
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* --- Gaya Saat Terlihat (Setelah di-scroll) --- */
+.gallery-collage .gallery-item.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0); /* Kembalikan ke posisi normal */
+}
+
+.gallery-collage .gallery-item:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.gallery-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.2) saturate(1.2);
+}
+
+/* Atur rotasi acak setelah animasi selesai */
+.gallery-item.is-visible:nth-child(1) {
+  transform: scale(1) rotate(-5deg);
+  transition-delay: 0.1s;
+}
+.gallery-item.is-visible:nth-child(2) {
+  transform: scale(1) rotate(3deg);
+  transition-delay: 0.2s;
+}
+.gallery-item.is-visible:nth-child(3) {
+  transform: scale(1) rotate(6deg);
+  transition-delay: 0.3s;
+}
+.gallery-item.is-visible:nth-child(4) {
+  transform: scale(1) rotate(4deg);
+  transition-delay: 0.15s;
+}
+.gallery-item.is-visible:nth-child(5) {
+  transform: scale(1) rotate(-3deg);
+  transition-delay: 0.25s;
+}
+.gallery-item.is-visible:nth-child(6) {
+  transform: scale(1) rotate(-8deg);
+  transition-delay: 0.35s;
+}
+.gallery-item.is-visible:nth-child(7) {
+  transform: scale(1) rotate(2deg);
+  transition-delay: 0.2s;
+}
+.gallery-item.is-visible:nth-child(8) {
+  transform: scale(1) rotate(-2deg);
+  transition-delay: 0.3s;
+}
+
+/* Lightbox Styling */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none; /* Awalnya disembunyikan */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  animation: zoomIn 0.5s ease;
+}
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* =================================================================
+   13. SECTION: PENUTUP & FOOTER (DENGAN ANIMASI)
+================================================================= */
+#penutup-section {
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+/* Gaya awal untuk animasi */
+.penutup-photo-wrapper {
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#penutup-photo {
+  width: 220px; /* Sedikit lebih besar */
+  height: 280px; /* Dibuat potrait */
+  object-fit: cover;
+
+  /* KUNCI UTAMA: Membuat efek sobekan kertas dengan clip-path */
+  clip-path: polygon(
+    4% 5%,
+    95% 2%,
+    96% 88%,
+    89% 95%,
+    76% 99%,
+    63% 94%,
+    45% 98%,
+    33% 94%,
+    17% 99%,
+    8% 94%,
+    2% 82%,
+    6% 69%,
+    1% 54%,
+    5% 38%,
+    2% 21%,
+    6% 11%
+  );
+
+  /* Gunakan filter drop-shadow untuk bayangan yang mengikuti bentuk sobekan */
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)) sepia(0.1);
+}
+
+#penutup-section h2 {
+  font-family: var(--font-script);
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+  opacity: 0; /* Tambahkan opacity awal untuk judul juga jika mau */
+  transition: opacity 1s ease 0.5s; /* Delay sedikit */
+}
+
+.ucapan-terima-kasih {
+  max-width: 600px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease 0.8s, transform 1s ease 0.8s; /* Delay lebih banyak */
+}
+
+.final-couple-names {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 1s ease 1.2s; /* Delay paling akhir */
+}
+
+/* Kelas 'is-visible' akan ditambahkan oleh IntersectionObserver */
+#penutup-section.is-visible .penutup-photo-wrapper {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#penutup-section.is-visible h2 {
+  opacity: 1;
+}
+
+#penutup-section.is-visible .ucapan-terima-kasih {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#penutup-section.is-visible .final-couple-names {
+  opacity: 1;
+}
+
+/* Footer (tidak ada perubahan) */
+footer {
+  padding: 2rem 1rem; /* Sedikit lebih tinggi agar tidak sempit */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url(assets/images/paper-texture.jpeg);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+footer .socials {
+  margin-bottom: 1rem;
+}
+footer .socials a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer .socials a:hover {
+  color: #fff; /* Dibuat putih agar lebih kontras saat hover */
+}
+footer .credit {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+footer .credit .fa-heart {
+  color: var(--background-color); /* Saya ambil warna dari footer lama */
+  margin: 0 0.25rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Pastikan animasi pulse ada jika sebelumnya belum ada */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* =================================================================
+   14. TOMBOL PEMUTAR MUSIK
+================================================================= */
+.music-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+
+  /* KUNCI UTAMA: Hapus background & shadow dari tombol */
+  background-color: transparent;
+  box-shadow: none;
+
+  border-radius: 50%; /* Tetap ada untuk area klik yang nyaman */
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+.music-button.hidden {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Beri gaya langsung ke ikonnya */
+.music-button .fa-compact-disc {
+  font-size: 2.5rem; /* Perbesar sedikit ikonnya agar mudah dilihat */
+  color: #4e342e; /* Warna ikon default, sesuaikan jika perlu */
+  /* Ganti box-shadow dengan text-shadow untuk efek 3D pada ikon */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+/* Animasi piringan hitam berputar */
+.music-button.playing .fa-compact-disc {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* =================================================================
     7. ATURAN RESPONSIVE (MEDIA QUERIES)
 ================================================================= */
@@ -1239,6 +1570,37 @@ button.envelope-paper:hover {
   }
   .corner-leaf-wrapper {
     width: clamp(80px, 25vw, 160px);
+  }
+  .gallery-collage {
+    /* Atur ulang grid jadi 2 kolom, ini sudah bagus */
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 20px; /* Beri sedikit lebih banyak ruang antar foto */
+    transform: rotate(0deg); /* Papan utama tetap lurus di HP */
+  }
+
+  /* Reset penempatan grid spesifik agar mengalir otomatis */
+  .gallery-collage .gallery-item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    /* JANGAN reset rotasi di sini */
+  }
+
+  /* KUNCI UTAMA: Beri gaya berbeda untuk foto di kolom KIRI (ganjil) */
+  .gallery-collage .gallery-item:nth-child(odd) {
+    transform: rotate(-6deg);
+  }
+
+  /* KUNCI UTAMA: Beri gaya berbeda untuk foto di kolom KANAN (genap) */
+  .gallery-collage .gallery-item:nth-child(even) {
+    transform: rotate(6deg) translateY(15px); /* Geser sedikit ke bawah agar tidak sejajar */
+  }
+
+  /* Pastikan efek hover tetap berfungsi dengan baik */
+  .gallery-collage .gallery-item:hover {
+    /* Saat di-hover, perbesar dan bawa ke depan, pertahankan rotasinya */
+    transform: scale(1.1);
+    z-index: 10;
   }
 }
 

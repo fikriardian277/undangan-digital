@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Undangan Pernikahan Rustic</title>
+    <title id="title-tag">Undangan Pernikahan</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,26 +15,24 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
 
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
     <section id="hero-cover" class="hero">
-      <div class="cover-background"></div>
-      <div class="cover-overlay"></div>
-
+      <div class="cover-background" id="cover-bg-image"></div>
+      <div class="cover-overlay" id="cover-overlay-image"></div>
       <div class="hero-content">
         <p>The Wedding Of</p>
-        <h1 id="cover-couple-names">
-          Reyhan <br />&<br />
-          Risna
-        </h1>
+        <h1 id="cover-couple-names"></h1>
         <div class="guest-info">
           <p>Kepada Yth.</p>
-          <p class="guest-name">Bapak/Ibu/Saudara/i</p>
+          <p class="guest-name" id="guest-name-placeholder">
+            Bapak/Ibu/Saudara/i
+          </p>
         </div>
       </div>
-
       <div id="invitation-opener">
         <div class="envelope">
           <div class="envelope-back"></div>
@@ -45,12 +43,9 @@
         </div>
       </div>
     </section>
-    <!-- Tambahan bunga di dekat tombol amplop -->
 
     <main id="main-content" class="hidden">
       <section id="hero-main" class="content-section hero-main-vertical">
-        <!-- Dekorasi daun di 4 sudut -->
-
         <div class="corner-leaf-wrapper" id="wrapper-top-right">
           <img
             src="assets/images/sudut-kanan-atas.png"
@@ -65,75 +60,61 @@
             class="corner-leaf-image"
           />
         </div>
-
-        <!-- Konten utama -->
         <p>We Are Getting Married</p>
-        <h1 id="main-couple-names">Reyhan & Risna</h1>
-        <p>Jumat, 4 Juli 2025</p>
-        <a href="#" id="btnSaveDate" class="btn-save-date">Save the Date</a>
+        <h1 id="main-couple-names"></h1>
+        <p id="main-event-date"></p>
+        <a href="#" id="btnSaveDate" class="btn-save-date" target="_blank"
+          >Save the Date</a
+        >
       </section>
 
       <section id="kutipan" class="content-section">
         <div class="container rustic-panel">
-          <blockquote>
-            “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
-            untukmu pasangan hidup dari jenismu sendiri...”
-          </blockquote>
-          <cite>Q.S. Ar-Rum: 21</cite>
+          <blockquote id="quote-text"></blockquote>
+          <cite id="quote-cite"></cite>
         </div>
       </section>
+
       <section id="mempelai" class="content-section">
         <div class="mempelai-wrapper">
           <div class="mempelai-profile groom">
             <img
-              src="assets/images/mempelai-pria.jpg"
-              alt="Foto Reyhan"
+              src=""
+              alt="Foto Mempelai Pria"
               class="mempelai-photo"
+              id="groom-photo"
             />
             <div class="mempelai-info">
-              <h3>Reyhan</h3>
-              <p>
-                Putra kedua dari pasangan <br />
-                Bapak [Nama Bapak Pria] <br />
-                & Ibu [Nama Ibu Pria]
-              </p>
+              <h3 id="groom-name"></h3>
+              <p id="groom-parents"></p>
             </div>
           </div>
-
           <div class="pemisah">&</div>
-
           <div class="mempelai-profile bride">
             <img
-              src="assets/images/mempelai-wanita.jpg"
-              alt="Foto Risna"
+              src=""
+              alt="Foto Mempelai Wanita"
               class="mempelai-photo"
+              id="bride-photo"
             />
             <div class="mempelai-info">
-              <h3>Risna</h3>
-              <p>
-                Putri pertama dari pasangan <br />
-                Bapak [Nama Bapak Wanita] <br />
-                & Ibu [Nama Ibu Wanita]
-              </p>
+              <h3 id="bride-name"></h3>
+              <p id="bride-parents"></p>
             </div>
           </div>
         </div>
       </section>
+
       <section id="save-the-date">
         <div class="save-date-photo">
-          <img
-            src="assets/images/mempelai-pria.jpg"
-            alt="Pre-wedding Reyhan & Risna"
-          />
+          <img src="" alt="Pre-wedding Photo" id="save-the-date-photo" />
         </div>
-
         <div class="save-date-info">
           <h2>Save The Date</h2>
           <p class="sub-heading">
             Catat tanggalnya dan kami harap Anda menjadi bagian dari hari
             bahagia kami.
           </p>
-
           <div id="countdown-timer">
             <div class="timer-box">
               <span id="days">00</span>
@@ -152,26 +133,22 @@
               <p>Detik</p>
             </div>
           </div>
-
           <div class="venue-details">
             <div class="venue-address">
               <i class="fas fa-map-marker-alt"></i>
               <p>
-                <strong>Gedung Pernikahan Rustic</strong><br />
-                Jl. Kenangan Indah No. 4, Bandung, Jawa Barat
+                <strong id="venue-name"></strong><br /><span
+                  id="venue-address"
+                ></span>
               </p>
             </div>
-            <a
-              href="https://maps.app.goo.gl/contoh"
-              target="_blank"
-              class="gmaps-button"
-            >
-              <i class="fas fa-map-marked-alt"></i>
-              Lihat Peta
+            <a href="#" id="gmaps-link" target="_blank" class="gmaps-button">
+              <i class="fas fa-map-marked-alt"></i> Lihat Peta
             </a>
           </div>
         </div>
       </section>
+
       <section id="love-story">
         <div class="container">
           <h2>Our Love Story</h2>
@@ -179,112 +156,17 @@
             Jejak langkah yang membawa kami ke hari bahagia ini.
           </p>
         </div>
-
-        <div class="timeline-road">
-          <div class="story-milestone align-left">
-            <div class="milestone-content">
-              <div class="milestone-photo">
-                <img src="assets/images/mempelai-pria.jpg" alt="Awal Bertemu" />
-                <div class="photo-caption">Awal Bertemu - 2021</div>
-              </div>
-              <div class="milestone-text">
-                <p>
-                  Sebuah acara sederhana menjadi awal dari segalanya, di mana
-                  takdir mempertemukan kami untuk pertama kalinya.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="story-milestone align-right">
-            <div class="milestone-content">
-              <div class="milestone-photo">
-                <img
-                  src="assets/images/mempelai-pria.jpg"
-                  alt="Kencan Pertama"
-                />
-                <div class="photo-caption">Kencan Pertama - 2022</div>
-              </div>
-              <div class="milestone-text">
-                <p>
-                  Obrolan panjang ditemani secangkir kopi hangat menjadi saksi
-                  bisu babak baru cerita kami yang penuh tawa.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="story-milestone align-left">
-            <div class="milestone-content">
-              <div class="milestone-photo">
-                <img src="assets/images/mempelai-pria.jpg" alt="Lamaran" />
-                <div class="photo-caption">The Proposal - 2024</div>
-              </div>
-              <div class="milestone-text">
-                <p>
-                  Di bawah langit senja, sebuah janji terucap yang akan
-                  menyatukan sisa hidup kami untuk selamanya.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="timeline-road" id="love-story-container"></div>
       </section>
+
       <section id="wedding-gift" class="content-section">
         <div class="container">
           <h2>Wedding Gift</h2>
-          <p class="gift-intro">
-            Kehadiran dan doa restu Bapak/Ibu/Saudara/i adalah hadiah terindah
-            bagi kami. Namun, jika ingin memberikan tanda kasih, kami telah
-            menyediakan beberapa opsi di bawah ini untuk memudahkan.
-          </p>
-
-          <div class="gift-options-container">
-            <div class="gift-card rotate-left">
-              <img
-                src="assets/images/logo-bca.png"
-                alt="Logo Bank BCA"
-                class="bank-logo"
-              />
-              <p class="account-number">
-                No. Rek: <span id="bca-number">1234567890</span>
-              </p>
-              <p class="account-name">a.n. Reyhan</p>
-              <button class="copy-button" data-target="bca-number">
-                <i class="fas fa-copy"></i> Salin
-              </button>
-            </div>
-
-            <div class="gift-card rotate-right">
-              <img
-                src="assets/images/gopay-logo.png"
-                alt="Logo GoPay"
-                class="bank-logo"
-              />
-              <p class="account-number">
-                No: <span id="gopay-number">08123456789</span>
-              </p>
-              <p class="account-name">a.n. Risna</p>
-              <button class="copy-button" data-target="gopay-number">
-                <i class="fas fa-copy"></i> Salin
-              </button>
-            </div>
-
-            <div class="gift-card">
-              <i class="fas fa-gift gift-icon"></i>
-              <h3>Kirim Hadiah</h3>
-              <p class="account-name">
-                Untuk teman-teman yang ingin mengirimkan kado fisik, bisa
-                mengirimkannya ke alamat berikut:
-              </p>
-              <p class="gift-address">
-                Jl. Kenangan Indah No. 4, Komplek Bahagia Selalu, Bandung, Jawa
-                Barat, 40123
-              </p>
-            </div>
-          </div>
+          <p class="gift-intro" id="gift-intro"></p>
+          <div class="gift-options-container" id="gift-options-container"></div>
         </div>
       </section>
+
       <section id="comment-section">
         <div class="guest-book-container">
           <div class="guest-book-header">
@@ -294,13 +176,12 @@
               digital ini.
             </p>
           </div>
-
           <form id="comment-form" class="comment-form">
             <div class="form-group">
-              <label for="guest-name">Nama Anda</label>
+              <label for="guest-name-input">Nama Anda</label>
               <input
                 type="text"
-                id="guest-name"
+                id="guest-name-input"
                 name="name"
                 placeholder="Tulis nama Anda di sini..."
                 required
@@ -318,13 +199,49 @@
             </div>
             <button type="submit" class="submit-button">Kirim Ucapan</button>
           </form>
-
           <hr class="rustic-divider" />
-
           <div id="comment-list" class="comment-list"></div>
         </div>
       </section>
+      <section id="gallery-section" class="content-section">
+        <div class="container">
+          <h2>Our Moments</h2>
+          <p class="sub-heading">
+            Kenangan yang terukir, cerita yang tak akan terlupa.
+          </p>
+        </div>
+
+        <div id="gallery-container" class="gallery-collage"></div>
+      </section>
+
+      <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" />
+      </div>
+      <section id="penutup-section" class="content-section">
+        <div class="penutup-photo-wrapper">
+          <img id="penutup-photo" src="" alt="Foto Penutup Mempelai" />
+        </div>
+
+        <h2>Terima Kasih</h2>
+        <p id="penutup-ucapan" class="ucapan-terima-kasih"></p>
+
+        <div id="penutup-couple-names" class="final-couple-names"></div>
+      </section>
     </main>
+    <footer>
+      <div class="socials">
+        <a id="footer-instagram" href="#" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <p class="credit" id="footer-credit"></p>
+    </footer>
+    <audio id="background-music" loop></audio>
+
+    <button id="music-toggle-btn" class="music-button hidden">
+      <i class="fas fa-compact-disc"></i>
+    </button>
 
     <script src="app.js"></script>
   </body>
