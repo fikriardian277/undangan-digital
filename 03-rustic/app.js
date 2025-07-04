@@ -96,11 +96,10 @@ const config = {
     foto: "assets/images/galeri-5.jpg",
   },
   kredit: {
-    nama: "TemuHati", // Nama brand Anda
-    instagramUrl: "https://instagram.com/temuhati.id", // URL khusus untuk ikon Instagram
+    nama: "TemuHati",
+    instagramUrl: "https://instagram.com/temuhati.id",
   },
-  // MUSIK
-  musik: "assets/audio/youlookatme.mp3", // Ganti dengan path file musik Anda
+  musik: "assets/audio/youlookatme.mp3",
 };
 
 /* =================================================================
@@ -109,14 +108,12 @@ const config = {
 document.addEventListener("DOMContentLoaded", () => {
   const musicPlayer = document.getElementById("background-music");
   const musicToggleButton = document.getElementById("music-toggle-btn");
-  // === FUNGSI UTAMA UNTUK MENGISI SEMUA DATA KE HTML ===
+
   function renderData() {
-    // Helper function
     const set = (id, prop, value) => {
       const el = document.getElementById(id);
       if (el) el[prop] = value;
     };
-
     set("title-tag", "textContent", `Undangan Pernikahan ${config.coupleName}`);
     set(
       "cover-couple-names",
@@ -125,25 +122,20 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     set("main-couple-names", "textContent", config.coupleName);
     set("main-event-date", "textContent", config.event.displayDate);
-
     document.getElementById(
       "cover-bg-image"
     ).style.backgroundImage = `url('${config.images.coverBackground}')`;
     document.getElementById(
       "cover-overlay-image"
     ).style.backgroundImage = `url('${config.images.coverOverlay}')`;
-
     set("quote-text", "textContent", config.quote.text);
     set("quote-cite", "textContent", config.quote.cite);
-
     set("groom-photo", "src", config.groom.photo);
     set("groom-name", "textContent", config.groom.fullName);
     set("groom-parents", "innerHTML", config.groom.parents);
-
     set("bride-photo", "src", config.bride.photo);
     set("bride-name", "textContent", config.bride.fullName);
     set("bride-parents", "innerHTML", config.bride.parents);
-
     set("save-the-date-photo", "src", config.images.saveTheDate);
     set("venue-name", "textContent", config.event.venueName);
     set("venue-address", "textContent", config.event.address);
@@ -181,24 +173,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // ** KODE DARI FUNGSI KEDUA DIPINDAHKAN KE SINI **
     set("penutup-photo", "src", config.penutup.foto);
     set("penutup-ucapan", "textContent", config.penutup.ucapanTerimaKasih);
     set("penutup-couple-names", "textContent", config.coupleName);
 
-    // --- Mengisi Footer Sesuai Standar Baru ---
     const instagramLink = document.getElementById("footer-instagram");
     if (instagramLink) {
       instagramLink.href = config.kredit.instagramUrl;
     }
-
     const creditText = document.getElementById("footer-credit");
     if (creditText) {
       creditText.innerHTML = `Made with <i class="fas fa-heart"></i> by ${config.kredit.nama}`;
     }
     const penutupSectionEl = document.getElementById("penutup-section");
     if (penutupSectionEl && config.images.penutupBackground) {
-      // Langsung buat string background yang lengkap di sini
       penutupSectionEl.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${config.images.penutupBackground}')`;
     }
     const musicSourceEl = document.getElementById("background-music");
@@ -207,9 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === Fungsi untuk Link Google Calendar ===
   function setupSaveTheDateLink() {
-    // ... (Tidak ada perubahan di sini) ...
     const btn = document.getElementById("btnSaveDate");
     if (!btn) return;
     const startDate = new Date(config.event.date);
@@ -226,9 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.href = calendarUrl;
   }
 
-  // === Fungsi untuk Memulai Countdown ===
   function startCountdown() {
-    // ... (Tidak ada perubahan di sini) ...
     const weddingDate = new Date(config.event.date).getTime();
     const countdownInterval = setInterval(() => {
       const now = new Date().getTime();
@@ -255,11 +239,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  // === BLOK KODE KOMENTAR (STANDAR) ===
+  // === BLOK KODE KOMENTAR (DENGAN LOGIKA KEHADIRAN) ===
   const commentForm = document.getElementById("comment-form");
   const commentList = document.getElementById("comment-list");
+
   const loadComments = () => {
-    // ... (Tidak ada perubahan di sini) ...
     if (!commentList || !config.backend || !config.backend.url) return;
     commentList.innerHTML =
       "<p style='text-align: center;'>Memuat ucapan...</p>";
@@ -269,16 +253,21 @@ document.addEventListener("DOMContentLoaded", () => {
         commentList.innerHTML = "";
         if (data && data.length > 0) {
           data.forEach((comment) => {
-            const commentHTML = `<div class="comment-item"><p class="comment-author">${escapeHTML(
-              comment.Nama
-            )}</p><p class="comment-text">${escapeHTML(
-              comment.Ucapan
-            )}</p><p class="comment-date">${new Date(
-              comment.Timestamp
-            ).toLocaleDateString("id-ID", {
-              day: "numeric",
-              month: "long",
-            })}</p></div>`;
+            // PENYESUAIAN: Menampilkan status kehadiran
+            const commentHTML = `
+              <div class="comment-item">
+                <p class="comment-author">
+                  ${escapeHTML(comment.Nama)} 
+                  <span class="status">${escapeHTML(comment.Kehadiran)}</span>
+                </p>
+                <p class="comment-text">${escapeHTML(comment.Ucapan)}</p>
+                <p class="comment-date">${new Date(
+                  comment.Timestamp
+                ).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "long",
+                })}</p>
+              </div>`;
             commentList.innerHTML += commentHTML;
           });
         } else {
@@ -292,19 +281,22 @@ document.addEventListener("DOMContentLoaded", () => {
           "<p style='text-align: center;'>Gagal memuat ucapan.</p>";
       });
   };
+
   if (commentForm) {
     commentForm.addEventListener("submit", function (e) {
-      // ... (Tidak ada perubahan di sini) ...
       e.preventDefault();
       const submitButton = this.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.innerText = "Mengirim...";
+
+      // PENYESUAIAN: Mengambil nilai kehadiran dari radio button
       const dataToSend = {
         Nama: this.elements.name.value,
         Ucapan: this.elements.comment.value,
-        Kehadiran: "Hadir",
+        Kehadiran: this.elements.kehadiran.value,
         sheetName: config.backend.sheetName,
       };
+
       fetch(config.backend.url, {
         method: "POST",
         mode: "no-cors",
@@ -322,11 +314,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
   }
+
   function escapeHTML(str) {
     if (!str) return "";
     return str.replace(
       /[&<>"']/g,
-      (m) => ({ "&": "&", "<": "<", ">": ">", '"': '"', "'": "'" }[m])
+      (m) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;",
+        }[m])
     );
   }
 
@@ -364,7 +364,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Fungsi untuk Nama Tamu dari URL ===
   function handleGuestName() {
-    // ... (Tidak ada perubahan di sini) ...
     const urlParams = new URLSearchParams(window.location.search);
     const guest = urlParams.get("to");
     const guestNameElement = document.getElementById("guest-name-placeholder");
@@ -387,12 +386,14 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { threshold: 0.2 }
   );
+
   function activateObservers() {
     const sections = document.querySelectorAll(
       "#hero-main, #kutipan, #mempelai, #save-the-date, .story-milestone, #wedding-gift, #comment-section, .gallery-item, #penutup-section"
     );
     sections.forEach((section) => mainObserver.observe(section));
   }
+
   if (openButton) {
     const invitationOpener = document.getElementById("invitation-opener");
     setTimeout(() => invitationOpener.classList.add("is-visible"), 800);
@@ -400,8 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openButton.addEventListener("click", () => {
       invitationOpener.classList.add("drop-down");
-
-      // Logika untuk menampilkan konten utama
       setTimeout(() => {
         mainContent.classList.remove("hidden");
         mainContent.classList.add("fade-in");
@@ -410,8 +409,6 @@ document.addEventListener("DOMContentLoaded", () => {
           startCountdown();
           countdownStarted = true;
         }
-
-        // PINDAHKAN BLOK MUSIK KE DALAM SINI
         musicToggleButton.classList.remove("hidden");
         if (musicPlayer) {
           musicPlayer
@@ -420,15 +417,12 @@ document.addEventListener("DOMContentLoaded", () => {
           musicToggleButton.classList.add("playing");
         }
       }, 500);
-
-      // Logika untuk menyembunyikan cover
       setTimeout(() => {
         heroCover.classList.add("hidden");
         body.style.overflow = "auto";
       }, 1200);
     });
 
-    // Menambahkan listener untuk tombol toggle musik
     if (musicToggleButton && musicPlayer) {
       musicToggleButton.addEventListener("click", () => {
         if (musicPlayer.paused) {
@@ -441,11 +435,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
   const giftOptionsContainer = document.getElementById(
     "gift-options-container"
   );
   if (giftOptionsContainer) {
-    // ... (Tidak ada perubahan di sini) ...
     giftOptionsContainer.addEventListener("click", function (e) {
       const button = e.target.closest(".copy-button");
       if (button) {

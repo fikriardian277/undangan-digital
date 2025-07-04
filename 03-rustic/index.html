@@ -188,6 +188,31 @@
               />
             </div>
             <div class="form-group">
+              <label>Konfirmasi Kehadiran</label>
+              <div class="radio-group">
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="hadir"
+                    name="kehadiran"
+                    value="Hadir"
+                    required
+                    checked
+                  />
+                  <label for="hadir">Hadir</label>
+                </div>
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="tidak-hadir"
+                    name="kehadiran"
+                    value="Tidak Bisa Hadir"
+                  />
+                  <label for="tidak-hadir">Tidak Bisa Hadir</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="guest-comment">Ucapan Anda</label>
               <textarea
                 id="guest-comment"
@@ -218,6 +243,7 @@
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" />
       </div>
+
       <section id="penutup-section" class="content-section">
         <div class="penutup-photo-wrapper">
           <img id="penutup-photo" src="" alt="Foto Penutup Mempelai" />

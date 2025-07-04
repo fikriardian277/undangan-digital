@@ -1078,9 +1078,11 @@ button.envelope-paper:hover {
 /* =================================================================
     11. SECTION: UCAPAN & DOA (#comment-section)
 ================================================================= */
+/* =================================================================
+   BAGIAN BUKU TAMU / KOMENTAR (DENGAN FORM KEHADIRAN)
+================================================================= */
 #comment-section {
   padding: 6rem 1rem;
-
   background-color: var(--background-color);
   overflow: hidden;
   opacity: 0;
@@ -1097,7 +1099,7 @@ button.envelope-paper:hover {
   margin: 0 auto;
   background-image: url("assets/images/paper-texture.jpeg");
   background-color: #fdfbf5;
-  padding: 2rem;
+  padding: 2.5rem; /* Sedikit lebih lega */
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid #d4c3b5;
@@ -1108,10 +1110,9 @@ button.envelope-paper:hover {
   margin-bottom: 2.5rem;
 }
 .guest-book-header h2 {
-  font-family: var(--font-heading);
+  font-family: var(--font-script); /* Menggunakan font script */
   font-size: 2.5rem;
   color: var(--text-color-dark);
-  font-family: var(--font-script);
 }
 
 .comment-form .form-group {
@@ -1123,6 +1124,7 @@ button.envelope-paper:hover {
   margin-bottom: 0.5rem;
   font-family: var(--font-heading);
   font-weight: 700;
+  color: var(--text-color-dark);
 }
 
 .comment-form input,
@@ -1136,6 +1138,7 @@ button.envelope-paper:hover {
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .comment-form input:focus,
 .comment-form textarea:focus {
   outline: none;
@@ -1143,8 +1146,30 @@ button.envelope-paper:hover {
   box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.2);
 }
 
+/* --- TAMBAHAN CSS UNTUK FORM KEHADIRAN --- */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.radio-item label {
+  /* Label untuk radio button tidak perlu tebal */
+  font-weight: normal;
+  margin-bottom: 0;
+}
+.radio-item input[type="radio"] {
+  width: 30px;
+  height: 30px;
+  accent-color: var(--primary-accent); /* Memberi warna modern & simpel */
+}
+/* --- AKHIR TAMBAHAN CSS --- */
+
 .submit-button {
-  /* Menggunakan style yang sama dengan gmaps-button */
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -1165,68 +1190,61 @@ button.envelope-paper:hover {
 
 .rustic-divider {
   border: 0;
-  height: 3px;
+  height: 1px;
   background-image: linear-gradient(
     to right,
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0)
   );
-  margin: 1rem 0;
+  margin: 2.5rem 0;
 }
+
 .comment-list {
-  max-height: 300px; /* Batasi tinggi maksimal list komentar */
-  overflow-y: auto; /* Tampilkan scrollbar vertikal jika konten melebihi batas */
+  max-height: 400px;
+  overflow-y: auto;
   margin-top: 1rem;
-  padding-right: 1rem; /* Opsional: Beri ruang agar scrollbar tidak menempel di teks */
+  padding-right: 1rem;
 }
 .comment-list .comment-item {
+  padding: 1rem 0;
   border-bottom: 1px solid #e0d5c9;
-  padding: 0.1rem 0;
 }
 .comment-list .comment-item:last-child {
   border-bottom: none;
 }
-/* Definisikan animasinya */
-@keyframes fadeInAndUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 .comment-author {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.comment-text {
   font-size: 1rem;
-  line-height: 1.7;
-  white-space: pre-wrap; /* Agar baris baru di komentar tetap ditampilkan */
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
-
+.comment-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
 .comment-date {
   font-size: 0.8rem;
-  color: #444242;
+  color: #0e0d0d;
+  margin-top: 0.5rem;
   text-align: right;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Styling untuk Badge Status di Daftar Komentar */
+.comment-author .status {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  font-family: var(--font-body);
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 /* =================================================================
    12. SECTION: GALERI (GAYA KOLASE RUSTIC)
@@ -1367,6 +1385,7 @@ button.envelope-paper:hover {
     transform: scale(1);
   }
 }
+
 /* =================================================================
    13. SECTION: PENUTUP & FOOTER (DENGAN ANIMASI)
 ================================================================= */

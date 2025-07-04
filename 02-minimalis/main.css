@@ -203,7 +203,7 @@ body {
 }
 .mempelai-intro {
   max-width: 600px;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 2rem auto;
 }
 .mempelai-intro h2 {
   font-family: var(--font-heading);
@@ -216,7 +216,7 @@ body {
   line-height: 1.6;
 }
 .mempelai-container {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -793,6 +793,7 @@ main.hidden {
   }
   .separator {
     font-size: 3rem;
+    align-items: center;
   }
   .countdown-box {
     min-width: 65px;
@@ -803,5 +804,21 @@ main.hidden {
   }
   .countdown-box p {
     font-size: 0.7rem;
+  }
+  .mempelai-container {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+
+  .separator {
+    order: 2;
+  }
+
+  .mempelai-card:first-child {
+    order: 1;
+  }
+
+  .mempelai-card:last-child {
+    order: 3;
   }
 }
