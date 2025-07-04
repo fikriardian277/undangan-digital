@@ -52,18 +52,15 @@ body {
   overflow: hidden;
   transition: opacity 1.2s ease, visibility 1.2s ease;
 }
+
 #hero-cover::before {
   content: "";
   position: absolute;
-  inset: 0; /* shorthand untuk top, bottom, left, right: 0 */
-
-  /* KUNCI: Tambahkan baris ini */
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
-
-  z-index: 3; /* Pastikan lapisan ini di atas gambar, di bawah teks */
+  z-index: 3;
 }
 
-/* --- Lapisan Latar Belakang di dalam #hero-cover --- */
 .cover-background,
 .cover-overlay {
   position: absolute;
@@ -91,17 +88,21 @@ body {
   z-index: 2;
 }
 
-/* --- Konten Teks di dalam #hero-cover --- */
 .hero-content {
-  position: absolute; /* <-- KUNCI UTAMA */
-  top: 62%; /* Atur posisi dari atas */
-  left: 50%; /* Atur posisi dari kiri */
-  transform: translate(-50%, -50%); /* Trik agar posisi pas di tengah */
-
-  width: 90%; /* Lebar blok teks, agar tidak terlalu panjang di layar besar */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 220px);
+  padding: 40vh 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--text-color-light);
   z-index: 4;
 }
+
 .hero-content p {
   font-size: 1rem;
   margin-bottom: 0.5rem;
@@ -119,38 +120,37 @@ body {
   text-align: center;
   margin-top: 1.5rem;
 }
+
 .guest-info p {
   margin: 0;
 }
+
 .guest-info .guest-name {
   font-weight: 700;
 }
-/* --- Animasi Masuk untuk Konten Teks di Cover --- */
+
 .hero-content > p,
 #hero-cover h1,
 .guest-info {
-  /* State awal: transparan dan sedikit di bawah */
   opacity: 0;
-
-  /* Definisikan animasi */
   animation-name: fadeUp;
-  animation-duration: 1.2s; /* Durasi animasi */
+  animation-duration: 1.2s;
   animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
-  animation-fill-mode: forwards; /* Tetap di state akhir setelah selesai */
+  animation-fill-mode: forwards;
 }
 
-/* Atur jeda untuk setiap elemen agar muncul berurutan */
 .hero-content > p {
   animation-delay: 0.5s;
 }
+
 #hero-cover h1 {
   animation-delay: 0.8s;
 }
+
 .guest-info {
   animation-delay: 1.1s;
 }
 
-/* Definisikan keyframes untuk animasinya */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -161,6 +161,7 @@ body {
     transform: translateY(0);
   }
 }
+
 /* =================================================================
     4. BAGIAN AMPLOP ANIMASI (di dalam #hero-cover)
 ================================================================= */
@@ -186,7 +187,6 @@ body {
   width: 100%;
   height: 100%;
   background-image: url("assets/images/paper-texture.jpeg");
-
   border-radius: 8px;
   z-index: 3;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -199,7 +199,6 @@ body {
   width: 100%;
   height: 55%;
   background-image: url("assets/images/paper-texture.jpeg");
-
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
   transform-origin: top center;
   z-index: 1;
@@ -231,22 +230,25 @@ button.envelope-paper {
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s,
     box-shadow 0.3s ease;
 }
+
 button.envelope-paper:hover {
   transform: scale(1.03) translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Kelas Kontrol Animasi untuk Amplop --- */
 #invitation-opener.is-visible {
   transform: translate(-50%, 0);
   opacity: 1;
 }
+
 #invitation-opener.is-opening .envelope-flap {
   transform: rotateX(180deg);
 }
+
 #invitation-opener.is-opening .envelope-paper {
   transform: translateY(-70px);
 }
+
 #invitation-opener.drop-down {
   transition: transform 2s cubic-bezier(0.76, 0, 0.24, 1), opacity 5s ease-out;
   transform: translateY(150vh) rotate(15deg) scale(0.7);
@@ -260,11 +262,11 @@ button.envelope-paper:hover {
   opacity: 0;
   transition: opacity 1s ease;
 }
+
 #main-content.fade-in {
   opacity: 1;
 }
 
-/* --- Gaya Umum untuk Section di dalam #main-content --- */
 .content-section {
   padding: 6rem 2rem;
   text-align: center;
@@ -286,6 +288,38 @@ button.envelope-paper:hover {
   width: 100%;
 }
 
+/* --- ANIMASI UNTUK KONTEN HERO SECTION --- */
+#hero-main p,
+#hero-main h1,
+#hero-main .btn-save-date {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+#hero-main.is-visible p,
+#hero-main.is-visible h1,
+#hero-main.is-visible .btn-save-date {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#hero-main.is-visible p:first-of-type {
+  transition-delay: 0.5s;
+}
+
+#hero-main.is-visible h1 {
+  transition-delay: 0.8s;
+}
+
+#hero-main.is-visible p:last-of-type {
+  transition-delay: 1.1s;
+}
+
+#hero-main.is-visible .btn-save-date {
+  transition-delay: 1.5s;
+}
+
 /* =================================================================
     6. GAYA SPESIFIK PER SECTION
 ================================================================= */
@@ -298,18 +332,23 @@ button.envelope-paper:hover {
   background-size: cover;
   background-position: center;
   color: var(--text-color-light);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px;
+  text-align: center;
 }
 
 #hero-main h1 {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8vw, 5rem);
 }
+
 .btn-save-date {
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
   font-size: 1.1rem;
   font-family: var(--font-heading);
-  background-color: var(--primary-accent);
+  background-image: url(assets/images/paper-texture.jpeg);
   color: var(--text-color-light);
   text-decoration: none;
   border-radius: 8px;
@@ -318,15 +357,583 @@ button.envelope-paper:hover {
 }
 
 .btn-save-date:hover {
-  background-color: #7b5a4f;
   transform: scale(1.05);
 }
 
+/* Dekorasi Daun di #hero-main */
+.corner-leaf-wrapper {
+  position: absolute;
+  width: clamp(80px, 18vw, 200px);
+  z-index: 1;
+}
+
+.corner-leaf-image {
+  width: 100%;
+  height: auto;
+  animation: sway 6s ease-in-out infinite;
+}
+
+#wrapper-top-right {
+  top: 0;
+  right: 0;
+}
+
+#wrapper-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+#wrapper-top-right .corner-leaf-image,
+#wrapper-bottom-left .corner-leaf-image {
+  animation-delay: -3s;
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-3deg);
+  }
+  50% {
+    transform: translateX(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(2px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
 /* --- Section: Kutipan (#kutipan) --- */
+/* --- Section: Kutipan (#kutipan) --- */
+
+/* Latar belakang section dengan gambar dan overlay gelap */
+#kutipan {
+  min-height: auto;
+  padding: 4rem 2rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("assets/images/kutipan-bg.jpeg"); /* Ganti dengan nama file gambarmu */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Memberi efek parallax saat scroll */
+}
+
+/* Panel yang membungkus kutipan */
 .rustic-panel {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 2.5rem;
+  padding: 2rem 2rem;
+
+  position: relative; /* Diperlukan untuk hiasan tanda kutip */
+  z-index: 1;
+}
+
+/* Teks kutipan utama */
+#kutipan blockquote {
+  font-family: var(--font-script); /* Pakai font Playfair Display yang elegan */
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 1.6rem); /* Ukuran font responsif */
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  position: relative; /* Agar tanda kutip tidak menimpa teks */
+  z-index: 2;
+  color: var(--text-color-light);
+}
+
+/* Hiasan tanda kutip besar di belakang teks */
+.rustic-panel::before {
+  content: "“";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-script);
+  font-size: 8rem;
+  color: var(--text-color-light);
+
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Sumber kutipan (Q.S. Ar-Rum: 21) */
+#kutipan cite {
+  font-style: normal;
+  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: 0.9em;
+  color: var(--text-color-light);
+}
+
+/* Animasi tambahan saat di-scroll */
+#kutipan .rustic-panel {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#kutipan.is-visible .rustic-panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =================================================================
+    7. SECTION: MEMPELAI (#mempelai) - GAYA SCRAPBOOK
+================================================================= */
+#mempelai {
+  background-image: url(assets/images/paper-kutipan.jpeg);
+  overflow: hidden; /* Penting untuk animasi */
+}
+
+.mempelai-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.mempelai-profile {
+  position: relative; /* Kunci untuk menumpuk elemen */
+  width: 45%;
+}
+
+.mempelai-info {
+  background-image: url("assets/images/paper-texture.jpeg");
+  padding: 3rem;
+  padding-top: 10rem; /* Beri ruang lebih di atas untuk foto */
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.mempelai-photo {
+  position: absolute;
+  top: -50px; /* Posisi foto menjorok ke atas */
+  width: 200px;
+  height: 200px;
+  border-radius: 0%;
+  object-fit: cover;
+  border: 6px solid var(--text-color-light); /* Border putih ala foto fisik */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Foto berada di atas panel info */
+}
+
+/* Posisi spesifik untuk pria (kiri) dan wanita (kanan) */
+.groom .mempelai-photo {
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg); /* Posisikan di tengah dan miringkan */
+}
+
+.bride .mempelai-photo {
+  left: 50%;
+  transform: translateX(-50%) rotate(8deg); /* Posisikan di tengah dan miringkan ke arah berlawanan*/
+}
+
+.mempelai-profile h3 {
+  font-family: var(--font-script);
+  font-size: 3.5rem;
+  color: var(--text-color-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.mempelai-profile p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6c584c;
+}
+
+.pemisah {
+  font-family: var(--font-script);
+  font-size: 4rem;
+  color: var(--primary-accent);
+  align-self: center; /* Posisikan di tengah secara vertikal */
+}
+
+/* === ANIMASI BARU === */
+.mempelai-profile .mempelai-info,
+.mempelai-profile .mempelai-photo,
+.pemisah {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#mempelai.is-visible .groom .mempelai-info {
+  opacity: 1;
+  transform: translateX(-20px);
+  transition-delay: 0.2s;
+}
+
+#mempelai.is-visible .groom .mempelai-photo {
+  opacity: 1;
+  transform: translateX(-50%) rotate(-8deg) scale(1);
+  transition-delay: 0.4s;
+}
+
+#mempelai.is-visible .bride .mempelai-info {
+  opacity: 1;
+  transform: translateX(20px);
+  transition-delay: 0.2s;
+}
+
+#mempelai.is-visible .bride .mempelai-photo {
+  opacity: 1;
+  transform: translateX(-50%) rotate(8deg) scale(1);
+  transition-delay: 0.4s;
+}
+
+#mempelai.is-visible .pemisah {
+  opacity: 1;
+  transform: scale(1.1);
+  transition-delay: 0.6s;
+}
+
+/* Atur kondisi awal sebelum animasi */
+.groom .mempelai-info {
+  transform: translateX(20px);
+}
+.groom .mempelai-photo {
+  transform: translateX(-50%) rotate(0deg) scale(0.9);
+}
+.bride .mempelai-info {
+  transform: translateX(-20px);
+}
+.bride .mempelai-photo {
+  transform: translateX(-50%) rotate(0deg) scale(0.9);
+}
+.pemisah {
+  transform: scale(0.8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mempelai-wrapper {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .mempelai-profile {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+/* =================================================================
+    8. SECTION: SAVE THE DATE (#save-the-date)
+================================================================= */
+#save-the-date {
+  display: flex;
+  min-height: 90vh;
+  background-color: var(--background-color);
+}
+
+.save-date-photo {
+  flex-basis: 45%; /* Lebar foto 45% dari section */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    85% 100%,
+    0 100%
+  ); /* Membuat sisi kanan miring */
+}
+
+.save-date-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.1);
+}
+
+.save-date-info {
+  flex-basis: 55%; /* Lebar info 55% */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 5rem;
+  text-align: left;
+}
+
+.save-date-info h2 {
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: var(--primary-accent);
+}
+
+.save-date-info .sub-heading {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  max-width: 400px;
+}
+
+#countdown-timer {
+  display: flex;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.timer-box {
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 50px;
+}
+
+.timer-box span {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-color-dark);
+}
+
+.timer-box p {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.venue-details {
+  border-left: 3px solid var(--primary-accent);
+  padding-left: 1.5rem;
+}
+
+.venue-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.venue-address i {
+  color: var(--primary-accent);
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.gmaps-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.6rem;
+  background-color: var(--primary-accent);
+  color: var(--text-color-light);
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
+}
+
+.gmaps-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Animasi on-scroll */
+.save-date-photo,
+.save-date-info > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+#save-the-date.is-visible .save-date-photo {
+  opacity: 1;
+  transform: translateY(0);
+}
+#save-the-date.is-visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+#save-the-date.is-visible .sub-heading {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+#save-the-date.is-visible #countdown-timer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+#save-the-date.is-visible .venue-details {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  #save-the-date {
+    flex-direction: column;
+  }
+  .save-date-photo {
+    flex-basis: 40vh; /* Foto menjadi header dengan tinggi 40% layar */
+    min-height: 300px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Sisi bawah miring */
+  }
+  .save-date-info {
+    padding: 3rem 2rem;
+    text-align: center;
+    align-items: center;
+  }
+  .venue-details {
+    text-align: left;
+  }
+}
+/* =================================================================
+    9. SECTION: LOVE STORY (#love-story) - VERSI PAPAN CERITA
+================================================================= */
+#love-story {
+  padding: 2rem 1rem;
+  background-image: url("assets/images/wood-texture.jpeg"); /* Latar belakang tekstur kayu */
+  background-color: #6c584c; /* Warna dasar jika gambar gagal dimuat */
+  position: relative;
+  overflow-x: hidden;
+}
+
+#love-story h2,
+#love-story .sub-heading {
+  text-align: center;
+  color: var(--text-color-dark);
+}
+#love-story h2 {
+  font-size: 2.5rem;
+  font-family: var(--font-script);
+}
+#love-story .sub-heading {
+  margin-bottom: 4rem;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.timeline-road {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Membuat garis 'tali' vertikal di tengah */
+.timeline-road::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background-image: linear-gradient(to bottom, #4e342e 60%, transparent 100%);
+  background-size: 3px 15px; /* Efek garis putus-putus */
+}
+
+.story-milestone {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 50%;
+}
+
+/* Mengatur posisi selang-seling */
+.story-milestone.align-left {
+  left: 0;
+  padding-right: 30px;
+}
+.story-milestone.align-right {
+  left: 50%;
+  padding-left: 30px;
+}
+
+/* Titik penanda di 'tali' */
+.story-milestone::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 4px solid var(--primary-accent);
+  border-radius: 50%;
+  z-index: 1;
+}
+.align-left::after {
+  right: -8px;
+}
+.align-right::after {
+  left: -8px;
+}
+
+/* Wrapper untuk foto polaroid */
+.milestone-photo {
+  background-color: #fff;
+  padding: 10px;
+  padding-bottom: 45px; /* Ruang untuk caption */
+  border-radius: 3px;
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-bottom: 1rem;
+}
+.align-left .milestone-photo {
+  transform: rotate(-5deg);
+}
+.align-right .milestone-photo {
+  transform: rotate(5deg);
+}
+
+.milestone-photo img {
+  width: 100%;
+  display: block;
+}
+.photo-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Teks deskripsi cerita */
+.milestone-text {
+  padding-top: 0.5rem;
+  color: var(--text-color-light);
+  font-size: 0.95rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Animasi */
+.milestone-content {
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* Kondisi awal sebelum animasi */
+.story-milestone {
+  opacity: 0;
+}
+.align-left .milestone-content {
+  transform: translateX(-30px);
+}
+.align-right .milestone-content {
+  transform: translateX(30px);
+}
+
+/* Saat terlihat */
+.story-milestone.is-visible {
+  opacity: 1;
+}
+.story-milestone.is-visible .milestone-content {
+  transform: translateX(0);
+}
+
+/* Responsive untuk mobile, dibuat jadi satu kolom */
+@media (max-width: 768px) {
+  .timeline-road::before {
+    left: 10px;
+  } /* Garis di paling kiri */
+  .story-milestone {
+    width: 100%;
+    left: 0 !important; /* Semua jadi rata kiri */
+    padding-left: 40px;
+    padding-right: 0;
+  }
+  .story-milestone::after {
+    left: 2px;
+  }
 }
 
 /* =================================================================
@@ -337,6 +944,9 @@ button.envelope-paper:hover {
   .content-section h2 {
     font-size: 2rem;
   }
+  .corner-leaf-wrapper {
+    width: clamp(80px, 25vw, 160px);
+  }
 }
 
 @media (max-width: 480px) {
@@ -346,11 +956,13 @@ button.envelope-paper:hover {
   }
 
   .envelope {
-    /* Sedikit memperkecil amplop di layar HP */
     transform: scale(0.9);
   }
 
   .content-section {
     padding: 4rem 1rem;
+  }
+  .corner-leaf-wrapper {
+    width: clamp(60px, 30vw, 120px);
   }
 }
