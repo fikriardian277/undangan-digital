@@ -230,6 +230,100 @@
           </div>
         </div>
       </section>
+      <section id="wedding-gift" class="content-section">
+        <div class="container">
+          <h2>Wedding Gift</h2>
+          <p class="gift-intro">
+            Kehadiran dan doa restu Bapak/Ibu/Saudara/i adalah hadiah terindah
+            bagi kami. Namun, jika ingin memberikan tanda kasih, kami telah
+            menyediakan beberapa opsi di bawah ini untuk memudahkan.
+          </p>
+
+          <div class="gift-options-container">
+            <div class="gift-card rotate-left">
+              <img
+                src="assets/images/logo-bca.png"
+                alt="Logo Bank BCA"
+                class="bank-logo"
+              />
+              <p class="account-number">
+                No. Rek: <span id="bca-number">1234567890</span>
+              </p>
+              <p class="account-name">a.n. Reyhan</p>
+              <button class="copy-button" data-target="bca-number">
+                <i class="fas fa-copy"></i> Salin
+              </button>
+            </div>
+
+            <div class="gift-card rotate-right">
+              <img
+                src="assets/images/gopay-logo.png"
+                alt="Logo GoPay"
+                class="bank-logo"
+              />
+              <p class="account-number">
+                No: <span id="gopay-number">08123456789</span>
+              </p>
+              <p class="account-name">a.n. Risna</p>
+              <button class="copy-button" data-target="gopay-number">
+                <i class="fas fa-copy"></i> Salin
+              </button>
+            </div>
+
+            <div class="gift-card">
+              <i class="fas fa-gift gift-icon"></i>
+              <h3>Kirim Hadiah</h3>
+              <p class="account-name">
+                Untuk teman-teman yang ingin mengirimkan kado fisik, bisa
+                mengirimkannya ke alamat berikut:
+              </p>
+              <p class="gift-address">
+                Jl. Kenangan Indah No. 4, Komplek Bahagia Selalu, Bandung, Jawa
+                Barat, 40123
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="comment-section">
+        <div class="guest-book-container">
+          <div class="guest-book-header">
+            <h2>Ucapan & Doa Restu</h2>
+            <p>
+              Kirimkan pesan hangat dan doa terbaik Anda untuk kami di buku tamu
+              digital ini.
+            </p>
+          </div>
+
+          <form id="comment-form" class="comment-form">
+            <div class="form-group">
+              <label for="guest-name">Nama Anda</label>
+              <input
+                type="text"
+                id="guest-name"
+                name="name"
+                placeholder="Tulis nama Anda di sini..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="guest-comment">Ucapan Anda</label>
+              <textarea
+                id="guest-comment"
+                name="comment"
+                rows="4"
+                placeholder="Tulis ucapan dan doa Anda untuk kami..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-button">Kirim Ucapan</button>
+          </form>
+
+          <hr class="rustic-divider" />
+
+          <div id="comment-list" class="comment-list"></div>
+        </div>
+      </section>
     </main>
 
     <script src="app.js"></script>

@@ -1,5 +1,5 @@
 /* =================================================================
-    LOGIKA INTERAKTIF UNTUK TEMA RUSTIC (FINAL DENGAN SEMUA FITUR)
+    LOGIKA INTERAKTIF UNTUK TEMA RUSTIC (VERSI PALING STABIL)
 ================================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainContent = document.getElementById("main-content");
   const body = document.body;
   const btnSaveDate = document.getElementById("btnSaveDate");
+  const giftContainer = document.querySelector(".gift-options-container");
+  const commentForm = document.getElementById("comment-form");
+  const commentList = document.getElementById("comment-list");
 
   let countdownStarted = false;
 
@@ -32,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSaveDate.href = calendarUrl;
   }
 
-  // === Buat Observer untuk animasi on-scroll ===
-  const observer = new IntersectionObserver(
+  // === Buat Observer untuk animasi on-scroll (HANYA UNTUK SECTION) ===
+  const mainObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -43,36 +46,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    { threshold: 0.2 } // Trigger saat 20% elemen terlihat
+    { threshold: 0.2 }
   );
 
   // === Fungsi untuk Memulai Countdown ===
   function startCountdown() {
     const weddingDate = new Date("Jul 4, 2025 10:00:00").getTime();
-
     const countdownInterval = setInterval(function () {
       const now = new Date().getTime();
       const distance = weddingDate - now;
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       const daysEl = document.getElementById("days");
       const hoursEl = document.getElementById("hours");
       const minutesEl = document.getElementById("minutes");
       const secondsEl = document.getElementById("seconds");
-
       if (daysEl && hoursEl && minutesEl && secondsEl) {
         daysEl.innerText = days < 10 ? "0" + days : days;
         hoursEl.innerText = hours < 10 ? "0" + hours : hours;
         minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
         secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
       }
-
       if (distance < 0) {
         clearInterval(countdownInterval);
         const timerEl = document.getElementById("countdown-timer");
@@ -83,14 +81,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Fungsi untuk Mengaktifkan Semua Sensor Animasi ===
   function activateObservers() {
-    // Seleksi semua elemen yang butuh animasi di sini
     const sectionsToObserve = document.querySelectorAll(
-      "#hero-main, #kutipan, #mempelai, #save-the-date, .story-milestone"
+      "#hero-main, #kutipan, #mempelai, #save-the-date, .story-milestone, #wedding-gift, #comment-section"
     );
     sectionsToObserve.forEach((section) => {
-      if (section) observer.observe(section);
+      if (section) mainObserver.observe(section);
     });
   }
+
+  // === Fungsi untuk Menampilkan & Mengelola Komentar ===
+  function renderComments() {
+    if (!commentList) return;
+    const comments =
+      JSON.parse(localStorage.getItem("weddingComments_ReyhanRisna")) || [];
+    commentList.innerHTML = "";
+    comments
+      .slice()
+      .reverse()
+      .forEach((comment) => {
+        const commentDiv = document.createElement("div");
+        commentDiv.className = "comment-item";
+        commentDiv.innerHTML = `<p class="comment-author">${escapeHTML(
+          comment.name
+        )}</p><p class="comment-text">${escapeHTML(
+          comment.comment
+        )}</p><p class="comment-date">${comment.date}</p>`;
+        commentList.appendChild(commentDiv);
+      });
+  }
+
+  function escapeHTML(str) {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return str.replace(/[&<>"']/g, (m) => map[m]);
+  }
+
+  // Tampilkan komentar yang sudah ada saat halaman dimuat
+  renderComments();
 
   // === Logika Animasi Pembuka Undangan ===
   if (openButton && heroCover && mainContent) {
@@ -101,16 +133,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       invitationOpener.classList.add("is-opening");
     }, 2000);
-
     openButton.addEventListener("click", () => {
       invitationOpener.classList.add("drop-down");
       setTimeout(() => {
         mainContent.classList.remove("hidden");
         mainContent.classList.add("fade-in");
-
-        // Panggil SATU FUNGSI untuk mengaktifkan semua sensor
         activateObservers();
-
         if (!countdownStarted) {
           startCountdown();
           countdownStarted = true;
@@ -120,6 +148,52 @@ document.addEventListener("DOMContentLoaded", () => {
         heroCover.classList.add("hidden");
         body.style.overflow = "auto";
       }, 1200);
+    });
+  }
+
+  // === Logika untuk Tombol Copy Wedding Gift ===
+  if (giftContainer) {
+    giftContainer.addEventListener("click", function (e) {
+      const button = e.target.closest(".copy-button");
+      if (button) {
+        const targetId = button.dataset.target;
+        const accountNumberEl = document.getElementById(targetId);
+        if (accountNumberEl) {
+          navigator.clipboard.writeText(accountNumberEl.innerText).then(() => {
+            button.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+            button.classList.add("copied");
+            setTimeout(() => {
+              button.innerHTML = '<i class="fas fa-copy"></i> Salin';
+              button.classList.remove("copied");
+            }, 2000);
+          });
+        }
+      }
+    });
+  }
+
+  // === Logika untuk Form Komentar ===
+  if (commentForm) {
+    commentForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const newComment = {
+        name: this.elements.name.value,
+        comment: this.elements.comment.value,
+        date: new Date().toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }),
+      };
+      const comments =
+        JSON.parse(localStorage.getItem("weddingComments_ReyhanRisna")) || [];
+      comments.push(newComment);
+      localStorage.setItem(
+        "weddingComments_ReyhanRisna",
+        JSON.stringify(comments)
+      );
+      renderComments();
+      this.reset();
     });
   }
 
