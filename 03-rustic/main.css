@@ -1640,3 +1640,15 @@ footer .credit .fa-heart {
     width: clamp(60px, 30vw, 120px);
   }
 }
+/* =================================================================
+  ATURAN TAMBAHAN UNTUK TAMPILAN LAPTOP/DESKTOP
+================================================================= */
+@media (min-width: 992px) {
+  #hero-cover .hero-content h1 {
+    /* Memaksa teks untuk tidak pindah baris */
+    white-space: nowrap;
+
+    /* Sedikit penyesuaian ukuran font di layar besar jika perlu */
+    font-size: clamp(3rem, 3vw, 4rem);
+  }
+}

@@ -216,7 +216,7 @@ body {
   line-height: 1.6;
 }
 .mempelai-container {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -792,8 +792,14 @@ main.hidden {
     border-top-right-radius: 80px;
   }
   .separator {
-    font-size: 3rem;
-    align-items: center;
+    /* 1. Menghilangkan float jika ada */
+    float: none;
+
+    /* 2. Memastikan elemen mengambil lebar penuh kolomnya */
+    width: 100%;
+
+    /* 3. Memastikan teks '&' berada di tengah */
+    text-align: center;
   }
   .countdown-box {
     min-width: 65px;
@@ -804,10 +810,6 @@ main.hidden {
   }
   .countdown-box p {
     font-size: 0.7rem;
-  }
-  .mempelai-container {
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
   }
 
   .separator {
@@ -820,5 +822,16 @@ main.hidden {
 
   .mempelai-card:last-child {
     order: 3;
+  }
+  /* TAMBAHKAN KODE INI SEBAGAI PENGGANTINYA */
+  .mempelai-container {
+    /* Kunci Utama: Mengubah layout menjadi 1 kolom vertikal */
+    grid-template-columns: 1fr;
+
+    /* Mengatur jarak vertikal antar card dan separator */
+    gap: 3rem;
+
+    /* Memastikan semua item (foto, nama, &) berada di tengah kolom */
+    justify-items: center;
   }
 }
