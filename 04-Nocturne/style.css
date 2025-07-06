@@ -49,7 +49,7 @@ h3 {
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
-  padding: 2rem;
+  padding: 4rem 4rem 6rem 2rem;
   z-index: 100;
 }
 
@@ -474,9 +474,7 @@ h3 {
     width: 100%;
     align-self: auto; /* Reset alignment HP */
   }
-  .profile-entry.groom {
-    /* Tidak perlu style khusus, sudah default */
-  }
+
   .profile-entry.bride {
     /* Memindahkan teks ke kiri dan foto ke kanan */
     grid-template-areas: "details photo";
