@@ -8,19 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
     audio: "assets/audio/youlookatme.mp3",
 
     groom: {
-      shortName: "Reyhan",
-      fullName: "Reyhan Sanjaya",
+      shortName: "Dadang",
+      fullName: "Dadang Hermawan",
       parents: "Putra dari Bpk. Sanjaya & Ibu Nani",
       photo: "assets/images/mempelai-pria.jpg",
-      instagram: "https://www.instagram.com/temuhati.id",
+      instagram:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
 
     bride: {
-      shortName: "Risna",
-      fullName: "Risna Nuraini",
+      shortName: "Munaroh",
+      fullName: "Munaroh Ocid",
       parents: "Putri dari Bpk. Nurman & Ibu Siti",
       photo: "assets/images/mempelai-wanita.jpg",
-      instagram: "https://www.instagram.com/temuhati.id",
+      instagram:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
 
     backgrounds: {
@@ -39,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     event: {
-      countdownDate: "2025-07-08T08:00:00",
+      countdownDate: "2025-07-10T08:00:00",
       photo: "assets/images/prewedding-penutup.jpg",
       details: [
         {
@@ -47,16 +49,18 @@ document.addEventListener("DOMContentLoaded", () => {
           date: "Selasa, 8 Juli 2025",
           time: "08:00 - 10:00 WIB",
           venue: "Masjid Agung Nocturne, Jakarta",
-          address: "Masjid Agung Nocturne, Jakarta Pusat",
-          gmapsUrl: "https://maps.app.goo.gl/xxxx",
+          address:
+            "5HWQ+86G, Jl. Cigugur Girang, Cihideung, Kec. Parongpong, Kabupaten Bandung Barat, Jawa Barat 40559",
+          gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
         },
         {
           title: "Syukuran Resepsi",
           date: "Selasa, 8 Juli 2025",
           time: "18:30 - 21:00 WIB",
           venue: "Grand Ballroom Nocturne, Jakarta",
-          address: "Grand Ballroom Nocturne, Jakarta Pusat",
-          gmapsUrl: "https://maps.app.goo.gl/xxxx",
+          address:
+            "5HWQ+86G, Jl. Cigugur Girang, Cihideung, Kec. Parongpong, Kabupaten Bandung Barat, Jawa Barat 40559",
+          gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
         },
       ],
     },
@@ -67,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "assets/images/galeri-3.jpg",
       "assets/images/galeri-4.jpg",
       "assets/images/galeri-5.jpg",
-      "assets/images/galeri-6.jpg",
+      "assets/images/galeri-2.jpg",
     ],
 
     weddingGift: {
@@ -95,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     credit: {
       name: "TemuHati.id",
-      instagram: "https://www.instagram.com/temuhati.id",
+      instagram:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
   };
 
@@ -317,6 +322,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function handleGuestName() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestName = urlParams.get("to");
+      const guestNameElement = document.getElementById(
+        "guest-name-placeholder"
+      );
+
+      if (guestName && guestNameElement) {
+        guestNameElement.textContent = guestName.replace(/\+/g, " ");
+      }
+    } catch (error) {
+      console.error("Gagal menangani nama tamu:", error);
+    }
+  }
+
   function setupGalleryLightbox() {
     try {
       const lightbox = document.getElementById("lightbox");
@@ -390,15 +411,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // <-- FUNGSI INI TELAH DIPERBAIKI DARI KESALAHAN KETIK -->
+  // <-- FUNGSI INI TELAH DIPERBAIKI DARI SYNTAX ERROR -->
   function escapeHTML(str) {
     if (!str) return "";
     const map = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
+      "&": "&",
+      "<": "<",
+      ">": ">",
+      '"': '"',
+      "'": "'",
     };
     return str.replace(/[&<>"']/g, (m) => map[m]);
   }
@@ -497,6 +518,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderData();
   setupMusicPlayer();
+  handleGuestName();
   setupGalleryLightbox();
   setupCopyButtons();
   setupAccordion();
