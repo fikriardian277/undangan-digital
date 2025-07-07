@@ -3,34 +3,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // KONFIGURASI UTAMA - SEMUA DATA KLIEN DIUBAH DI SINI
   // =========================================================================
 
-  const NAMA_PRIA = "Ryan Muhammad";
-  const NAMA_PANGGILAN_PRIA = "Rizky";
+  const NAMA_PRIA = "Ardi Pratama, S.Kom.";
+  const NAMA_PANGGILAN_PRIA = "Ardi";
   const ORTU_PRIA =
-    "Putra Kedua dari Bapak H. Andi Pratama & Ibu Hj. Siti Mariam";
-  const IG_PRIA = "https://instagram.com/Rizky";
+    "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari";
+  const IG_PRIA =
+    "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2";
 
-  const NAMA_WANITA = "Neni Nuraeni";
-  const NAMA_PANGGILAN_WANITA = "Aulia";
+  const NAMA_WANITA = "Rania Safitri, S.E.";
+  const NAMA_PANGGILAN_WANITA = "Rania";
   const ORTU_WANITA =
-    "Putri Kedua dari Bapak H. Bambang Suhendar & Hj. Nurhayati";
-  const IG_WANITA = "https://instagram.com/Aulia";
+    "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.";
+  const IG_WANITA =
+    "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2";
 
   // Format Tanggal: YYYY-MM-DDTHH:MM:SS (contoh: 2025-12-31T10:00:00)
-  const TANGGAL_ACARA_ISO = "2025-07-03T09:00:00";
-  const TANGGAL_RESEPSI_TEKS = "Sabtu, 02 Agustus 2025";
+  const TANGGAL_ACARA_ISO = "2025-12-01T08:00:00";
+  const TANGGAL_RESEPSI_TEKS = "Senin, 01 Desember 2025";
   const WAKTU_RESEPSI_TEKS = "PUKUL : 08.00 WIB - Selesai";
 
   const LOKASI_ACARA_TEKS = `
-    Tempat : Gedung Olahraga (GOR)<br />
-    Kec. Parongpong, Kabupaten Bandung Barat<br />
-    Kabupaten Bandung Barat
+    Tempat : The Vow Premiere Venue (GOR)<br />
+    Jalan Kenangan Manis Blok C No. 7<br />
+    Bandung
   `;
   const LINK_LOKASI_GMAPS = "https://maps.app.goo.gl/SJqvQZipoitrBMCW9";
 
   const NO_REK_1 = "1234567890";
-  const NAMA_REK_1 = "a.n. Muhammad Rizky Pratama";
+  const NAMA_REK_1 = "a.n. Ardi Pratama";
   const NO_REK_2 = "0987654321";
-  const NAMA_REK_2 = "a.n. Aulia Rahmawati";
+  const NAMA_REK_2 = "a.n. Rania Safitri";
 
   // -- Konfigurasi Music --
   const LINK_MUSIK = "audio/laksanasurga.mp3";

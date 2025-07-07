@@ -3,23 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // === PUSAT KONTROL & DATA UNDANGAN (EDIT DI SINI) ===
   // =======================================================
   const CONFIG = {
-    title: "Undangan Pernikahan Reyhan & Risna",
+    title: "Undangan Pernikahan Ardi & Rania",
     favicon: "assets/images/favicon.png",
     audio: "assets/audio/youlookatme.mp3",
 
     groom: {
-      shortName: "Dadang",
-      fullName: "Dadang Hermawan",
-      parents: "Putra dari Bpk. Sanjaya & Ibu Nani",
+      shortName: "Ardi",
+      fullName: "Ardi Pratama, S.Kom.",
+      parents: "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari",
       photo: "assets/images/mempelai-pria.jpg",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
 
     bride: {
-      shortName: "Munaroh",
-      fullName: "Munaroh Ocid",
-      parents: "Putri dari Bpk. Nurman & Ibu Siti",
+      shortName: "Rania",
+      fullName: "Rania Safitri, S.E.",
+      parents: "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.",
       photo: "assets/images/mempelai-wanita.jpg",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
@@ -41,25 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     event: {
-      countdownDate: "2025-07-10T08:00:00",
+      countdownDate: "2025-12-01T08:00:00",
       photo: "assets/images/prewedding-penutup.jpg",
       details: [
         {
           title: "Akad Nikah",
-          date: "Selasa, 8 Juli 2025",
+          date: "Senin, 1 Desember 2025",
           time: "08:00 - 10:00 WIB",
           venue: "Masjid Agung Nocturne, Jakarta",
           address:
-            "5HWQ+86G, Jl. Cigugur Girang, Cihideung, Kec. Parongpong, Kabupaten Bandung Barat, Jawa Barat 40559",
+            "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
           gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
         },
         {
           title: "Syukuran Resepsi",
-          date: "Selasa, 8 Juli 2025",
-          time: "18:30 - 21:00 WIB",
+          date: "Selasa, 1 Desember 2025",
+          time: "10:00 - 21:00 WIB",
           venue: "Grand Ballroom Nocturne, Jakarta",
           address:
-            "5HWQ+86G, Jl. Cigugur Girang, Cihideung, Kec. Parongpong, Kabupaten Bandung Barat, Jawa Barat 40559",
+            "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
           gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
         },
       ],
@@ -78,18 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
       intro:
         "Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda ingin memberikan tanda kasih, kami telah menyediakan beberapa opsi di bawah ini untuk memudahkan.",
       accounts: [
-        { name: "Reyhan Sanjaya (BCA)", number: "1234567890" },
-        { name: "Risna Nuraini (Gopay)", number: "08123456789" },
+        { name: "Ardi Pratam (BCA)", number: "1234567890" },
+        { name: "Rania Safitri (Gopay)", number: "08123456789" },
         {
           name: "Alamat Kirim Kado",
-          number: "Jl. Kenangan Indah No. 4, Bandung. Penerima: Reyhan/Risna",
+          number: "Jl. Kenangan Indah No. 4, Bandung. Penerima: Ardi/Rania",
         },
       ],
     },
 
     closing: {
       text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa restu yang telah diberikan, kami ucapkan terima kasih.",
-      coupleName: "Reyhan & Risna",
+      coupleName: "Ardi & Rania",
     },
 
     backend: {

@@ -3,19 +3,20 @@
 ================================================================= */
 const CLIENT_DATA = {
   // Nama Mempelai
-  namaPanggilanPria: "Reyhan",
-  namaPanggilanWanita: "Risna",
-  namaLengkapPria: "Reyhan Sanjaya",
-  namaLengkapWanita: "Risna Nuraini",
+  namaPanggilanPria: "Ardi",
+  namaPanggilanWanita: "Rania",
+  namaLengkapPria: "Ardi Pratama, S.Kom.",
+  namaLengkapWanita: "Rania Safitri, S.E.",
 
   // Detail Acara (PASTIKAN FORMAT INI BENAR)
   acara: {
     judul: "Akad & Resepsi",
     // Format: TAHUN-BULAN-HARI T JAM:MENIT:DETIK (24 Jam)
-    tanggalISO_UTC: "2025-07-03T06:00:00",
-    tanggalTeks: "Sabtu, 12 Oktober 2025",
-    waktuTeks: "10.00 WIB - Selesai",
-    lokasi: "Gedung Pernikahan Impian, Jl. Bahagia No. 1, Jakarta",
+    tanggalISO_UTC: "2025-12-01T08:00:00",
+    tanggalTeks: "Senin, 01 Desember 2025",
+    waktuTeks: "08.00 WIB - Selesai",
+    lokasi:
+      "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
     urlPeta: "https://maps.app.goo.gl/LOKASI_ANDA",
   },
 
@@ -35,10 +36,13 @@ const CLIENT_DATA = {
     weddingGift: "assets/images/galeri-2.jpg",
     penutup: "assets/images/prewedding-penutup.jpg",
   },
-  instagramPria: "https://instagram.com/username_pria",
-  instagramWanita: "https://instagram.com/username_wanita",
-  orangTuaPria: "Putra dari Bapak Sanjaya & Ibu Nani",
-  orangTuaWanita: "Putri dari Bapak Nurman & Ibu Siti",
+  instagramPria:
+    "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
+  instagramWanita:
+    "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
+  orangTuaPria: "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari",
+  orangTuaWanita:
+    "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.",
   kutipan: {
     teks: "“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”",
     sumber: "Q.S. Ar-Rum: 21",
@@ -73,13 +77,13 @@ const CLIENT_DATA = {
       bank: "BCA",
       logo: "assets/images/logo-bca.png",
       noRek: "1234567890",
-      atasNama: "Reyhan Sanjaya",
+      atasNama: "a.n. Ardi Pratama",
     },
     {
       bank: "BCA",
       logo: "assets/images/logo-bca.png",
       noRek: "0987654321",
-      atasNama: "Risna Nuraini",
+      atasNama: "a.n. Rania Safitri",
     },
   ],
   musik: "assets/audio/laksanasurga.mp3",
@@ -89,7 +93,10 @@ const CLIENT_DATA = {
     url: "https://script.google.com/macros/s/AKfycbx0dx13pseqcEKjH9gs4fy7T1w0bVh0-LA6q4Z57Vo22JNdYWwuty0yDJaOEy7Qqt4/exec",
     namaSheet: "minimalis",
   },
-  kredit: { nama: "TemuHati", instagram: "https://instagram.com/temuhati.id" },
+  kredit: {
+    nama: "TemuHati",
+    instagram: "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
+  },
 };
 
 /* =================================================================
