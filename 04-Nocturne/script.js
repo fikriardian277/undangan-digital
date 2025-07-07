@@ -1,28 +1,258 @@
 document.addEventListener("DOMContentLoaded", () => {
   // =======================================================
-  // === PENGATURAN ELEMEN & KONFIGURASI ===
+  // === PUSAT KONTROL & DATA UNDANGAN (EDIT DI SINI) ===
+  // =======================================================
+  const CONFIG = {
+    title: "Undangan Pernikahan Reyhan & Risna",
+    favicon: "assets/images/favicon.png",
+    audio: "assets/audio/youlookatme.mp3",
+
+    groom: {
+      shortName: "Reyhan",
+      fullName: "Reyhan Sanjaya",
+      parents: "Putra dari Bpk. Sanjaya & Ibu Nani",
+      photo: "assets/images/mempelai-pria.jpg",
+      instagram: "https://www.instagram.com/temuhati.id",
+    },
+
+    bride: {
+      shortName: "Risna",
+      fullName: "Risna Nuraini",
+      parents: "Putri dari Bpk. Nurman & Ibu Siti",
+      photo: "assets/images/mempelai-wanita.jpg",
+      instagram: "https://www.instagram.com/temuhati.id",
+    },
+
+    backgrounds: {
+      hero: "assets/images/cover.jpg",
+      vow: "assets/images/cover.jpg",
+      closing: "assets/images/prewedding-penutup.jpg",
+    },
+
+    vow: {
+      title: "Ikrar Kami",
+      text: `<span class="highlight">cinta</span>
+             <span class="vow-line">bukanlah tentang menemukan kesempurnaan,</span>
+             <span class="vow-line">melainkan merayakan ketidaksempurnaan dengan penuh kesabaran.</span>
+             <span class="vow-line">Sebuah perjalanan untuk tumbuh bersama,</span>
+             <span class="vow-line">bukan hanya berjalan beriringan.</span>`,
+    },
+
+    event: {
+      countdownDate: "2025-07-08T08:00:00",
+      photo: "assets/images/prewedding-penutup.jpg",
+      details: [
+        {
+          title: "Akad Nikah",
+          date: "Selasa, 8 Juli 2025",
+          time: "08:00 - 10:00 WIB",
+          venue: "Masjid Agung Nocturne, Jakarta",
+          address: "Masjid Agung Nocturne, Jakarta Pusat",
+          gmapsUrl: "https://maps.app.goo.gl/xxxx",
+        },
+        {
+          title: "Syukuran Resepsi",
+          date: "Selasa, 8 Juli 2025",
+          time: "18:30 - 21:00 WIB",
+          venue: "Grand Ballroom Nocturne, Jakarta",
+          address: "Grand Ballroom Nocturne, Jakarta Pusat",
+          gmapsUrl: "https://maps.app.goo.gl/xxxx",
+        },
+      ],
+    },
+
+    gallery: [
+      "assets/images/galeri-1.jpg",
+      "assets/images/galeri-2.jpg",
+      "assets/images/galeri-3.jpg",
+      "assets/images/galeri-4.jpg",
+      "assets/images/galeri-5.jpg",
+      "assets/images/galeri-6.jpg",
+    ],
+
+    weddingGift: {
+      intro:
+        "Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda ingin memberikan tanda kasih, kami telah menyediakan beberapa opsi di bawah ini untuk memudahkan.",
+      accounts: [
+        { name: "Reyhan Sanjaya (BCA)", number: "1234567890" },
+        { name: "Risna Nuraini (Gopay)", number: "08123456789" },
+        {
+          name: "Alamat Kirim Kado",
+          number: "Jl. Kenangan Indah No. 4, Bandung. Penerima: Reyhan/Risna",
+        },
+      ],
+    },
+
+    closing: {
+      text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa restu yang telah diberikan, kami ucapkan terima kasih.",
+      coupleName: "Reyhan & Risna",
+    },
+
+    backend: {
+      url: "https://script.google.com/macros/s/AKfycbyVJI5F-HFHLPteYvrUZSPTO6gqfkH5rYlchRW0n3K--mcq2GBnY3mFZRObAea-10lw/exec",
+      sheetName: "Nocturne",
+    },
+
+    credit: {
+      name: "TemuHati.id",
+      instagram: "https://www.instagram.com/temuhati.id",
+    },
+  };
+
+  // =======================================================
+  // === FUNGSI BANTU & RENDERER ===
+  // =======================================================
+  const set = (id, prop, value) => {
+    const el = document.getElementById(id);
+    if (el) el[prop] = value;
+  };
+
+  const generateCalendarLink = (eventDetail) => {
+    const googleCalendarUrl =
+      "https://www.google.com/calendar/render?action=TEMPLATE";
+    const eventDate = new Date(CONFIG.event.countdownDate);
+    const [startTime, endTime] = eventDetail.time
+      .replace(/WIB/g, "")
+      .trim()
+      .split(" - ");
+    const [startHour, startMinute] = startTime.split(":").map(Number);
+    const [endHour, endMinute] = endTime.split(":").map(Number);
+
+    const startDate = new Date(
+      eventDate.getFullYear(),
+      eventDate.getMonth(),
+      eventDate.getDate(),
+      startHour,
+      startMinute
+    );
+    const endDate = new Date(
+      eventDate.getFullYear(),
+      eventDate.getMonth(),
+      eventDate.getDate(),
+      endHour,
+      endMinute
+    );
+
+    const toISOStringWithoutMs = (date) =>
+      date.toISOString().replace(/[-:]|\.\d{3}/g, "");
+
+    const details = `Pernikahan ${CONFIG.groom.shortName} & ${CONFIG.bride.shortName} - ${eventDetail.title}`;
+    return `${googleCalendarUrl}&text=${encodeURIComponent(
+      details
+    )}&dates=${toISOStringWithoutMs(startDate)}/${toISOStringWithoutMs(
+      endDate
+    )}&location=${encodeURIComponent(eventDetail.address)}`;
+  };
+
+  function renderData() {
+    set("title-tag", "textContent", CONFIG.title);
+    set("favicon", "href", CONFIG.favicon);
+    set("background-music", "src", CONFIG.audio);
+
+    set("cover-groom-name", "textContent", CONFIG.groom.shortName);
+    set("cover-bride-name", "textContent", CONFIG.bride.shortName);
+
+    document.getElementById(
+      "hero-bg"
+    ).style.backgroundImage = `url('${CONFIG.backgrounds.hero}')`;
+    document.getElementById(
+      "vow-bg"
+    ).style.backgroundImage = `url('${CONFIG.backgrounds.vow}')`;
+    document.getElementById(
+      "closing"
+    ).style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${CONFIG.backgrounds.closing}')`;
+
+    set("vow-title", "innerHTML", CONFIG.vow.title);
+    set("vow-text", "innerHTML", CONFIG.vow.text);
+
+    set("groom-photo", "src", CONFIG.groom.photo);
+    set("groom-fullname", "textContent", CONFIG.groom.fullName);
+    set("groom-parents", "innerHTML", CONFIG.groom.parents);
+    set("groom-social", "href", CONFIG.groom.instagram);
+    set("bride-photo", "src", CONFIG.bride.photo);
+    set("bride-fullname", "textContent", CONFIG.bride.fullName);
+    set("bride-parents", "innerHTML", CONFIG.bride.parents);
+    set("bride-social", "href", CONFIG.bride.instagram);
+
+    const eventContainer = document.getElementById("event-panel-container");
+    if (eventContainer) {
+      let eventHTML = `<div class="event-photo"><img src="${CONFIG.event.photo}" alt="Detail Suasana Pernikahan" /></div>`;
+      eventHTML += '<div class="event-info">';
+      CONFIG.event.details.forEach((evt) => {
+        const calendarUrl = generateCalendarLink(evt);
+        eventHTML += `
+                <div class="event-block">
+                    <h3>${evt.title}</h3>
+                    <p class="event-date"><i class="fas fa-calendar-alt"></i> ${evt.date}</p>
+                    <p class="event-time"><i class="fas fa-clock"></i> ${evt.time}</p>
+                    <p class="event-venue"><i class="fas fa-map-marker-alt"></i> ${evt.venue}</p>
+                    <div class="event-actions">
+                        <a href="${calendarUrl}" target="_blank" class="event-cta-link">Kalender</a>
+                        <a href="${evt.gmapsUrl}" target="_blank" class="event-cta-link">Lihat Peta</a>
+                    </div>
+                </div>`;
+      });
+      eventHTML += "</div>";
+      eventContainer.innerHTML = eventHTML;
+    }
+
+    const galleryContainer = document.getElementById("gallery-grid-container");
+    if (galleryContainer) {
+      galleryContainer.innerHTML = CONFIG.gallery
+        .map(
+          (img) => `
+        <a href="${img}" class="gallery-item">
+          <img src="${img}" alt="Galeri Foto" />
+        </a>`
+        )
+        .join("");
+    }
+
+    set("gift-intro", "innerHTML", CONFIG.weddingGift.intro);
+    const giftContainer = document.getElementById("gift-items-container");
+    if (giftContainer) {
+      giftContainer.innerHTML = CONFIG.weddingGift.accounts
+        .map(
+          (acc) => `
+            <div class="gift-item">
+                <div class="gift-details">
+                    <p class="account-name">${acc.name}</p>
+                    <p class="account-number">${acc.number}</p>
+                </div>
+                <button class="icon-copy-button" data-copy-text="${acc.number}">
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>`
+        )
+        .join("");
+    }
+
+    set("closing-text", "innerHTML", CONFIG.closing.text);
+    set("closing-couple-names", "textContent", CONFIG.closing.coupleName);
+
+    set("footer-instagram", "href", CONFIG.credit.instagram);
+    set(
+      "footer-credit",
+      "innerHTML",
+      `Made with <i class="fas fa-heart"></i> by ${CONFIG.credit.name}`
+    );
+  }
+
+  // =======================================================
+  // === FUNGSI INTERAKTIF ===
   // =======================================================
   const openButton = document.getElementById("open-invitation");
   const heroCover = document.getElementById("hero-cover");
   const mainContent = document.getElementById("main-content");
   const body = document.body;
-  const musicPlayer = document.getElementById("background-music"); // <-- TAMBAHKAN INI
+  const musicPlayer = document.getElementById("background-music");
   const musicToggleButton = document.getElementById("music-toggle-btn");
-
-  const CONFIG = {
-    backendUrl:
-      "https://script.google.com/macros/s/AKfycbyVJI5F-HFHLPteYvrUZSPTO6gqfkH5rYlchRW0n3K--mcq2GBnY3mFZRObAea-10lw/exec", // GANTI DENGAN URL-MU
-    sheetName: "Nocturne",
-  };
-
-  // =======================================================
-  // === KUMPULAN SEMUA FUNGSI ===
-  // =======================================================
+  const footer = document.querySelector("footer");
 
   function startCountdown() {
     const timerContainer = document.querySelector(".countdown-timer");
-    if (!timerContainer) return;
-    const weddingDate = new Date("Jul 8, 2025 08:00:00").getTime();
+    if (!timerContainer || !CONFIG.event.countdownDate) return;
+    const weddingDate = new Date(CONFIG.event.countdownDate).getTime();
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
@@ -32,36 +262,59 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       const pad = (num) => (num < 10 ? "0" + num : num);
-      document.getElementById("days").innerText = pad(
-        Math.floor(distance / (1000 * 60 * 60 * 24))
+      set(
+        "days",
+        "innerText",
+        pad(Math.floor(distance / (1000 * 60 * 60 * 24)))
       );
-      document.getElementById("hours").innerText = pad(
-        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      set(
+        "hours",
+        "innerText",
+        pad(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
       );
-      document.getElementById("minutes").innerText = pad(
-        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      set(
+        "minutes",
+        "innerText",
+        pad(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)))
       );
-      document.getElementById("seconds").innerText = pad(
-        Math.floor((distance % (1000 * 60)) / 1000)
+      set(
+        "seconds",
+        "innerText",
+        pad(Math.floor((distance % (1000 * 60)) / 1000))
       );
     }, 1000);
   }
 
   function activateScrollAnimations() {
-    const sectionsToAnimate = document.querySelectorAll(
-      "#the-vow, .profile-entry, #event-details, #gallery h2, .gallery-item, #wedding-gift, #guestbook, #closing"
+    const elementsToAnimate = document.querySelectorAll(
+      "#the-vow, .profile-entry, #event-details, .gallery-item, #wedding-gift, #guestbook, #closing"
     );
-    if (sectionsToAnimate.length === 0) return;
+    if (elementsToAnimate.length === 0) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("is-visible");
-          else entry.target.classList.remove("is-visible");
+          entry.target.classList.toggle("is-visible", entry.isIntersecting);
         });
       },
       { threshold: 0.2 }
     );
-    sectionsToAnimate.forEach((section) => observer.observe(section));
+
+    elementsToAnimate.forEach((el) => observer.observe(el));
+  }
+
+  function setupMusicPlayer() {
+    if (musicToggleButton && musicPlayer) {
+      musicToggleButton.addEventListener("click", () => {
+        if (musicPlayer.paused) {
+          musicPlayer.play();
+          musicToggleButton.classList.add("playing");
+        } else {
+          musicPlayer.pause();
+          musicToggleButton.classList.remove("playing");
+        }
+      });
+    }
   }
 
   function setupGalleryLightbox() {
@@ -69,16 +322,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const lightbox = document.getElementById("lightbox");
       if (!lightbox) return;
       const lightboxImg = document.getElementById("lightbox-img");
-      const galleryItems = document.querySelectorAll(".gallery-item");
+      const galleryContainer = document.getElementById(
+        "gallery-grid-container"
+      );
       const closeBtn = document.querySelector(".lightbox-close");
-      galleryItems.forEach((item) => {
-        item.addEventListener("click", (e) => {
-          e.preventDefault();
+
+      galleryContainer.addEventListener("click", (e) => {
+        e.preventDefault();
+        const item = e.target.closest(".gallery-item");
+        if (item) {
           const imageUrl = item.getAttribute("href");
           lightboxImg.setAttribute("src", imageUrl);
           lightbox.classList.add("visible");
-        });
+        }
       });
+
       const closeLightbox = () => lightbox.classList.remove("visible");
       closeBtn.addEventListener("click", closeLightbox);
       lightbox.addEventListener("click", (e) => {
@@ -91,11 +349,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setupCopyButtons() {
     try {
-      const copyButtons = document.querySelectorAll(".icon-copy-button");
-      copyButtons.forEach((button) => {
-        const originalIcon = button.innerHTML;
-        button.addEventListener("click", (e) => {
-          e.preventDefault();
+      const giftContainer = document.getElementById("gift-items-container");
+      giftContainer.addEventListener("click", (e) => {
+        const button = e.target.closest(".icon-copy-button");
+        if (button) {
+          const originalIcon = button.innerHTML;
           const textToCopy = button.dataset.copyText;
           if (textToCopy) {
             navigator.clipboard.writeText(textToCopy).then(() => {
@@ -107,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
               }, 2000);
             });
           }
-        });
+        }
       });
     } catch (error) {
       console.error("Error di setupCopyButtons:", error);
@@ -121,16 +379,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const header = item.querySelector(".accordion-header");
         const content = item.querySelector(".accordion-content");
         header.addEventListener("click", () => {
-          const isActive = item.classList.contains("active");
-          accordionItems.forEach((otherItem) => {
-            otherItem.classList.remove("active");
-            otherItem.querySelector(".accordion-content").style.maxHeight =
-              null;
-          });
-          if (!isActive) {
-            item.classList.add("active");
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
+          item.classList.toggle("active");
+          content.style.maxHeight = item.classList.contains("active")
+            ? content.scrollHeight + "px"
+            : null;
         });
       });
     } catch (error) {
@@ -138,57 +390,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // <-- FUNGSI INI TELAH DIPERBAIKI DARI KESALAHAN KETIK -->
   function escapeHTML(str) {
     if (!str) return "";
-    return str.replace(
-      /[&<>"']/g,
-      (m) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        }[m])
-    );
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return str.replace(/[&<>"']/g, (m) => map[m]);
   }
 
   function loadComments() {
     const commentList = document.getElementById("comment-list");
-    if (
-      !commentList ||
-      !CONFIG.backendUrl ||
-      CONFIG.backendUrl === "URL_APPS_SCRIPT_KAMU_DI_SINI"
-    ) {
-      if (commentList)
-        commentList.innerHTML =
-          "<p style='text-align: center;'>URL Apps Script belum diatur.</p>";
-      return;
-    }
-
+    if (!commentList || !CONFIG.backend || !CONFIG.backend.url) return;
     commentList.innerHTML =
       "<p style='text-align: center;'>Memuat ucapan...</p>";
-    fetch(`${CONFIG.backendUrl}?sheet=${CONFIG.sheetName}`)
+    fetch(`${CONFIG.backend.url}?sheet=${CONFIG.backend.sheetName}`)
       .then((response) => {
         if (!response.ok) throw new Error("Gagal mengambil data");
         return response.json();
       })
       .then((data) => {
         commentList.innerHTML = "";
-        const comments = data; // Asumsi data adalah array
+        const comments = data;
         if (comments && comments.length > 0) {
           comments.forEach((comment) => {
             const commentHTML = `
-                            <div class="comment-item">
-                                <p class="comment-author">${escapeHTML(
-                                  comment.Nama
-                                )} <span class="status">${escapeHTML(
+                <div class="comment-item">
+                    <p class="comment-author">${escapeHTML(
+                      comment.Nama
+                    )} <span class="status">${escapeHTML(
               comment.Kehadiran
             )}</span></p>
-                                <p class="comment-text">${escapeHTML(
-                                  comment.Ucapan
-                                )}</p>
-                            </div>`;
+                    <p class="comment-text">${escapeHTML(comment.Ucapan)}</p>
+                </div>`;
             commentList.innerHTML += commentHTML;
           });
         } else {
@@ -198,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         console.error("Error memuat komentar:", error);
-        commentList.innerHTML = `<p style='text-align: center; color: #ff8a8a;'>Gagal memuat ucapan.<br>Cek URL Apps Script & izin akses.</p>`;
+        commentList.innerHTML = `<p style='text-align: center; color: #ff8a8a;'>Gagal memuat ucapan.<br>Cek URL Apps Script.</p>`;
       });
   }
 
@@ -224,9 +462,9 @@ document.addEventListener("DOMContentLoaded", () => {
           Nama: form.elements.name.value,
           Ucapan: form.elements.comment.value,
           Kehadiran: form.elements.attendance.value,
-          sheetName: CONFIG.sheetName,
+          sheetName: CONFIG.backend.sheetName,
         };
-        fetch(CONFIG.backendUrl, {
+        fetch(CONFIG.backend.url, {
           method: "POST",
           mode: "no-cors",
           body: JSON.stringify(dataToSend),
@@ -254,30 +492,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =======================================================
-  // === ALUR UTAMA & PEMANGGILAN FUNGSI ===
+  // === ALUR UTAMA APLIKASI ===
   // =======================================================
 
-  // 1. Atur semua fungsi yang bisa disiapkan dari awal
+  renderData();
+  setupMusicPlayer();
   setupGalleryLightbox();
   setupCopyButtons();
   setupAccordion();
   setupGuestbookForm();
 
-  // 2. Atur event listener utama untuk membuka undangan
   if (openButton) {
-    openButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      heroCover.classList.add("fading-out");
-      mainContent.classList.remove("hidden");
-      body.style.overflow = "auto";
-      setTimeout(() => {
-        heroCover.remove();
-      }, 1200);
+    openButton.addEventListener(
+      "click",
+      (event) => {
+        event.preventDefault();
+        heroCover.classList.add("fading-out");
+        mainContent.classList.remove("hidden");
+        if (footer) footer.classList.remove("hidden");
 
-      // 3. Panggil fungsi yang hanya berjalan SETELAH undangan dibuka
-      startCountdown();
-      activateScrollAnimations();
-      loadComments();
-    });
+        body.style.overflow = "auto";
+        setTimeout(() => {
+          heroCover.style.display = "none";
+        }, 1200);
+
+        if (musicPlayer) {
+          musicPlayer
+            .play()
+            .catch((e) => console.log("Autoplay musik diblokir oleh browser."));
+          musicToggleButton.classList.add("playing");
+        }
+
+        if (musicToggleButton) {
+          musicToggleButton.classList.remove("hidden");
+        }
+
+        startCountdown();
+        activateScrollAnimations();
+        loadComments();
+      },
+      { once: true }
+    );
   }
 });

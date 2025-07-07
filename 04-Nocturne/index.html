@@ -3,35 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Undangan Pernikahan</title>
-
+    <title id="title-tag">Undangan Pernikahan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Lora:wght@400&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
+    <link id="favicon" rel="icon" href="" type="image/png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <audio id="background-music" loop>
-      <source src="assets/audio/youlookatme.mp3" type="audio/mpeg" />
-    </audio>
-
+    <audio id="background-music" loop></audio>
     <section id="hero-cover">
-      <div class="hero-background"></div>
+      <div id="hero-bg" class="hero-background"></div>
       <div class="hero-content">
         <p>Undangan Pernikahan</p>
-        <h1 id="cover-couple-names">
-          <span id="cover-groom-name">Mempelai Pria</span>
+        <h1>
+          <span id="cover-groom-name"></span>
           <span class="ampersand">&</span>
-          <span id="cover-bride-name">Mempelai Wanita</span>
+          <span id="cover-bride-name"></span>
         </h1>
         <div class="guest-info">
           <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
@@ -43,28 +38,16 @@
 
     <main id="main-content" class="hidden">
       <section id="the-vow">
-        <div class="vow-background"></div>
+        <div id="vow-bg" class="vow-background"></div>
         <div class="vow-container">
           <div class="vow-content">
-            <h2>Ikrar Kami</h2>
+            <h2 id="vow-title"></h2>
             <hr class="separator-line" />
-            <p>
-              Bagi kami, <span class="highlight">cinta</span>
-              <span class="vow-line"
-                >bukanlah tentang menemukan kesempurnaan,</span
-              >
-              <span class="vow-line"
-                >melainkan merayakan ketidaksempurnaan dengan penuh
-                kesabaran.</span
-              >
-              <span class="vow-line"
-                >Sebuah perjalanan untuk tumbuh bersama,</span
-              >
-              <span class="vow-line">bukan hanya berjalan beriringan.</span>
-            </p>
+            <p id="vow-text"></p>
           </div>
         </div>
       </section>
+
       <section id="profiles">
         <div class="profiles-container">
           <h2>The Couple</h2>
@@ -72,43 +55,47 @@
             <div class="profile-entry groom">
               <div class="profile-card-content">
                 <div class="profile-photo">
-                  <img
-                    src="assets/images/mempelai-pria.jpg"
-                    alt="Foto Mempelai Pria"
-                  />
+                  <img id="groom-photo" src="" alt="Foto Mempelai Pria" />
                 </div>
                 <div class="profile-details">
-                  <h3>Reyhan Sanjaya</h3>
+                  <h3 id="groom-fullname"></h3>
                   <hr class="details-separator" />
-                  <p>Putra dari Bpk. Sanjaya & Ibu Nani</p>
-                  <a href="#" class="social-link"
-                    ><i class="fab fa-instagram"></i> Instagram</a
+                  <p id="groom-parents"></p>
+                  <a
+                    id="groom-social"
+                    href="#"
+                    target="_blank"
+                    class="social-link"
                   >
+                    <i class="fab fa-instagram"></i> Instagram
+                  </a>
                 </div>
               </div>
             </div>
-
             <div class="profile-entry bride">
               <div class="profile-card-content">
                 <div class="profile-photo">
-                  <img
-                    src="assets/images/mempelai-wanita.jpg"
-                    alt="Foto Mempelai Wanita"
-                  />
+                  <img id="bride-photo" src="" alt="Foto Mempelai Wanita" />
                 </div>
                 <div class="profile-details">
-                  <h3>Risna Nuraini</h3>
+                  <h3 id="bride-fullname"></h3>
                   <hr class="details-separator" />
-                  <p>Putri dari Bpk. Nurman & Ibu Siti</p>
-                  <a href="#" class="social-link"
-                    ><i class="fab fa-instagram"></i> Instagram</a
+                  <p id="bride-parents"></p>
+                  <a
+                    id="bride-social"
+                    href="#"
+                    target="_blank"
+                    class="social-link"
                   >
+                    <i class="fab fa-instagram"></i> Instagram
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <section id="event-details">
         <div class="event-container">
           <h2>Save The Date</h2>
@@ -130,134 +117,33 @@
               <p>Detik</p>
             </div>
           </div>
-
-          <div class="event-panel">
-            <div class="event-photo">
-              <img
-                src="assets/images/mempelai-pria.jpg"
-                alt="Detail Suasana Pernikahan"
-              />
-            </div>
-
-            <div class="event-info">
-              <div class="event-block">
-                <h3>Akad Nikah</h3>
-                <p class="event-date">
-                  <i class="fas fa-calendar-alt"></i> Jumat, 4 Juli 2025
-                </p>
-                <p class="event-time">
-                  <i class="fas fa-clock"></i> 08:00 - 10:00 WIB
-                </p>
-                <p class="event-venue">
-                  <i class="fas fa-map-marker-alt"></i> Masjid Agung Nocturne,
-                  Jakarta
-                </p>
-                <div class="event-actions">
-                  <a href="#" class="event-cta-link">Kalender</a>
-                  <a href="#" class="event-cta-link">Lihat Peta</a>
-                </div>
-              </div>
-
-              <div class="event-block">
-                <h3>Syukuran Resepsi</h3>
-                <p class="event-date">
-                  <i class="fas fa-calendar-alt"></i> Jumat, 4 Juli 2025
-                </p>
-                <p class="event-time">
-                  <i class="fas fa-clock"></i> 18:30 - 21:00 WIB
-                </p>
-                <p class="event-venue">
-                  <i class="fas fa-map-marker-alt"></i> Grand Ballroom Nocturne,
-                  Jakarta
-                </p>
-                <div class="event-actions">
-                  <a href="#" class="event-cta-link">Kalender</a>
-                  <a href="#" class="event-cta-link">Lihat Peta</a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="event-panel-container" class="event-panel"></div>
         </div>
       </section>
+
       <section id="gallery">
         <div class="gallery-container">
           <h2>Our Moments</h2>
-          <div class="gallery-grid">
-            <a href="assets/images/galeri-1.jpg" class="gallery-item">
-              <img src="assets/images/galeri-1.jpg" alt="Galeri Foto 1" />
-            </a>
-            <a href="assets/images/galeri-2.jpg" class="gallery-item">
-              <img src="assets/images/galeri-2.jpg" alt="Galeri Foto 2" />
-            </a>
-            <a href="assets/images/galeri-3.jpg" class="gallery-item">
-              <img src="assets/images/galeri-3.jpg" alt="Galeri Foto 3" />
-            </a>
-            <a href="assets/images/galeri-4.jpg" class="gallery-item">
-              <img src="assets/images/galeri-4.jpg" alt="Galeri Foto 4" />
-            </a>
-            <a href="assets/images/galeri-5.jpg" class="gallery-item">
-              <img src="assets/images/galeri-5.jpg" alt="Galeri Foto 4" />
-            </a>
-            <a href="assets/images/galeri-2.jpg" class="gallery-item">
-              <img src="assets/images/galeri-2.jpg" alt="Galeri Foto 4" />
-            </a>
-          </div>
+          <div id="gallery-grid-container" class="gallery-grid"></div>
         </div>
       </section>
+
       <section id="wedding-gift">
         <div class="gift-container">
           <h2>Tanda Kasih</h2>
-          <p class="gift-intro">
-            Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda
-            ingin memberikan tanda kasih, kami telah menyediakan beberapa opsi
-            di bawah ini untuk memudahkan.
-          </p>
+          <p id="gift-intro" class="gift-intro"></p>
           <div class="accordion">
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>Kirim Hadiah</span>
                 <i class="fas fa-chevron-down"></i>
               </button>
-              <div class="accordion-content">
-                <div class="gift-item">
-                  <div class="gift-details">
-                    <p class="account-name">Reyhan Sanjaya (BCA)</p>
-                    <p class="account-number">123 456 7890</p>
-                  </div>
-                  <button class="icon-copy-button" data-copy-text="1234567890">
-                    <i class="far fa-copy"></i>
-                  </button>
-                </div>
-
-                <div class="gift-item">
-                  <div class="gift-details">
-                    <p class="account-name">Risna Nuraini (Gopay)</p>
-                    <p class="account-number">0812 3456 789</p>
-                  </div>
-                  <button class="icon-copy-button" data-copy-text="08123456789">
-                    <i class="far fa-copy"></i>
-                  </button>
-                </div>
-
-                <div class="gift-item">
-                  <div class="gift-details">
-                    <p class="account-name">Alamat Kirim Kado</p>
-                    <p class="account-number">
-                      Jl. Kenangan Indah No. 4, Bandung
-                    </p>
-                  </div>
-                  <button
-                    class="icon-copy-button"
-                    data-copy-text="Jl. Kenangan Indah No. 4, Komplek Bahagia Selalu, Bandung, 40123. Penerima: Reyhan / Risna"
-                  >
-                    <i class="far fa-copy"></i>
-                  </button>
-                </div>
-              </div>
+              <div id="gift-items-container" class="accordion-content"></div>
             </div>
           </div>
         </div>
       </section>
+
       <section id="guestbook">
         <div class="guestbook-container">
           <h2>Ucapan & Doa</h2>
@@ -304,36 +190,39 @@
               Kirim Ucapan <span class="arrow">→</span>
             </button>
           </form>
-
           <hr class="guestbook-divider" />
-
           <div id="comment-list-container">
             <div id="comment-list"></div>
           </div>
         </div>
       </section>
+
       <section id="closing">
         <div class="closing-content">
-          <p class="ucapan-terima-kasih">
-            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda
-            berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa
-            restu yang telah diberikan, kami ucapkan terima kasih.
-          </p>
-          <h2 class="closing-couple-names">Reyhan & Risna</h2>
+          <p id="closing-text" class="ucapan-terima-kasih"></p>
+          <h2 id="closing-couple-names" class="closing-couple-names"></h2>
         </div>
       </section>
     </main>
-    <footer>
-      <p class="credit">Made with <i class="fas fa-heart"></i> by TemuHati</p>
+
+    <footer class="hidden">
+      <div class="socials">
+        <a id="footer-instagram" href="#" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <p class="credit" id="footer-credit"></p>
     </footer>
+
     <div id="lightbox" class="lightbox">
-      <span class="lightbox-close">&times;</span>
+      <span class="lightbox-close">×</span>
       <img class="lightbox-content" id="lightbox-img" />
     </div>
+
     <a id="music-toggle-btn" class="music-toggle-btn hidden">
-      <i class="fas fa-play"></i>
-      <i class="fas fa-pause"></i>
+      <i class="fas fa-compact-disc"></i>
     </a>
+
     <script src="script.js"></script>
   </body>
 </html>

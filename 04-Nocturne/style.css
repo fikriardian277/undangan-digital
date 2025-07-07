@@ -1251,32 +1251,43 @@ textarea:focus {
    11. FOOTER
 ================================================================= */
 footer {
-  padding: 2rem;
-  background-color: #1a1a1a;
+  padding: 2rem 1rem; /* Sedikit lebih tinggi agar tidak sempit */
+  background-color: var(--background-color);
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
 }
-
-.credit {
-  font-family: var(--font-heading);
-  font-weight: 300;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
-  opacity: 0.7;
+footer .socials {
+  margin-bottom: 1rem;
 }
-
-.credit .fa-heart {
-  color: var(--color-accent);
+footer .socials a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer .socials a:hover {
+  color: #fff; /* Dibuat putih agar lebih kontras saat hover */
+}
+footer .credit {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+footer .credit .fa-heart {
+  color: var(--background-color); /* Saya ambil warna dari footer lama */
   margin: 0 0.25rem;
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
+/* Pastikan animasi pulse ada jika sebelumnya belum ada */
 @keyframes pulse {
-  0%,
-  100% {
+  0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 /* =================================================================
@@ -1305,17 +1316,23 @@ footer {
   transform: scale(1.1);
 }
 
-/* Sembunyikan ikon pause secara default */
-.music-toggle-btn .fa-pause {
-  display: none;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.music-toggle-btn .fa-compact-disc {
+  font-size: 1.5rem; /* Sedikit lebih besar agar terlihat jelas */
+  transition: transform 0.3s ease;
 }
 
 /* Saat musik berputar (kelas .playing ditambahkan oleh JS) */
-.music-toggle-btn.playing .fa-play {
-  display: none; /* Sembunyikan ikon play */
-}
-.music-toggle-btn.playing .fa-pause {
-  display: block; /* Tampilkan ikon pause */
+.music-toggle-btn.playing .fa-compact-disc {
+  /* Terapkan animasi berputar tanpa henti */
+  animation: spin 2s linear infinite;
 }
 /* Tambahkan ini di blok CSS Tombol Musik */
 .music-toggle-btn.hidden {
