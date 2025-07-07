@@ -3,17 +3,17 @@
 ================================================================= */
 const config = {
   // Informasi dasar
-  coupleName: "Reyhan & Risna",
+  coupleName: "Ardi & Rania",
   groom: {
-    name: "Reyhan",
-    fullName: "Reyhan Sanjaya",
-    parents: "Putra kedua dari pasangan<br>Bapak Sanjaya & Ibu Nani",
+    name: "Ardi",
+    fullName: "Ardi Pratama, S.Kom.",
+    parents: "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari",
     photo: "assets/images/mempelai-pria.jpg",
   },
   bride: {
-    name: "Risna",
-    fullName: "Risna Nuraini",
-    parents: "Putri pertama dari pasangan<br>Bapak Nurman & Ibu Siti",
+    name: "Rania",
+    fullName: "Rania Safitri, S.E.",
+    parents: "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.",
     photo: "assets/images/mempelai-wanita.jpg",
   },
   backend: {
@@ -21,8 +21,8 @@ const config = {
     sheetName: "rustic",
   },
   event: {
-    date: "2025-07-04T10:00:00",
-    displayDate: "Jumat, 4 Juli 2025",
+    date: "2025-12-01T08:00:00",
+    displayDate: "Senin, 1 Desember 2025",
     venueName: "Gedung Pernikahan Rustic",
     address: "Jl. Kenangan Indah No. 4, Bandung, Jawa Barat",
     gmapsUrl: "https://maps.app.goo.gl/xxxx",
@@ -67,13 +67,13 @@ const config = {
       {
         type: "bank",
         logo: "assets/images/logo-bca.png",
-        name: "Reyhan",
+        name: "Ardi",
         number: "1234567890",
       },
       {
         type: "ewallet",
         logo: "assets/images/gopay-logo.png",
-        name: "Risna",
+        name: "Rania",
         number: "08123456789",
       },
     ],
@@ -97,7 +97,8 @@ const config = {
   },
   kredit: {
     nama: "TemuHati",
-    instagramUrl: "https://instagram.com/temuhati.id",
+    instagramUrl:
+      "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
   },
   musik: "assets/audio/youlookatme.mp3",
 };
