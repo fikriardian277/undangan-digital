@@ -211,39 +211,187 @@
       <section id="gallery" class="content-section">
         <h2>Our Moments</h2>
         <div class="filmstrip-container">
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-1.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-1.jpg" alt="Galeri Foto 1" />
-            </a>
-          </div>
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-2.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-2.jpg" alt="Galeri Foto 2" />
-            </a>
-          </div>
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-3.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-3.jpg" alt="Galeri Foto 3" />
-            </a>
-          </div>
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-4.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-4.jpg" alt="Galeri Foto 4" />
-            </a>
-          </div>
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-5.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-5.jpg" alt="Galeri Foto 5" />
-            </a>
-          </div>
-          <div class="filmstrip-item">
-            <a href="assets/images/galeri-6.jpg" data-lightbox="gallery">
-              <img src="assets/images/galeri-6.jpg" alt="Galeri Foto 6" />
-            </a>
+          <div class="filmstrip-track">
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-1.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-1.jpg" alt="Galeri Foto 1" />
+              </a>
+            </div>
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-2.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-2.jpg" alt="Galeri Foto 2" />
+              </a>
+            </div>
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-3.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-3.jpg" alt="Galeri Foto 3" />
+              </a>
+            </div>
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-4.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-4.jpg" alt="Galeri Foto 4" />
+              </a>
+            </div>
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-5.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-5.jpg" alt="Galeri Foto 5" />
+              </a>
+            </div>
+            <div class="filmstrip-item">
+              <a href="assets/images/galeri-6.jpg" data-lightbox="gallery">
+                <img src="assets/images/galeri-6.jpg" alt="Galeri Foto 6" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
+      <section id="rsvp" class="content-section">
+        <h2>Confirm Your Presence</h2>
+        <p class="rsvp-subheading">
+          Your presence and prayers are the most meaningful gifts for us. Please
+          confirm your attendance below.
+        </p>
+
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="form-group">
+            <label for="nama">Your Name</label>
+            <input
+              type="text"
+              id="nama"
+              name="Nama"
+              placeholder="Please write your name here"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Will you be attending?</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="Kehadiran" value="Hadir" required />
+                Yes, I'll be there</label
+              >
+              <label
+                ><input type="radio" name="Kehadiran" value="Tidak Hadir" />
+                Sorry, I can't make it</label
+              >
+            </div>
+          </div>
+          <div class="form-group" id="jumlah-tamu-group" style="display: none">
+            <label for="jumlah">Number of Guests</label>
+            <input type="number" id="jumlah" name="Jumlah" min="1" value="1" />
+          </div>
+          <div class="form-group">
+            <label for="ucapan">Wishes & Prayers</label>
+            <textarea
+              id="ucapan"
+              name="Ucapan"
+              rows="4"
+              placeholder="Share your wishes for us..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn submit-btn">
+            Send Confirmation
+          </button>
+          <div id="form-status"></div>
+        </form>
+
+        <div class="wishes-container">
+          <h3>Wishes</h3>
+          <div class="wishes-list" id="wishes-list">
+            <p class="loading-wishes">Loading wishes...</p>
+          </div>
+        </div>
+      </section>
+      <section id="gift" class="content-section">
+        <h2>Wedding Gift</h2>
+        <p class="gift-intro">
+          Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika Anda
+          ingin memberikan tanda kasih, kami telah menyediakan beberapa opsi di
+          bawah ini untuk memudahkan.
+        </p>
+
+        <div class="gift-options-container">
+          <div class="gift-card">
+            <div class="gift-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="gift-details">
+              <p class="account-name">Bank Central Asia (BCA)</p>
+              <p class="account-number" id="rekening-bca">1234567890</p>
+              <p class="account-holder">a.n. Ardi Pratama</p>
+            </div>
+            <button
+              class="copy-btn"
+              data-copy-target="rekening-bca"
+              aria-label="Salin Nomor Rekening"
+            >
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="gift-card">
+            <div class="gift-icon">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div class="gift-details">
+              <p class="account-name">GoPay / OVO</p>
+              <p class="account-number" id="nomor-ewallet">081234567890</p>
+              <p class="account-holder">a.n. Rania Safitri</p>
+            </div>
+            <button
+              class="copy-btn"
+              data-copy-target="nomor-ewallet"
+              aria-label="Salin Nomor"
+            >
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="gift-card">
+            <div class="gift-icon">
+              <i class="fas fa-gift"></i>
+            </div>
+            <div class="gift-details">
+              <p class="account-name">Kirim Kado</p>
+              <p class="account-number" id="alamat-rumah">
+                Jl. Kenangan Indah No. 4, Kel. Bahagia, Kec. Sejahtera, Kota
+                Impian 12345. Penerima: Ardi/Rania
+              </p>
+            </div>
+            <button
+              class="copy-btn"
+              data-copy-target="alamat-rumah"
+              aria-label="Salin Alamat"
+            >
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="closing" class="content-section">
+        <div class="closing-content">
+          <p>
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda
+            berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa
+            restu yang telah diberikan, kami ucapkan terima kasih.
+          </p>
+          <h3>Ardi & Rania</h3>
+        </div>
+      </section>
     </main>
+    <footer id="page-footer">
+      <div class="socials">
+        <a
+          id="footer-instagram"
+          href="#"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <p id="footer-credit" class="credit"></p>
+    </footer>
 
     <div id="guest-display">
       <i class="fas fa-feather-pointed"></i>

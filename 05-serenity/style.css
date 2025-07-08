@@ -96,8 +96,12 @@ main {
 
   opacity: 0;
   animation: fadeInUp 1.2s ease-out 2s forwards;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
-
+#guest-display.is-hidden {
+  opacity: 0;
+  transform: translateY(100%); /* Geser ke bawah hingga hilang */
+}
 #guest-display i {
   font-size: 1.5rem;
   transform-origin: center bottom;
@@ -612,10 +616,11 @@ main {
   margin-bottom: 3rem;
   color: var(--color-light);
 }
-
-.filmstrip-container {
+.filmstrip-track {
+  /* Track ini yang sekarang menjadi flex container dan digerakkan */
   display: flex;
-  overflow-x: auto;
+}
+.filmstrip-container {
   width: 100%; /* <-- KUNCI PERBAIKAN DITAMBAHKAN DI SINI */
   overflow-y: hidden;
   padding: 1rem 0;
@@ -722,6 +727,314 @@ main {
   cursor: pointer;
   background: none;
   border: none;
+}
+/* ==================================
+   SECTION RSVP & WISHES
+   ================================== */
+#rsvp {
+  /* State awal animasi */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+#rsvp.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#rsvp h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  /* ...styling lain sama... */
+}
+.rsvp-subheading {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.rsvp-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid rgba(240, 240, 240, 0.5);
+  border-radius: 16px;
+  background-color: rgba(44, 62, 80, 0.4);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: var(--font-body);
+}
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: var(--color-light);
+  color: #2c3e50;
+  border: none;
+}
+.submit-btn:hover {
+  background-color: #fff;
+  transform: scale(1.02);
+}
+.submit-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+#form-status {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Styling untuk daftar ucapan */
+.wishes-container {
+  max-width: 600px;
+  margin: 3rem auto 0 auto;
+}
+.wishes-container h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-family: var(--font-heading);
+}
+.wishes-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 1rem;
+  border-left: 2px solid rgba(240, 240, 240, 0.3);
+  padding-left: 1.5rem;
+}
+.wish-card {
+  padding: 1rem;
+  background-color: rgba(44, 62, 80, 0.4);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.wish-card .wish-name {
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+.wish-card .wish-date {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-left: 0.5rem;
+}
+.wish-card .wish-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+/* ==================================
+   SECTION WEDDING GIFT
+   ================================== */
+
+#gift {
+  /* State awal animasi */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+#gift.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#gift h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  /* ...styling lain sama... */
+}
+
+.gift-intro {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.gift-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gift-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(240, 240, 240, 0.5);
+  border-radius: 16px;
+  background-color: rgba(44, 62, 80, 0.4);
+}
+
+.gift-icon i {
+  font-size: 2rem;
+  color: var(--color-light);
+  width: 40px;
+  text-align: center;
+}
+
+.gift-details {
+  flex-grow: 1;
+}
+
+.account-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.account-number {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+  word-wrap: break-word; /* Agar alamat panjang bisa wrap */
+}
+
+.account-holder {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--color-light);
+  background-color: transparent;
+  color: var(--color-light);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background-color: var(--color-light);
+  color: var(--color-accent);
+}
+
+/* State saat berhasil disalin */
+.copy-btn.copied {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: white;
+}
+/* ==================================
+   SECTION PENUTUP (CLOSING)
+   ================================== */
+
+#closing {
+  /* Menggunakan min-height agar section memenuhi layar */
+  min-height: 90vh;
+
+  /* Menghapus max-width dari .content-section agar bisa full-screen */
+  max-width: 90%;
+  padding: 0;
+
+  /* Menempatkan konten di tengah */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Latar belakang foto dengan overlay gelap */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("assets/images/prewedding-penutup.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efek parallax */
+
+  /* State awal animasi */
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+
+#closing.is-visible {
+  opacity: 1;
+}
+
+.closing-content {
+  text-align: center;
+  color: var(--color-light);
+  max-width: 600px; /* Batasi lebar teks agar mudah dibaca */
+  padding: 2rem;
+}
+
+.closing-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.closing-content h3 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+/* ==================================
+   FOOTER (GAYA BARU)
+   ================================== */
+#page-footer {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  padding: 1rem 1rem 1rem 1rem;
+  color: var(--color-light);
+  background-color: rgba(44, 62, 80, 0.9);
+}
+
+.socials {
+  margin-bottom: 1rem;
+}
+
+.socials a {
+  font-size: 1.8rem;
+  color: var(--color-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  color: #e74c3c; /* Warna aksen hover */
+}
+
+.credit {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.credit .fas.fa-heart {
+  color: #e74c3c;
+  margin: 0 0.25rem;
 }
 
 /* Responsif untuk galeri */
