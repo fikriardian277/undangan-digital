@@ -311,6 +311,28 @@ main {
   transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1),
     /* Gerakan kartu lebih lambat & dramatis */ filter 0.8s ease-in-out; /* Perubahan kecerahan sedikit lebih cepat */
 }
+.couple-social-link {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 45px;
+  background-color: rgba(44, 62, 80, 0.4);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: background-color 0.4s ease; /* Transisi untuk opacity bisa dihapus */
+}
+
+/* Efek hover pada tombol itu sendiri */
+.couple-social-link:hover {
+  background-color: #e1306c; /* Warna khas Instagram */
+}
 .couple-card img {
   width: 100%;
   height: 100%;
@@ -330,8 +352,10 @@ main {
 /* === UPDATED: Styling untuk Kontainer Informasi === */
 .couple-info-container {
   display: flex; /* Gunakan flexbox untuk layout berdampingan */
-  justify-content: space-around; /* Beri jarak antar info */
-  gap: 1rem; /* Jarak aman antar kolom */
+  position: relative;
+  justify-content: center; /* Beri jarak antar info */
+  flex-wrap: wrap;
+  gap: 2rem 4rem;
   max-width: 600px; /* Batasi lebar agar rapi */
   margin: 4.5rem auto 0; /* Jarak dari kartu di atas */
   background-color: rgba(44, 62, 80, 0.4);
@@ -343,7 +367,7 @@ main {
 
 /* Styling untuk setiap blok info (Pria & Wanita) */
 .person-info {
-  flex: 1; /* Agar kedua blok info memiliki lebar yang sama */
+  flex: 1;
   text-align: center;
 }
 
@@ -357,6 +381,16 @@ main {
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--color-light);
+}
+.couple-separator {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-light);
+  opacity: 0.5;
+  text-align: center;
+
+  /* Beri jarak horizontal dari blok info */
 }
 
 /* Animasi Masuk Section (Tidak ada perubahan) */
