@@ -13,6 +13,69 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Styling untuk Cover Pembuka */
+/* Container utama yang menutupi seluruh layar */
+#invitation-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  /* Tetap gunakan flex untuk menengahkan tombol */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ... sisa styling latar belakang Anda ... */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("assets/images/cover.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* POSISI NAMA TAMU (DI BAWAH) */
+
+/* POSISI TOMBOL (TETAP DI TENGAH) */
+#open-invitation-btn {
+  /* Tombol akan otomatis berada di tengah karena parent-nya (#invitation-cover) menggunakan flexbox */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: transparent;
+  border: none; /* Lebih baik pakai border agar terlihat */
+  color: var(--color-light);
+
+  padding: 1.5rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0; /* Tetap sembunyikan di awal */
+
+  /* Menjalankan DUA animasi secara berurutan */
+  animation: 
+    /* Animasi 1: Muncul dari bawah (berjalan sekali) */ fadeInUp
+    1s ease-out 1s forwards;
+}
+
+#open-invitation-btn i {
+  /* Aturan yang sudah ada (font-size & margin-bottom) biarkan saja */
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+
+  /* TAMBAHKAN INI: Jalankan animasi bounce hanya pada ikon */
+  animation: cta-bounce 2.5s ease-in-out 2s infinite;
+}
+
+#open-invitation-btn:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Jangan lupa class hidden untuk transisi */
+#invitation-cover.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
 
 /* KUNCI EFEK PARALLAX PADA BODY */
 body {
@@ -71,7 +134,7 @@ main {
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: none;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   margin-top: 1rem;
@@ -80,7 +143,7 @@ main {
 }
 
 /* GAYA NAMA TAMU (POSISI HORIZONTAL & PASTI DI TENGAH) */
-#guest-display {
+.guest-display-style {
   position: fixed;
   bottom: 2rem;
   left: 0;
@@ -98,28 +161,28 @@ main {
   animation: fadeInUp 1.2s ease-out 2s forwards;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
-#guest-display.is-hidden {
+.guest-display-style.is-hidden {
   opacity: 0;
   transform: translateY(100%); /* Geser ke bawah hingga hilang */
 }
-#guest-display i {
+.guest-display-style i {
   font-size: 1.5rem;
   transform-origin: center bottom;
   animation: feather-float 3s infinite ease-in-out;
 }
 
-#guest-display .guest-text {
+.guest-display-style .guest-text {
   text-align: left;
 }
 
-#guest-display p {
+.guest-display-style p {
   font-size: 0.8rem;
   letter-spacing: 1px;
   opacity: 0.8;
   margin-bottom: 0.1rem;
 }
 
-#guest-display h2 {
+.guest-display-style h2 {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
@@ -1001,6 +1064,56 @@ main {
   font-weight: 700;
 }
 /* ==================================
+   TOMBOL KONTROL MUSIK
+   ================================== */
+/* ==================================
+   TOMBOL KONTROL MUSIK
+   ================================== */
+#music-toggle-btn {
+  /* Posisi Tetap di Pojok Kanan Bawah */
+  position: fixed;
+  bottom: 1.5rem;
+  right: 2rem;
+  z-index: 999;
+
+  /* Tampilan Tombol (Lingkaran) */
+  width: 50px;
+  height: 50px;
+
+  color: #f0f0f0;
+  border-radius: 50%;
+
+  /* Menengahkan Ikon di Dalam Lingkaran */
+  display: none; /* Awalnya disembunyikan, muncul via JS */
+  justify-content: center;
+  align-items: center;
+
+  /* Efek Tambahan */
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+#music-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Animasi berputar untuk ikon */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Terapkan animasi hanya saat musik 'playing' */
+#music-toggle-btn.playing .fas {
+  animation: spin 4s linear infinite;
+}
+/* ==================================
    FOOTER (GAYA BARU)
    ================================== */
 #page-footer {
@@ -1067,6 +1180,15 @@ main {
   .timeline-item::after {
     left: 12px !important; /* Posisikan lingkaran di atas garis */
   }
+  #open-invitation-btn {
+    /* Atur kembali jarak atas untuk tampilan desktop */
+    margin-top: 30rem;
+  }
+
+  #open-invitation-btn i {
+    /* Opsional: Sedikit perbesar ikon di desktop agar proporsional */
+    font-size: 3rem;
+  }
 }
 /* Responsif untuk mobile */
 @media (max-width: 600px) {
@@ -1120,5 +1242,31 @@ main {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+/* Resep untuk animasi call-to-action yang berulang */
+@keyframes cta-bounce {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  20% {
+    /* Jatuh sedikit */
+    transform: translateY(5px) rotate(0);
+  }
+  40% {
+    /* Terangkat sambil miring */
+    transform: translateY(-15px) rotate(-5deg);
+  }
+  60% {
+    /* Jatuh kembali ke posisi normal */
+    transform: translateY(0) rotate(0);
+  }
+  80% {
+    /* Sedikit memantul */
+    transform: translateY(-5px) rotate(0);
+  }
+  100% {
+    /* Kembali ke posisi awal */
+    transform: translateY(0) rotate(0);
   }
 }

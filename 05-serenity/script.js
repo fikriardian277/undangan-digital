@@ -1,5 +1,68 @@
 // Menunggu semua elemen HTML siap sebelum menjalankan skrip
 document.addEventListener("DOMContentLoaded", () => {
+  const cover = document.getElementById("invitation-cover");
+  const musicToggle = document.getElementById("music-toggle-btn");
+  const openBtn = document.getElementById("open-invitation-btn");
+  const audio = document.getElementById("background-music");
+  const mainContent = document.getElementById("main-content");
+  const guestNamePlaceholder = document.getElementById(
+    "guest-name-placeholder"
+  );
+  // Fungsi untuk menampilkan nama tamu di cover
+  function displayGuestName() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get("to");
+
+    // Ambil KEDUA elemen nama tamu dengan ID uniknya masing-masing
+    const coverGuestName = document.getElementById("guest-name-placeholder");
+    const fixedGuestName = document.getElementById("fixed-guest-name"); // <-- Menggunakan ID baru
+
+    const defaultName = "Bapak/Ibu/Saudara/i";
+
+    // Tentukan nama final yang akan ditampilkan
+    const finalName = guestName ? guestName.replace(/_/g, " ") : defaultName;
+
+    // Perbarui teks di KEDUA tempat (jika elemennya ada)
+    if (coverGuestName) {
+      coverGuestName.textContent = finalName;
+    }
+    if (fixedGuestName) {
+      fixedGuestName.textContent = finalName;
+    }
+  }
+  // Event listener untuk tombol buka undangan
+  openBtn.addEventListener("click", () => {
+    // Sembunyikan cover dengan efek fade out
+    cover.classList.add("hidden");
+
+    // Tampilkan konten utama
+    mainContent.style.display = "block";
+    musicToggle.style.display = "flex";
+    // Putar musik
+    audio.play().catch((error) => {
+      console.log(
+        "Browser mencegah pemutaran otomatis, tapi interaksi sudah terjadi."
+      );
+    });
+    musicToggle.classList.add("playing");
+    setupAutoScrollGallery();
+
+    // Gulir ke atas dengan smooth
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+  // GANTI DENGAN KODE INI
+  musicToggle.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      musicToggle.classList.add("playing");
+    } else {
+      audio.pause();
+      musicToggle.classList.remove("playing");
+    }
+  });
   // =======================================================
   // === PUSAT KONTROL & DATA UNDANGAN ===
   // =======================================================
@@ -143,46 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function setupAutoScrollGallery() {
-    const container = document.querySelector(".filmstrip-container");
-    const track = document.querySelector(".filmstrip-track");
-    if (!container || !track || track.scrollWidth <= container.clientWidth)
-      return;
-
-    const originalItems = Array.from(track.children);
-    originalItems.forEach((item) => track.appendChild(item.cloneNode(true)));
-
-    let pos = 0,
-      isPaused = false,
-      id;
-    const scrollAmount = 0.5;
-    const resetPoint = track.scrollWidth / 2;
-
-    const loop = () => {
-      if (isPaused) return;
-      pos += scrollAmount;
-      if (pos >= resetPoint) pos -= resetPoint;
-      track.style.transform = `translateX(-${pos}px)`;
-      id = requestAnimationFrame(loop);
-    };
-    const start = () => {
-      if (isPaused) {
-        isPaused = false;
-        loop();
-      }
-    };
-    const stop = () => {
-      isPaused = true;
-      cancelAnimationFrame(id);
-    };
-
-    container.addEventListener("mouseenter", stop);
-    container.addEventListener("mouseleave", start);
-    container.addEventListener("touchstart", stop, { passive: true });
-    container.addEventListener("touchend", start);
-    loop();
-  }
-
   function setupRsvpForm(config) {
     const form = document.getElementById("rsvp-form");
     const wishesList = document.getElementById("wishes-list");
@@ -290,12 +313,61 @@ document.addEventListener("DOMContentLoaded", () => {
   // =======================================================
   // === INISIALISASI APLIKASI ===
   // =======================================================
-
+  displayGuestName();
   initStaticContent();
   startCountdown();
   setupClickListeners();
   setupScrollAnimations();
   setupRsvpForm(CONFIG);
-
-  window.addEventListener("load", setupAutoScrollGallery);
 });
+//========================================================
+// PASTE FUNGSI GALERI DI SINI, DI LUAR BLOK ATAS
+//========================================================
+function setupAutoScrollGallery() {
+  const container = document.querySelector(".filmstrip-container");
+  const track = document.querySelector(".filmstrip-track");
+
+  if (!container || !track || track.scrollWidth <= container.clientWidth) {
+    console.log("Animasi galeri tidak berjalan: Konten tidak cukup lebar.");
+    return;
+  }
+
+  let pos = 0;
+  let direction = 1;
+  let isPaused = false;
+  let id;
+  const scrollAmount = 0.7;
+  const maxScroll = track.scrollWidth - container.clientWidth;
+
+  const loop = () => {
+    if (isPaused) return;
+    pos += scrollAmount * direction;
+    if (pos >= maxScroll) {
+      direction = -1;
+      pos = maxScroll;
+    } else if (pos <= 0) {
+      direction = 1;
+      pos = 0;
+    }
+    track.style.transform = `translateX(-${pos}px)`;
+    id = requestAnimationFrame(loop);
+  };
+
+  const start = () => {
+    if (isPaused) {
+      isPaused = false;
+      loop();
+    }
+  };
+  const stop = () => {
+    isPaused = true;
+    cancelAnimationFrame(id);
+  };
+
+  container.addEventListener("mouseenter", stop);
+  container.addEventListener("mouseleave", start);
+  container.addEventListener("touchstart", stop, { passive: true });
+  container.addEventListener("touchend", start);
+
+  loop();
+}
