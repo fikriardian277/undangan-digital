@@ -14,14 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
       fullName: "Ardi Pratama",
       parents: "Putra Pertama dari Bapak Subagyo & Ibu Lestari",
       photo: "assets/images/mempelai-pria.png",
-      instagram: "https://www.instagram.com/ardipratama",
+      instagram:
+        "https://https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
     bride: {
       shortName: "Rania",
       fullName: "Rania Safitri",
       parents: "Putri Kedua dari Bapak Endang & Ibu Amalia",
       photo: "assets/images/mempelai-wanita.png ",
-      instagram: "https://www.instagram.com/raniasafitri",
+      instagram:
+        "https://https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
 
     // --- HEADER / HERO SECTION ---
@@ -50,16 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
           title: "Akad Nikah",
           dateTime: "Sabtu, 15 November 2025 <br> Pukul 09:00 - 11:00 WIB",
           location:
-            "Masjid Agung Sunda Kelapa <br> Jl. Taman Sunda Kelapa No.16, Menteng, Jakarta Pusat",
-          gmapsUrl: "https://maps.app.goo.gl/example",
+            "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
+          gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
         },
         {
           icon: "fas fa-glass-cheers",
           title: "Resepsi",
           dateTime: "Sabtu, 15 November 2025 <br> Pukul 13:00 - 15:00 WIB",
           location:
-            "Gedung Serbaguna Bidakara <br> Jl. Gatot Subroto Kav. 71-73, Pancoran, Jakarta Selatan",
-          gmapsUrl: "https://maps.app.goo.gl/example2",
+            "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
+          gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
         },
       ],
     },
@@ -142,7 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- KREDIT FOOTER ---
     credit: {
-      instagramUrl: "https://www.instagram.com/temuhati.kita",
+      instagramUrl:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
       text: 'Made with <i class="fas fa-heart"></i> by TemuHati.id',
     },
   };

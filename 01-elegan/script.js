@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dateText: "SABTU, 12 OKTOBER 2025",
       timeText: "<strong>PUKUL : 10.00 WIB - Selesai</strong>",
       locationText: `Tempat : Gedung Olahraga (GOR)<br>Jl. Lewo Babakan 66-60, Linggajaya, Kec. Mangkubumi<br>Kota Tasikmalaya`,
-      gmapsUrl:
-        "https://www.google.com/maps/search/?api=1&query=Bidakara+Hotel+Jakarta0",
+      gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
     },
     images: {
       cover: "assets/cover.png",

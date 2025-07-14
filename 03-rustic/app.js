@@ -9,14 +9,16 @@ const config = {
     fullName: "Ardi Pratama, S.Kom.",
     parents: "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari",
     photo: "assets/images/mempelai-pria.png",
-    instagramUrl: "https://www.instagram.com/ardipratama",
+    instagramUrl:
+      "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
   },
   bride: {
     name: "Rania",
     fullName: "Rania Safitri, S.E.",
     parents: "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.",
     photo: "assets/images/mempelai-wanita.png",
-    instagramUrl: "https://www.instagram.com/raniasafitri",
+    instagramUrl:
+      "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
   },
   backend: {
     url: "https://script.google.com/macros/s/AKfycbx0dx13pseqcEKjH9gs4fy7T1w0bVh0-LA6q4Z57Vo22JNdYWwuty0yDJaOEy7Qqt4/exec",
@@ -27,7 +29,7 @@ const config = {
     displayDate: "Senin, 1 Desember 2025",
     venueName: "Gedung Pernikahan Rustic",
     address: "Jl. Kenangan Indah No. 4, Bandung, Jawa Barat",
-    gmapsUrl: "https://maps.app.goo.gl/xxxx",
+    gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
   },
   quote: {
     text: "“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri...”",

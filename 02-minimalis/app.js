@@ -17,7 +17,7 @@ const CLIENT_DATA = {
     waktuTeks: "08.00 WIB - Selesai",
     lokasi:
       "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
-    urlPeta: "https://maps.app.goo.gl/LOKASI_ANDA",
+    urlPeta: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
   },
 
   // ... (Sisa data lain biarkan seperti kodemu yang sekarang) ...

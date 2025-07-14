@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
           venue: "Masjid Agung Nocturne, Jakarta",
           address:
             "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
-          gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
+          gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
         },
         {
           title: "Syukuran Resepsi",
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
           venue: "Grand Ballroom Nocturne, Jakarta",
           address:
             "The Vow Premiere Venue, Jalan Kenangan Manis Blok C No. 7, Bandung",
-          gmapsUrl: "https://maps.app.goo.gl/4KLKjy1T3RQVnkEKA",
+          gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
         },
       ],
     },
