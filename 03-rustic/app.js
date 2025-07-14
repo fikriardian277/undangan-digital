@@ -104,7 +104,7 @@ const config = {
     instagramUrl:
       "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
   },
-  musik: "assets/audio/youlookatme.mp3",
+  musik: "assets/audio/Glenn Fredly - Kasih Putih.mp3",
 };
 
 /* =================================================================

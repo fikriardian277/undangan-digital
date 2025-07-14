@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const CONFIG = {
     // --- DATA UMUM ---
     pageTitle: "Ardi & Rania Wedding",
-    audio: "assets/audio/youlookatme.mp3",
+    audio: "assets/audio/Kina Grannis - Can't Help Falling In Love.mp3",
     invitationCoverImage: "assets/images/cover.png",
     mainContentParallaxImage: "assets/images/main.png",
     // --- MEMPELAI ---

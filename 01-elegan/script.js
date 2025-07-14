@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================================================================
   const CONFIG = {
     pageTitle: "Ardi & Rania Wedding",
-    audio: "audio/laksanasurga.mp3",
+    audio: "audio/Shane Filan - Beautiful in White.mp3",
     groom: {
       fullName: "Ardi Pratama",
       shortName: "Ardi",
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dateText: "SABTU, 12 OKTOBER 2025",
       timeText: "<strong>PUKUL : 10.00 WIB - Selesai</strong>",
       locationText: `Tempat : Gedung Olahraga (GOR)<br>Jl. Lewo Babakan 66-60, Linggajaya, Kec. Mangkubumi<br>Kota Tasikmalaya`,
-      gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88",
+      gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88s",
     },
     images: {
       cover: "assets/cover.png",

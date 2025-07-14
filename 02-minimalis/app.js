@@ -86,7 +86,7 @@ const CLIENT_DATA = {
       atasNama: "a.n. Rania Safitri",
     },
   ],
-  musik: "assets/audio/laksanasurga.mp3",
+  musik: "assets/audio/Kina Grannis - Can't Help Falling In Love.mp3",
   ucapanPenutup:
     "Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu. Atas kehadiran dan doa restunya, kami ucapkan terima kasih.",
   backend: {
