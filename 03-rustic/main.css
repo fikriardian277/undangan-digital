@@ -550,7 +550,30 @@ button.envelope-paper:hover {
   color: var(--primary-accent);
   align-self: center; /* Posisikan di tengah secara vertikal */
 }
+.instagram-link {
+  display: inline-block; /* defaultnya diatur oleh JS */
+  text-decoration: none;
+  color: #8b4513; /* Warna coklat rustic */
+  font-family: "Merriweather", serif;
+  font-size: 0.9rem;
+  margin-top: 15px; /* Memberi jarak dari teks di atasnya */
+  padding: 8px 15px;
+  border: 1px solid #d2b48c; /* Border warna tan */
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
 
+.instagram-link:hover {
+  background-color: #8b4513;
+  color: #fff;
+  border-color: #8b4513;
+  transform: translateY(-2px);
+}
+
+.instagram-link i {
+  margin-right: 8px; /* Jarak antara ikon dan teks */
+}
 /* === ANIMASI BARU === */
 .mempelai-profile .mempelai-info,
 .mempelai-profile .mempelai-photo,

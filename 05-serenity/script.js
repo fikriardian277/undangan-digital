@@ -6,20 +6,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- DATA UMUM ---
     pageTitle: "Ardi & Rania Wedding",
     audio: "assets/audio/youlookatme.mp3",
-
+    invitationCoverImage: "assets/images/cover.png",
+    mainContentParallaxImage: "assets/images/main.png",
     // --- MEMPELAI ---
     groom: {
       shortName: "Ardi",
       fullName: "Ardi Pratama",
       parents: "Putra Pertama dari Bapak Subagyo & Ibu Lestari",
-      photo: "assets/images/mempelai-pria.jpg",
+      photo: "assets/images/mempelai-pria.png",
       instagram: "https://www.instagram.com/ardipratama",
     },
     bride: {
       shortName: "Rania",
       fullName: "Rania Safitri",
       parents: "Putri Kedua dari Bapak Endang & Ibu Amalia",
-      photo: "assets/images/mempelai-wanita.jpg",
+      photo: "assets/images/mempelai-wanita.png ",
       instagram: "https://www.instagram.com/raniasafitri",
     },
 
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hero: {
       introText: "THE WEDDING OF",
       date: "15 . 11 . 2025",
+      backgroundImage: "assets/images/cover.png",
     },
 
     // --- KUTIPAN ---
@@ -88,12 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- GALERI FOTO ---
     gallery: [
-      "assets/images/galeri-1.jpg",
-      "assets/images/galeri-2.jpg",
-      "assets/images/galeri-3.jpg",
-      "assets/images/galeri-4.jpg",
-      "assets/images/galeri-5.jpg",
-      "assets/images/galeri-6.jpg",
+      "assets/images/galeri-1.png",
+      "assets/images/galeri-2.png",
+      "assets/images/galeri-3.png",
+      "assets/images/galeri-4.png",
+      "assets/images/galeri-5.png",
+      "assets/images/galeri-6.png",
     ],
 
     // --- HADIAH PERNIKAHAN ---
@@ -129,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- PENUTUP ---
     closing: {
       text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa restu yang telah diberikan, kami ucapkan terima kasih.",
+      backgroundImage: "assets/images/penutup.png",
     },
 
     // --- BACKEND UNTUK RSVP & BUKU TAMU ---
@@ -174,7 +177,35 @@ document.addEventListener("DOMContentLoaded", () => {
     set("bride-fullname", "textContent", CONFIG.bride.fullName);
     set("bride-parents", "textContent", CONFIG.bride.parents);
     set("bride-instagram", "href", CONFIG.bride.instagram);
+    set("page-title", "textContent", CONFIG.pageTitle);
+    set("background-music", "src", CONFIG.audio);
+    const invitationCover = document.getElementById("invitation-cover");
+    if (invitationCover && CONFIG.invitationCoverImage) {
+      invitationCover.style.backgroundImage = `url('${CONFIG.invitationCoverImage}')`;
+    }
 
+    // 1. Untuk Hero Section (pastikan ini sudah ada dari sebelumnya)
+    const heroSection = document.getElementById("hero");
+    if (heroSection && CONFIG.hero.backgroundImage) {
+      heroSection.style.backgroundImage = `url('${CONFIG.hero.backgroundImage}')`;
+    }
+
+    // 2. Untuk Parallax Konten Utama
+    const mainContent = document.getElementById("content");
+    if (mainContent && CONFIG.mainContentParallaxImage) {
+      mainContent.style.backgroundImage = `url('${CONFIG.mainContentParallaxImage}')`;
+    }
+
+    // 3. Untuk Section Penutup
+    const closingSection = document.getElementById("closing");
+    if (closingSection && CONFIG.closing.backgroundImage) {
+      // Nama variabel sudah diperbaiki
+      const gradientOverlay =
+        "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))";
+
+      // Gabungkan gradient dengan URL gambar dari CONFIG, dipisahkan koma
+      closingSection.style.backgroundImage = `${gradientOverlay}, url('${CONFIG.closing.backgroundImage}')`;
+    }
     const eventContainer = document.getElementById("event-container");
     if (eventContainer) {
       eventContainer.innerHTML = CONFIG.event.details

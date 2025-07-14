@@ -26,8 +26,6 @@
   align-items: center;
 
   /* ... sisa styling latar belakang Anda ... */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("assets/images/cover.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -80,18 +78,7 @@
 /* KUNCI EFEK PARALLAX PADA BODY */
 body {
   font-family: var(--font-body);
-  background-image: url("assets/images/cover.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-}
-
-/* Lapisan Gelap di Atas Background */
-.parallax-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: var(--color-dark-overlay);
-  z-index: 0;
+  background-color: #1a222c;
 }
 
 /* Penataan Konten agar di atas overlay */
@@ -110,6 +97,9 @@ main {
   align-items: center;
   text-align: center;
   color: var(--color-light);
+  background-image: url("assets/images/cover.png"); /* Ganti dengan gambar hero Anda */
+  background-size: cover;
+  background-position: center;
 }
 
 #hero .intro-text {
@@ -140,6 +130,24 @@ main {
   margin-top: 1rem;
   opacity: 0;
   animation: fadeInUp 1.2s ease-out 1.5s forwards;
+}
+/* === KODE BARU UNTUK PARALLAX YANG DIMULAI DARI KUTIPAN === */
+main#content {
+  position: relative; /* Diperlukan untuk pseudo-element overlay */
+  z-index: 1;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Kunci efek parallax */
+}
+
+/* Membuat overlay gelap HANYA untuk <main> */
+main#content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-dark-overlay);
+  z-index: -1; /* Posisikan overlay di belakang konten, tapi di depan background <main> */
 }
 
 /* GAYA NAMA TAMU (POSISI HORIZONTAL & PASTI DI TENGAH) */
@@ -1064,8 +1072,7 @@ main {
   align-items: center;
 
   /* Latar belakang foto dengan overlay gelap */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("assets/images/prewedding-penutup.jpg");
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Efek parallax */

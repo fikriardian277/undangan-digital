@@ -3,20 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // === PUSAT KONTROL & DATA UNDANGAN (SEMUA DATA DIEDIT DI BAGIAN INI) ===
   // =========================================================================
   const CONFIG = {
-    pageTitle: "Diki & Meliana Wedding",
+    pageTitle: "Ardi & Rania Wedding",
     audio: "audio/laksanasurga.mp3",
     groom: {
-      fullName: "Diki Gunawan",
-      shortName: "Diki",
-      parents: "Putra Kedua dari Bapak Dedi & Ibu Suartika",
-      instagram: "https://www.instagram.com/NAMA_IG_DIKI",
+      fullName: "Ardi Pratama",
+      shortName: "Ardi",
+      parents: "Putra Pertama dari Bapak Subagyo & Ibu Lestari",
+      instagram:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
       photo: "assets/mempelai-pria.png",
     },
     bride: {
-      fullName: "Meliana",
-      shortName: "Meli",
-      parents: "Putri Kedua dari Bapak Saepuloh & Ibu Isbiati",
-      instagram: "https://www.instagram.com/NAMA_IG_MELIANA",
+      fullName: "Rania Safitri",
+      shortName: "Rania",
+      parents: "Putri Kedua dari Bapak Endang & Ibu Amalia",
+      instagram:
+        "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
       photo: "assets/mempelai-wanita.png",
     },
     event: {
@@ -46,13 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         bankLogo: "assets/logo-bca.png",
         accountNumber: "1234567890",
-        accountHolder: "a.n. Diki Gunawan",
+        accountHolder: "a.n. Ardi Pratama",
         id: "rek1",
       },
       {
         bankLogo: "assets/logo-bca.png",
         accountNumber: "0987654321",
-        accountHolder: "a.n. Meliana",
+        accountHolder: "a.n. Rania Safitri",
         id: "rek2",
       },
     ],

@@ -8,13 +8,15 @@ const config = {
     name: "Ardi",
     fullName: "Ardi Pratama, S.Kom.",
     parents: "Putra Kedua dari Bapak H. Subagyo & Ibu Hj. Ibu Hj. Lestari",
-    photo: "assets/images/mempelai-pria.jpg",
+    photo: "assets/images/mempelai-pria.png",
+    instagramUrl: "https://www.instagram.com/ardipratama",
   },
   bride: {
     name: "Rania",
     fullName: "Rania Safitri, S.E.",
     parents: "Putri Kedua dari Bapak Drs. Endang Wijaya & Ibu Amalia, S.Pd.",
-    photo: "assets/images/mempelai-wanita.jpg",
+    photo: "assets/images/mempelai-wanita.png",
+    instagramUrl: "https://www.instagram.com/raniasafitri",
   },
   backend: {
     url: "https://script.google.com/macros/s/AKfycbx0dx13pseqcEKjH9gs4fy7T1w0bVh0-LA6q4Z57Vo22JNdYWwuty0yDJaOEy7Qqt4/exec",
@@ -33,28 +35,28 @@ const config = {
   },
   images: {
     coverBackground: "assets/images/cover-rustic.jpg",
-    coverOverlay: "assets/images/mempelai-pria.jpg",
-    saveTheDate: "assets/images/mempelai-pria.jpg",
-    penutupBackground: "assets/images/mempelai-pria.jpg",
+    coverOverlay: "assets/images/cover-overlay.png",
+    saveTheDate: "assets/images/save-date.png",
+    penutupBackground: "assets/images/penutup.png",
   },
   loveStory: [
     {
       align: "left",
-      photo: "assets/images/mempelai-pria.jpg",
+      photo: "assets/images/story-1.png",
       caption: "Awal Bertemu - 2021",
       description:
         "Sebuah acara sederhana menjadi awal dari segalanya, di mana takdir mempertemukan kami untuk pertama kalinya.",
     },
     {
       align: "right",
-      photo: "assets/images/mempelai-pria.jpg",
+      photo: "assets/images/story-2.png",
       caption: "Kencan Pertama - 2022",
       description:
         "Obrolan panjang ditemani secangkir kopi hangat menjadi saksi bisu babak baru cerita kami yang penuh tawa.",
     },
     {
       align: "left",
-      photo: "assets/images/mempelai-pria.jpg",
+      photo: "assets/images/story-3.png",
       caption: "The Proposal - 2024",
       description:
         "Di bawah langit senja, sebuah janji terucap yang akan menyatukan sisa hidup kami untuk selamanya.",
@@ -81,19 +83,19 @@ const config = {
       "Untuk teman-teman yang ingin mengirimkan kado fisik, bisa mengirimkannya ke alamat berikut:<br><br><strong>Jl. Kenangan Indah No. 4, Komplek Bahagia Selalu, Bandung, Jawa Barat, 40123</strong>",
   },
   gallery: [
-    "assets/images/galeri-1.jpg",
-    "assets/images/galeri-2.jpg",
-    "assets/images/galeri-3.jpg",
-    "assets/images/galeri-4.jpg",
-    "assets/images/galeri-5.jpg",
-    "assets/images/galeri-6.jpg",
-    "assets/images/galeri-5.jpg",
-    "assets/images/galeri-4.jpg",
+    "assets/images/galeri-1.png",
+    "assets/images/galeri-2.png",
+    "assets/images/galeri-3.png",
+    "assets/images/galeri-4.png",
+    "assets/images/galeri-5.png",
+    "assets/images/galeri-6.png",
+    "assets/images/galeri-7.png",
+    "assets/images/galeri-8.png",
   ],
   penutup: {
     ucapanTerimaKasih:
       "Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu. Atas kehadiran dan doa restunya, kami ucapkan terima kasih.",
-    foto: "assets/images/galeri-5.jpg",
+    foto: "assets/images/penutup.png",
   },
   kredit: {
     nama: "TemuHati",
@@ -141,6 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
     set("venue-name", "textContent", config.event.venueName);
     set("venue-address", "textContent", config.event.address);
     set("gmaps-link", "href", config.event.gmapsUrl);
+    const groomInstaLink = document.getElementById("groom-instagram");
+    if (groomInstaLink && config.groom.instagramUrl) {
+      groomInstaLink.href = config.groom.instagramUrl;
+      groomInstaLink.style.display = "inline-block"; // Tampilkan ikonnya
+    }
+
+    const brideInstaLink = document.getElementById("bride-instagram");
+    if (brideInstaLink && config.bride.instagramUrl) {
+      brideInstaLink.href = config.bride.instagramUrl;
+      brideInstaLink.style.display = "inline-block"; // Tampilkan ikonnya
+    }
 
     const loveStoryContainer = document.getElementById("love-story-container");
     if (loveStoryContainer) {
