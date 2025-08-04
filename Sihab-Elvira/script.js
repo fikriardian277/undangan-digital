@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       galleryGrid.innerHTML = CONFIG.images.gallery
         .map(
           (img) =>
-            `<a href="${img}" class="gallery-item" data-lightbox="gallery-grid"><img src="${img}" alt="Galeri Foto"></a>`
+            `<a href="${img}" class="gallery-item" data-lightbox="gallery-grid"><img src="${img}" alt="Galeri Foto" loading="lazy"></a>`
         )
         .join("");
     }
