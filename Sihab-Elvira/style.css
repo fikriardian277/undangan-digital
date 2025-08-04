@@ -394,6 +394,18 @@ body {
   transform: translateY(0); /* Kembali ke posisi semula */
 }
 
+/* Definisi keyframes untuk animasi "muncul dari bawah" */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .gallery-item img:hover,
 .gallery-landscape img:hover {
   transform: scale(1.03);
