@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gmapsUrl: "https://goo.gl/maps/3zC7GRiXs3VMhSUf9",
     },
     images: {
-      cover: "assets/cover.JPG",
+      cover: "assets/cover.jpg",
       prewedding_utama: "assets/prewedding-utama.jpeg",
       prewedding_penutup: "assets/prewedding-penutup.jpeg",
       bg_gift: "assets/bg-gift.jpeg",
