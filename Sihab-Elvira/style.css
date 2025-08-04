@@ -379,6 +379,20 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: block;
 }
+/* Atur kondisi awal untuk item galeri sebelum dianimasikan */
+.gallery-item {
+  opacity: 0;
+  transform: translateY(30px); /* Mulai dari posisi 30px ke bawah */
+
+  /* Ini adalah kuncinya: atur transisi untuk properti opacity dan transform */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 2. Atur kondisi akhir (terlihat) saat kelas 'is-visible' ditambahkan */
+.gallery-item.is-visible {
+  opacity: 1;
+  transform: translateY(0); /* Kembali ke posisi semula */
+}
 
 .gallery-item img:hover,
 .gallery-landscape img:hover {

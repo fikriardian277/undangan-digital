@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/galeri-4.jpeg",
         "assets/galeri-5.jpeg",
         "assets/galeri-6.jpeg",
+        "assets/galeri-landscape.jpg",
       ],
       gallery_landscape: "assets/galeri-landscape.jpg",
     },
@@ -149,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.initGuestName();
       this.initEventListeners();
       this.initScrollAnimations();
+      this.initGalleryAnimation();
       this.initCountdown();
       this.initRsvp();
       feather.replace();
@@ -364,6 +366,48 @@ document.addEventListener("DOMContentLoaded", () => {
             tidakHadir;
         })
         .catch((err) => console.error("Gagal memuat komentar:", err));
+    },
+    // Ganti seluruh fungsi initGalleryAnimation Anda dengan versi ini
+    initGalleryAnimation() {
+      const galleryContainer = document.getElementById(
+        "gallery-grid-container"
+      );
+      if (!galleryContainer) return;
+
+      const galleryItems = galleryContainer.querySelectorAll(".gallery-item");
+      if (galleryItems.length === 0) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // Jika elemen MASUK ke layar
+            if (entry.isIntersecting) {
+              galleryItems.forEach((item, index) => {
+                // Gunakan 'transitionDelay' bukan 'animationDelay'
+                item.style.transitionDelay = `${index * 150}ms`;
+
+                // Tambahkan kelas 'is-visible' untuk memicu transisi muncul
+                item.classList.add("is-visible");
+              });
+            }
+            // Jika elemen KELUAR dari layar
+            else {
+              galleryItems.forEach((item) => {
+                // Hapus 'transitionDelay' agar tidak ada jeda saat menghilang
+                item.style.transitionDelay = "0ms";
+
+                // Hapus kelas 'is-visible' untuk memicu transisi menghilang
+                item.classList.remove("is-visible");
+              });
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Bisa diatur agar lebih responsif
+        }
+      );
+
+      observer.observe(galleryContainer);
     },
   };
 
