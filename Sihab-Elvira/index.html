@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Undangan Pernikahan Digital</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Lightbox -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- Hero Section -->
+  <body class="lock-scroll">
+    <section id="hero1" class="hero">
+      <div class="hero-overlay">
+        <div class="hero-text">
+          <p class="small animate-on-scroll">The Wedding Of</p>
+          <h1 id="hero1-names" class="animate-on-scroll">
+            Diki Gunawan & Meliana
+          </h1>
+          <p id="ucapan" class="animate-on-scroll">Kepada Yth.</p>
+          <h2 id="namaTamu" class="animate-on-scroll">Bapak/Ibu/Saudara/i</h2>
+          <button id="btnOpen" class="btn-undangan animate-on-scroll">
+            Buka Undangan
+          </button>
+        </div>
+      </div>
+    </section>
+    <main id="main-content" class="hidden">
+      <section id="hero2" class="hero">
+        <div class="hero-overlay">
+          <div class="hero-text">
+            <p class="small animate-on-scroll">THE WEDDING OF</p>
+            <h1 id="hero2-names" class="animate-on-scroll">
+              Diki Gunawan & Meliana
+            </h1>
+            <p class="animate-on-scroll">Tanggal</p>
+            <h2 id="hero2-date">Sabtu, 12 Oktober 2025</h2>
+            <button id="btnSaveDate" class="btn-undangan">Save the Date</button>
+          </div>
+        </div>
+      </section>
+      <!-- Music Toggle -->
+      <button id="musicToggle" class="music-toggle">
+        <i data-feather="disc" class="disc-icon"></i>
+      </button>
+      <audio id="bgMusic" loop>
+        <source src="" type="audio/mpeg" />
+        Browser Anda tidak mendukung pemutar audio.
+      </audio>
+      <!-- Section Kutipan -->
+      <section class="section-kutipan">
+        <span class="quote-icon">❝</span>
+        <blockquote>
+          “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
+          pasangan hidup dari jenismu sendiri.”
+        </blockquote>
+        <cite>Q.S. Ar-Rum: 21</cite>
+      </section>
+      <!-- Section Mempelai -->
+      <section class="section-mempelai animate-on-scroll">
+        <p class="invite-text">
+          Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
+          serta kerabat sekalian untuk menghadiri acara pernikahan kami:
+        </p>
+        <div class="photo-wrapper">
+          <img src="" id="img-mempelai-pria" alt="Foto Mempelai Pria" />
+        </div>
+        <h2 class="nama-mempelai" id="nama-pria">Diki Gunawan</h2>
+        <p class="info-keluarga" id="ortu-pria">
+          Putra Kedua dari Bapak Dedi & Ibu Suartika
+        </p>
+        <a
+          href="https://www.instagram.com/NAMA_IG_DIKI"
+          id="ig-pria"
+          target="_blank"
+          class="ig-icon"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </section>
+
+      <div class="and-symbol animate-on-scroll">&</div>
+
+      <section class="section-mempelai animate-on-scroll">
+        <div class="photo-wrapper">
+          <img src="" id="img-mempelai-wanita" alt="Foto Mempelai Wanita" />
+        </div>
+        <h2 class="nama-mempelai" id="nama-wanita">Meliana</h2>
+        <p class="info-keluarga" id="ortu-wanita">
+          Putri Kedua dari Bapak Saepuloh & Ibu Isbiati
+        </p>
+        <a
+          href="https://www.instagram.com/NAMA_IG_MELIANA"
+          id="ig-wanita"
+          target="_blank"
+          class="ig-icon"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </section>
+      <!-- Section Save Date -->
+      <section class="section-save-date">
+        <div class="save-date-img animate-top">
+          <img src="" id="img-prewedding-utama" alt="Save the Date" />
+          <h2 class="save-date-title">Save The Date</h2>
+        </div>
+
+        <div class="countdown animate-bottom">
+          <div><span id="days">0</span><br />Hari</div>
+          <div><span id="hours">0</span><br />Jam</div>
+          <div><span id="minutes">0</span><br />Menit</div>
+          <div><span id="seconds">0</span><br />Detik</div>
+        </div>
+
+        <div class="detail-resepsi animate-bottom">
+          <h3>Resepsi</h3>
+          <p id="tanggal-resepsi">SABTU, 12 OKTOBER 2025</p>
+          <p id="waktu-resepsi"><strong>PUKUL : 10.00 WIB - Selesai</strong></p>
+          <p class="alamat" id="lokasi-resepsi">
+            Tempat : Gedung Olahraga (GOR)<br />
+            Jl. Lewo Babakan 66-60, Linggajaya, Kec. Mangkubumi<br />
+            Kota Tasikmalaya
+          </p>
+          <a
+            href="https://maps.app.goo.gl/LOKASI_ANDA"
+            id="link-lokasi"
+            class="btn-lokasi"
+            target="_blank"
+          >
+            <i data-feather="map-pin"></i>Lokasi Acara
+          </a>
+        </div>
+      </section>
+      <!-- Section Love Story -->
+      <section class="section-love-story">
+        <div class="container-love-story">
+          <h2 class="title-love-story animate-on-scroll">Love Story</h2>
+          <div class="story-timeline">
+            <div class="story-item animate-on-scroll">
+              <h3>Pertemuan Pertama</h3>
+              <p>
+                Kami pertama kali bertemu di kampus, dalam sebuah kegiatan
+                organisasi yang mempertemukan banyak orang baru.
+              </p>
+            </div>
+            <div class="story-item animate-on-scroll">
+              <h3>Komitmen Bersama</h3>
+              <p>
+                Setelah banyak momen dilalui bersama, kami memutuskan untuk
+                menjalin hubungan yang lebih serius dan saling berkomitmen.
+              </p>
+            </div>
+            <div class="story-item animate-on-scroll">
+              <h3>Menuju Pernikahan</h3>
+              <p>
+                Dengan doa dan dukungan dari keluarga dan sahabat, kami mantap
+                melangkah ke jenjang pernikahan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section Galeri -->
+      <section class="section-gallery animate-on-scroll">
+        <h2 class="title-love-story">Galeri</h2>
+        <p class="gallery-intro">
+          Beberapa kenangan manis kami yang ingin kami bagikan kepada Anda.
+        </p>
+        <div class="gallery-grid" id="gallery-grid-container"></div>
+        <div id="gallery-landscape-container"></div>
+      </section>
+      <!-- Section Gift -->
+      <div class="gift-wrapper">
+        <div id="giftButtonContainer" class="gift-button-container">
+          <h2 class="animate-on-scroll">Wedding Gift</h2>
+          <p class="animate-on-scroll">
+            Kehadiran dan doa restu Anda merupakan anugerah terindah bagi kami.
+            Namun, apabila Anda tidak dapat hadir dan hendak memberikan tanda
+            kasih kepada kami, Anda dapat menggunakan fitur di bawah ini.
+          </p>
+          <button id="btnGift" class="btn-gift animate-on-scroll">
+            Kirim Hadiah
+          </button>
+        </div>
+
+        <div id="giftSection" class="gift-section">
+          <div class="gift-card" id="gift-card-1">
+            <div class="gift-overlay"></div>
+            <div class="gift-info">
+              <img src="" alt="BCA" class="bank-logo" id="logo-bank-1" />
+              <p class="no-rek" id="rek1">1234567890</p>
+              <p class="nama-rek" id="nama-rek1">a.n. Diki Gunawan</p>
+              <button class="btn-copy" data-rek-id="rek1">
+                <i data-feather="copy" width="14" height="14"></i>Salin
+              </button>
+            </div>
+          </div>
+          <div class="gift-card" id="gift-card-2">
+            <div class="gift-overlay"></div>
+            <div class="gift-info">
+              <img src="" alt="BCA" class="bank-logo" id="logo-bank-2" />
+              <p class="no-rek" id="rek2">0987654321</p>
+              <p class="nama-rek" id="nama-rek2">a.n. Meliana</p>
+              <button class="btn-copy" data-rek-id="rek2">
+                <i data-feather="copy" width="14" height="14"></i>Salin
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section Comment -->
+      <section class="comment-section">
+        <h2 class="animate-top">Ucapkan Sesuatu</h2>
+        <p class="animate-top">Berikan Ucapan & Doa Restu</p>
+        <div class="comment-stats animate-on-scroll">
+          <div class="status hadir" id="hadirCount">
+            0<br /><span>Hadir</span>
+          </div>
+          <div class="status tidak-hadir" id="tidakHadirCount">
+            0<br /><span>Tidak Hadir</span>
+          </div>
+        </div>
+        <form class="animate-on-scroll" id="commentForm">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nama"
+            required
+          />
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Tulis ucapan dan doa Anda di sini..."
+            required
+          ></textarea>
+          <select id="kehadiran" name="kehadiran" required>
+            <option value="" disabled selected>Konfirmasi Kehadiran</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <button type="submit">Kirim Ucapan</button>
+        </form>
+        <div class="animate-bottom" id="commentsList"></div>
+      </section>
+      <!-- Section Penutup -->
+      <section id="penutup" class="penutup">
+        <img
+          class="animate-top"
+          src=""
+          id="img-prewedding-penutup"
+          alt="Penutup"
+        />
+        <h2 class="small animate-on-scroll">Terima Kasih</h2>
+        <p class="animate-on-scroll">
+          Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila
+          Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada
+          kami.
+        </p>
+        <h1 class="animate-on-scroll">Kami Yang Berbahagia</h1>
+        <h3 class="animate-on-scroll" id="nama-penutup">Diki & Meli</h3>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <div class="socials">
+          <a
+            href="https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2"
+            ><i data-feather="instagram"></i
+          ></a>
+        </div>
+        <div class="credit">
+          <p>by <a href="">TemuHati</a></p>
+        </div>
+      </footer>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
