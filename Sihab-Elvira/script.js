@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     gift: [
       {
         bankLogo: "assets/logo-bca.png",
-        accountNumber: "1234567890",
-        accountHolder: "a.n. Ardi Pratama",
+        accountNumber: "2280179071",
+        accountHolder: "a.n. Sihabudin Rizki Ramdani",
         id: "rek1",
       },
       {
-        bankLogo: "assets/logo-bca.png",
-        accountNumber: "0987654321",
-        accountHolder: "a.n. Rania Safitri",
+        bankLogo: "assets/bri.png",
+        accountNumber: "437801014112531",
+        accountHolder: "a.n. Elvira Maulida",
         id: "rek2",
       },
     ],
