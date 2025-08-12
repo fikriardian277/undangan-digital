@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
     backend: {
       gasUrl:
-        "https://script.google.com/macros/s/AKfycbzMHvkCoo5mDUoEpO4mj8TOYY6HV0GzoBysEHJFY840aDRyIOnm3nZTX9AWBK06kVbz/exec",
+        "https://script.google.com/macros/s/AKfycbxk7jNdSbL5Jrs5AA2-zBSX0smQ6L-OXIdjk6C9Q3WVf15sWBaatJqqVa3mjPd7BBU/exec",
+      namaSheet: "komentar",
     },
   };
 
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       galleryGrid.innerHTML = CONFIG.images.gallery
         .map(
           (img) =>
-            `<a href="${img}" class="gallery-item" data-lightbox="gallery-grid"><img src="${img}" alt="Galeri Foto"></a>`
+            `<a href="${img}" class="gallery-item" data-lightbox="gallery-grid"><img src="${img}" alt="Galeri Foto" loading="lazy"></a>`
         )
         .join("");
     }
@@ -149,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.initGuestName();
       this.initEventListeners();
       this.initScrollAnimations();
+      this.initGalleryAnimation();
       this.initCountdown();
       this.initRsvp();
       feather.replace();
@@ -301,13 +303,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = form.querySelector("button");
         btn.disabled = true;
         btn.innerText = "Mengirim...";
-
         const data = {
           Nama: document.getElementById("name").value,
           Ucapan: document.getElementById("message").value,
           Kehadiran: document.getElementById("kehadiran").value,
         };
 
+        data.namaSheet = CONFIG.backend.namaSheet;
         fetch(CONFIG.backend.gasUrl, {
           method: "POST",
           body: JSON.stringify(data),
@@ -318,8 +320,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.result === "success") {
               alert("Ucapan berhasil terkirim!");
               form.reset();
-              App.loadComments();
-            } else throw new Error(response.message);
+              this.loadComments(); // Panggil fungsi loadComments dari dalam App
+            } else {
+              throw new Error(response.message);
+            }
           })
           .catch((err) => alert("Terjadi kesalahan."))
           .finally(() => {
@@ -330,30 +334,80 @@ document.addEventListener("DOMContentLoaded", () => {
       this.loadComments();
     },
 
+    // GANTI LAGI KESELURUHAN FUNGSI loadComments DENGAN VERSI INI
+
+    // Cari fungsi loadComments, dan ganti seluruhnya dengan kode ini:
     loadComments() {
-      fetch(CONFIG.backend.gasUrl)
+      const list = document.getElementById("commentsList");
+      if (!list || !CONFIG.backend.gasUrl) return;
+      // Membuat URL yang benar dengan parameter sheet
+      const url = `${CONFIG.backend.gasUrl}?sheet=${CONFIG.backend.namaSheet}`;
+      fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          const list = document.getElementById("commentsList");
           list.innerHTML = "";
           let hadir = 0,
             tidakHadir = 0;
 
-          data.forEach((comment) => {
-            if (comment.Kehadiran === "Hadir") hadir++;
-            if (comment.Kehadiran === "Tidak Hadir") tidakHadir++;
-
-            const item = document.createElement("div");
-            item.className = "comment";
-            item.innerHTML = `<p class="comment-name">${comment.Nama} <span class="comment-status">${comment.Kehadiran}</span></p><p class="comment-message">${comment.Ucapan}</p>`;
-            list.prepend(item);
-          });
+          if (data && Array.isArray(data)) {
+            // data sudah di-reverse oleh Apps Script, jadi tidak perlu .reverse() lagi
+            data.forEach((comment) => {
+              if (comment.Kehadiran === "Hadir") hadir++;
+              if (comment.Kehadiran === "Tidak Hadir") tidakHadir++;
+              const item = document.createElement("div");
+              item.className = "comment";
+              item.innerHTML = `<p class="comment-name">${comment.Nama} <span class="comment-status">${comment.Kehadiran}</span></p><p class="comment-message">${comment.Ucapan}</p>`;
+              list.append(item); // Gunakan append, karena data sudah dibalik dari server
+            });
+          }
 
           document.getElementById("hadirCount").firstChild.textContent = hadir;
           document.getElementById("tidakHadirCount").firstChild.textContent =
             tidakHadir;
         })
         .catch((err) => console.error("Gagal memuat komentar:", err));
+    },
+    // Ganti seluruh fungsi initGalleryAnimation Anda dengan versi ini
+    initGalleryAnimation() {
+      const galleryContainer = document.getElementById(
+        "gallery-grid-container"
+      );
+      if (!galleryContainer) return;
+
+      const galleryItems = galleryContainer.querySelectorAll(".gallery-item");
+      if (galleryItems.length === 0) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // Jika elemen MASUK ke layar
+            if (entry.isIntersecting) {
+              galleryItems.forEach((item, index) => {
+                // Gunakan 'transitionDelay' bukan 'animationDelay'
+                item.style.transitionDelay = `${index * 150}ms`;
+
+                // Tambahkan kelas 'is-visible' untuk memicu transisi muncul
+                item.classList.add("is-visible");
+              });
+            }
+            // Jika elemen KELUAR dari layar
+            else {
+              galleryItems.forEach((item) => {
+                // Hapus 'transitionDelay' agar tidak ada jeda saat menghilang
+                item.style.transitionDelay = "0ms";
+
+                // Hapus kelas 'is-visible' untuk memicu transisi menghilang
+                item.classList.remove("is-visible");
+              });
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Bisa diatur agar lebih responsif
+        }
+      );
+
+      observer.observe(galleryContainer);
     },
   };
 

@@ -1,0 +1,1131 @@
+:root {
+  --Background: #f7f7f2;
+
+  --text: #49544a;
+
+  --accent: #b3b26f;
+
+  --primary: #606c5d;
+
+  --dark: #3a4036;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Cormorant Garamond", serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.lock-scroll {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hero & Animasi Awal */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.5)
+  );
+  z-index: 1;
+}
+
+#hero1 {
+  position: fixed; /* HANYA COVER YANG FIXED */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#hero1.hide {
+  opacity: 0;
+  visibility: hidden; /* Sembunyikan sepenuhnya */
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: relative; /* Ini sudah benar dan sangat penting */
+  height: 100vh;
+  width: 100%;
+
+  padding: 20px;
+}
+.hero-text {
+  /* Pastikan aturan flexbox atau positioning di sini mengatur konten
+  hanya untuk h1 dan button agar tetap di tengah */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Penting agar centering berfungsi */
+  width: 100%;
+  text-align: center;
+}
+.hero-top-content {
+  position: absolute;
+  top: 150px; /* Jarak dari tepi atas */
+  left: 50%;
+  transform: translateX(-50%); /* Rata tengah horizontal */
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  color: #fff;
+}
+.hero-bottom-content {
+  position: absolute; /* UBAH: Tambahkan properti ini */
+  bottom: 50px; /* Atur jarak dari tepi bawah */
+  left: 50%;
+  transform: translateX(-50%); /* Rata tengah horizontal */
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  color: #fff;
+}
+.hero-bottom-content p {
+  margin-bottom: 5px;
+}
+
+.hero-bottom-content h1 {
+  margin-bottom: 20px;
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.btn-undangan {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: var(--dark);
+  color: var(--accent);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  z-index: 10; /* Pastikan tombol di atas konten lainnya */
+}
+.hero2-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Memposisikan konten di bagian bawah */
+  align-items: left;
+  height: 100vh;
+  width: 80%;
+  padding-bottom: 150px;
+  z-index: 10; /* Pastikan overlay di atas gambar */
+}
+.hero2-text {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Mengatur font dan jarak khusus untuk hero2 */
+.hero2-text h1 {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.hero2-text p,
+.hero2-text h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* --- AKHIR PERUBAHAN PENTING --- */
+
+/* Animasi Umum */
+.animate-on-scroll,
+.animate-top,
+.animate-bottom,
+.section-kutipan,
+.and-symbol {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.show,
+.section-kutipan.show,
+.and-symbol.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll {
+  transform: translateY(30px);
+}
+.animate-top {
+  transform: translateY(-30px);
+}
+.animate-bottom {
+  transform: translateY(30px);
+}
+
+.animate-top.show,
+.animate-bottom.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Kutipan */
+.section-kutipan {
+  background-image: linear-gradient(
+      rgba(58, 64, 54, 0.7),
+      rgba(58, 64, 54, 0.7)
+    ),
+    url(assets/bg-kutipan.png);
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--Background);
+  font-family: "Cormorant Garamond", serif;
+  background-size: cover; /* Penting! Memastikan gambar menutupi seluruh elemen */
+  background-position: center; /* Memusatkan gambar di tengah */
+  background-repeat: no-repeat;
+}
+#bismillah {
+  font-size: 1.8rem;
+  font-family: "Reem Kufi", serif; /* Contoh font Arab dari Google Fonts */
+  font-weight: 300;
+  color: var(--Background);
+  margin: 20px 0;
+}
+.section-kutipan blockquote {
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.section-kutipan cite {
+  display: block;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Section Mempelai & Simbol '&' */
+/* Aturan dasar untuk section mempelai */
+.mempelai-section {
+  position: relative; /* Penting agar child bisa diposisikan absolut */
+  min-height: 100vh; /* Agar section punya tinggi yang cukup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* Container untuk background foto */
+.mempelai-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Penting untuk menyembunyikan bagian foto yang terpotong */
+}
+.mempelai-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Overlay hitam semi-transparan */
+  z-index: 1; /* Pastikan overlay di atas foto tapi di bawah konten */
+}
+
+/* Foto-foto latar belakang dengan potongan miring */
+.bg-photo-1,
+.bg-photo-2 {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.bg-photo-1 {
+  top: 0;
+  left: 0;
+  /* Ini yang membuat potongan miring */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+}
+
+.bg-photo-2 {
+  bottom: 0;
+  left: 0;
+  /* Ini yang membuat potongan miring berlawanan */
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Container untuk konten teks di atas background */
+.mempelai-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+
+  /* Menaikkan seluruh container ke atas */
+  transform: translateY(-100px);
+}
+
+/* Mengatur jarak antara nama mempelai dan info orang tua */
+
+.mempelai-info h3 {
+  /* Ini untuk nama mempelai */
+  margin-bottom: 15px; /* Jarak di bawah nama */
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.mempelai-info p {
+  /* Ini untuk info orang tua */
+  margin-top: 0; /* Menghilangkan margin bawaan */
+  margin-bottom: 15px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.9rem;
+}
+/* Gaya untuk ikon Instagram */
+.mempelai-info a {
+  color: white; /* Mengatur warna default link */
+  text-decoration: none; /* Menghilangkan garis bawah link */
+}
+
+.mempelai-info a i {
+  font-size: 1.4rem; /* Ukuran ikon */
+  color: var(--Background); /* Warna ikon */
+  transition: color 0.3s ease; /* Transisi halus saat di-hover */
+}
+
+.mempelai-info a:hover i {
+  color: var(--primary); /* Ganti warna ikon saat di-hover */
+}
+/* Gaya untuk simbol "&" di tengah */
+.and-symbol {
+  font-family: "Cinzel Decorative", cursive;
+  font-size: 3rem; /* Ukuran yang lebih besar */
+  font-weight: 500;
+  color: var(--accent); /* Warna yang cocok dengan tema */
+  margin: 30px 0; /* Memberi jarak atas dan bawah */
+}
+/* Aturan untuk mobile */
+@media (max-width: 767px) {
+  .bg-photo-1,
+  .bg-photo-2 {
+  }
+  .mempelai-bg {
+    background-color: #333; /* Beri warna solid di mobile agar foto tidak menumpuk */
+  }
+  .mempelai-content {
+    padding: 20px;
+  }
+}
+/* Section Save Date */
+.section-save-date {
+  background-color: var(--dark);
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text);
+}
+
+.save-date-img img {
+  width: 100%;
+  max-width: 300px;
+  border-top-left-radius: 50% 40%;
+  border-top-right-radius: 50% 40%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.save-date-title {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-family: "Cinzel Decorative", cursive;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.countdown div {
+  background-color: var(--primary);
+  color: var(--Background);
+  padding: 10px 15px;
+  border-radius: 8px;
+  min-width: 60px;
+}
+.countdown div span {
+  font-size: 1.2rem; /* Ukuran font yang lebih besar */
+  font-weight: bold; /* Membuat nomor lebih tebal */
+}
+
+.detail-resepsi h3,
+h4 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.detail-resepsi p {
+  margin: 5px 0;
+  color: var(--Background);
+  font-family: "Cormorant Garamond", serif;
+}
+
+.detail-resepsi .alamat {
+  color: var(--Background);
+  line-height: 1.5;
+}
+
+.btn-lokasi {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.btn-lokasi:hover {
+  background-color: #fff;
+  color: var(--primary-brown);
+}
+/* Gaya untuk box yang membungkus detail acara */
+.event-details-box {
+  position: relative;
+  background-image: linear-gradient(
+      rgba(58, 64, 54, 0.7),
+      rgba(58, 64, 54, 0.7)
+    ),
+    url(assets/bg-kutipan.png);
+  background-size: cover;
+  background-position: center;
+  background-color: #fff; /* Opsi fallback jika gambar tidak ada */
+  padding: 30px; /* Jarak di dalam box */
+  margin: 40px auto 0; /* Jarak dari countdown di atasnya */
+  max-width: 310px; /* Lebar maksimum box */
+  border-radius: 15px; /* Sudut membulat */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+}
+
+/* Tambahkan overlay di dalam box agar teks lebih jelas */
+.event-details-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Opasitas 20% */
+  border-radius: 15px;
+  z-index: 1;
+}
+
+/* Pastikan teks berada di atas overlay */
+.event-details-box .detail-resepsi,
+.event-details-box .btn-lokasi {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Love Story */
+.section-love-story {
+  position: relative;
+  /* background-image akan diatur dari JS */
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  color: var(--text); /* Menggunakan warna teks dari variabel */
+  text-align: center;
+  overflow: hidden; /* Penting untuk menyembunyikan bagian bingkai yang tidak perlu */
+}
+
+/* Overlay semi-transparan */
+.section-love-story::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; /* Pastikan ini di bawah frame dan konten */
+}
+
+/* Bingkai Gelombang di atas */
+.section-love-story::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px; /* Sesuaikan tinggi frame */
+
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  z-index: 2; /* Pastikan ini di atas overlay */
+}
+
+.container-love-story {
+  position: relative;
+  z-index: 3; /* Pastikan konten di paling atas */
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.title-love-story {
+  font-family: "cinzel decorative", cursive;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent); /* Warna dari variabel */
+  margin-bottom: 30px;
+  margin-top: 50px; /* Tambahkan jarak dari atas */
+}
+
+.story-timeline {
+  margin-top: 20px;
+}
+
+.story-item {
+  margin-bottom: 30px;
+  padding: 25px;
+  text-align: center;
+}
+
+.story-item h3 {
+  font-family: "cormorant garamond", serif;
+  font-size: 1.6rem;
+  color: var(--Background);
+  margin-bottom: 10px;
+}
+
+.story-item p {
+  font-family: "cormorant garamond", serif;
+  font-size: 1rem;
+  color: var(--Background);
+  line-height: 1.6;
+}
+/* Section Gallery */
+/* Gaya untuk section secara keseluruhan */
+.section-gallery {
+  padding: 60px 20px; /* Padding lebih besar agar konsisten */
+  background-color: var(--dark);
+  text-align: center;
+  color: var(--Background); /* Warna teks untuk background gelap */
+}
+
+/* Gaya untuk judul section */
+.title-gallery {
+  font-family: "cinzel decorative", cursive;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent); /* Warna yang menonjol */
+  margin-bottom: 30px;
+}
+
+/* Teks pengantar galeri */
+.gallery-intro {
+  margin-bottom: 40px; /* Jarak yang lebih besar dari grid */
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: 1.6;
+  font-family: "cormorant garamond", serif; /* Font yang konsisten */
+}
+
+/* Grid galeri */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tiga kolom di desktop */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Gambar di dalam galeri */
+.gallery-item img,
+.gallery-landscape img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+/* Efek hover pada gambar */
+.gallery-item img:hover,
+.gallery-landscape img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+/* Styling untuk animasi galeri satu per satu */
+.gallery-item.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsivitas untuk tampilan mobile */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Satu kolom di tampilan mobile */
+  }
+}
+/* Section Wedding Gift */
+/* Container Utama */
+.gift-wrapper {
+  background-image: linear-gradient(
+      rgba(58, 64, 54, 0.7),
+      rgba(58, 64, 54, 0.7)
+    ),
+    url(assets/bg-kutipan.png);
+  padding-bottom: 80px;
+}
+
+/* Bagian Tombol Awal */
+.gift-button-container {
+  text-align: center;
+  color: var(--dark);
+  padding: 80px 0px;
+}
+
+.gift-button-container h2 {
+  font-family: "cinzel decorative", cursive;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.gift-button-container p {
+  font-family: "cormorant garamond", serif;
+  font-size: 1rem;
+  color: var(--Background);
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.btn-gift {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-gift:hover {
+  background-color: #fff;
+  color: var(--primary-brown);
+}
+
+/* Bagian Hadiah yang Tersembunyi */
+.gift-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  padding: 0 20px; /* Hapus padding vertikal saat tertutup */
+  background-color: var(--dark);
+  border-radius: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift-section.show {
+  max-height: 500px; /* Tinggi yang cukup besar agar konten terlihat */
+  padding: 40px 20px; /* Beri padding vertikal saat terbuka */
+}
+
+.gift-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 320px;
+  height: 200px;
+  margin: 20px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.gift-section.show .gift-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gift-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.gift-info {
+  position: relative;
+  z-index: 2;
+  color: var(--dark);
+  padding: 20px;
+  text-align: left;
+}
+
+.bank-logo {
+  width: 50px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.no-rek {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 80px 0 4px;
+  letter-spacing: 1px;
+}
+
+.nama-rek {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  bottom: 20px;
+  right: 16px;
+  background-color: var(--dark);
+  color: var(--accent);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  font-size: 10px;
+}
+
+.btn-copy:hover {
+  background-color: #ffffffcc;
+}
+
+/* Section Komentar */
+/* Comment Section */
+.comment-section {
+  background-color: var(--dark);
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  color: var(--accent);
+  text-align: center; /* Terapkan sekali di sini */
+}
+
+.comment-section h2 {
+  font-family: "cinzel decorative", cursive;
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 3px;
+}
+
+.comment-section > p {
+  /* Selector > lebih spesifik dan cepat */
+  font-size: 0.9rem;
+  font-family: "Cormorant Garamond", serif;
+  margin-bottom: 1rem;
+}
+
+/* Statistik Komentar */
+.comment-stats {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--Background);
+}
+
+.status {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 80px;
+  font-weight: bold;
+}
+
+/* Formulir Komentar */
+#commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto 30px; /* Gunakan shorthand margin */
+}
+
+#commentForm input,
+#commentForm textarea,
+#commentForm select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+#commentForm button {
+  padding: 12px;
+  font-weight: bold;
+  background-color: white;
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#commentForm button:hover {
+  background-color: #f0e9e0;
+}
+
+/* Daftar Komentar */
+#commentsList {
+  max-height: 300px;
+  overflow-y: auto;
+  max-width: 600px;
+  margin-inline: auto;
+  padding-right: 10px; /* Padding untuk jarak scrollbar */
+}
+
+#commentsList .comment {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+#commentsList .comment-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--accent);
+}
+
+#commentsList .comment-status {
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#commentsList .comment-message {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--Background);
+}
+
+/* Scrollbar */
+#commentsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#commentsList::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+#commentsList::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+/* Penutup & Footer */
+.penutup {
+  background-color: var(--Background);
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text);
+}
+
+.penutup img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.penutup .small {
+  font-size: 2rem;
+  font-family: "cormorant garamond", serif;
+}
+.penutup p {
+  font-size: 1rem;
+  margin: 10px 0;
+  max-width: 600px;
+  margin-inline: auto;
+  font-family: "cormorant garamond", serif;
+}
+.penutup h1 {
+  font-size: 1.2rem;
+  color: var(--primary-brown);
+  margin: 20px 0 10px;
+  font-family: "cormorant garamond", serif;
+}
+.penutup h3 {
+  font-size: 2rem;
+  font-family: "cinzel decorative", cursive;
+  font-weight: 300;
+  color: var(--dark-brown);
+}
+
+footer {
+  background-color: var(--dark);
+  text-align: center;
+  padding: 1rem 0 5rem;
+}
+footer .socials {
+  padding: 1rem 0;
+}
+footer .socials a {
+  color: var(--accent);
+  margin: 1rem;
+}
+footer .socials a:hover {
+  color: var(--text);
+}
+footer .credit {
+  font-size: 0.8rem;
+  color: var(--Background);
+}
+footer .credit a {
+  color: var(--accent);
+  font-weight: 700;
+}
+/* navbar */
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50px;
+  right: 50px;
+  border-radius: 10px;
+  z-index: 99;
+  background-color: var(--dark);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.5s ease-out;
+}
+
+.bottom-nav.show {
+  transform: translateY(0);
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  opacity: 1;
+}
+
+.nav-text {
+  margin-top: 4px;
+}
+/* Music Toggle */
+.music-toggle {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  cursor: pointer;
+  display: none; /* Muncul via JS */
+  place-items: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.music-toggle:hover {
+  transform: scale(1.1);
+}
+
+.music-toggle svg.feather {
+  stroke: var(--accent);
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-bottom-content p {
+    font-size: 1rem;
+  }
+  .hero-top-content h2 {
+    font-size: 1rem;
+  }
+  .btn-undangan {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .photo-wrapper {
+    width: 50%;
+  }
+  .nama-mempelai {
+    font-size: 1.4rem;
+  }
+  .countdown div {
+    min-width: 45px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* --- Tampilan untuk Layar Desktop --- */
+/* --- Tambahan CSS untuk Tampilan Desktop seperti contoh gambar --- */
+/* Media query ini memastikan gaya hanya berlaku di layar lebar (min-width: 769px) */
+@media (min-width: 769px) {
+  /* Atur container utama */
+  .invitation-container {
+    display: flex; /* Menggunakan flexbox untuk membagi ruang */
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  /* Styling untuk bagian foto (kiri) */
+  .photo-left {
+    flex: 1; /* Memberikan seluruh ruang yang tersisa di sebelah kiri */
+    height: 100vh;
+
+    /* Hapus properti ini yang mungkin menyebabkan masalah */
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(0.8);
+  }
+  /* Styling untuk bagian konten undangan (kanan) */
+  .invitation-content {
+    /* Atur lebar agar menyerupai tampilan mobile */
+    width: 450px;
+    max-width: 100%;
+
+    /* Atur agar bisa di-scroll */
+    max-height: 100vh;
+    overflow-y: auto;
+
+    /* Gaya untuk membedakan dari latar belakang */
+    background-color: var(--Background); /* Menggunakan warna dari :root */
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15); /* Memberi efek bayangan di sisi kiri */
+  }
+
+  /* Pastikan semua elemen di dalam konten undangan tidak memiliki lebar tetap */
+  /* Contohnya, jika .hero memiliki width: 50%, ubah ke 100% di sini */
+  .invitation-content .hero,
+  .invitation-content .section-mempelai,
+  .invitation-content .and-symbol,
+  .invitation-content .section-save-date,
+  .invitation-content .section-love-story,
+  .invitation-content .section-gallery,
+  .invitation-content .gift-wrapper,
+  .invitation-content .comment-section,
+  .invitation-content .penutup,
+  .invitation-content footer {
+    width: 100%; /* Memastikan semua elemen mengisi lebar container-nya */
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}
