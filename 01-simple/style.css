@@ -349,9 +349,6 @@ body {
 }
 /* Aturan untuk mobile */
 @media (max-width: 767px) {
-  .bg-photo-1,
-  .bg-photo-2 {
-  }
   .mempelai-bg {
     background-color: #333; /* Beri warna solid di mobile agar foto tidak menumpuk */
   }

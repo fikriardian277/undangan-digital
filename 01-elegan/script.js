@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents: "Putra Pertama dari Bapak Subagyo & Ibu Lestari",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
-      photo: "assets/mempelai-pria.png",
+      photo: "assets/mempelai-pria.jpg",
     },
     bride: {
       fullName: "Rania Safitri",
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents: "Putri Kedua dari Bapak Endang & Ibu Amalia",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
-      photo: "assets/mempelai-wanita.png",
+      photo: "assets/mempelai-wanita.jpg",
     },
     event: {
       isoDate: "2025-10-12T10:00:00",
@@ -30,16 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     images: {
       cover: "assets/cover.png",
-      prewedding_utama: "assets/prewedding-utama.png",
-      prewedding_penutup: "assets/prewedding-penutup.png",
+      prewedding_utama: "assets/prewedding-utama.jpg",
+      prewedding_penutup: "assets/prewedding-penutup.jpg",
       bg_gift: "assets/bg-gift.jpeg",
       gallery: [
-        "assets/galeri-1.png",
-        "assets/galeri-2.png",
-        "assets/galeri-3.png",
-        "assets/galeri-4.png",
-        "assets/galeri-5.png",
-        "assets/galeri-6.png",
+        "assets/galeri-1.jpg",
+        "assets/galeri-2.jpg",
+        "assets/galeri-3.jpg",
+        "assets/galeri-4.jpg",
+        "assets/galeri-5.jpg",
+        "assets/galeri-6.jpg",
       ],
       gallery_landscape: "assets/galeri-landscape.jpg",
     },

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="page-title">Undangan Pernikahan Digital</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Lightbox -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- Hero Section -->
+  <body class="lock-scroll">
+    <section id="hero1" class="hero">
+      <div class="hero-overlay">
+        <div class="hero-text">
+          <p class="small">The Wedding Of</p>
+          <h1 id="hero1-names">Diki Gunawan & Meliana</h1>
+          <p id="ucapan">Kepada Yth.</p>
+          <h2 id="namaTamu">Bapak/Ibu/Saudara/i</h2>
+          <button id="btnOpen" class="btn-undangan">Buka Undangan</button>
+        </div>
+      </div>
+    </section>
+
+    <main id="main-content" class="hidden">
+      <div class="invitation-container">
+        <div class="photo-left"></div>
+        <div class="invitation-content">
+          <section id="hero2" class="hero">
+            <div class="hero-overlay">
+              <div class="hero-text" data-anim="fade-up">
+                <p class="small">THE WEDDING OF</p>
+                <h1 id="hero2-names">Diki Gunawan & Meliana</h1>
+                <p>Tanggal</p>
+                <h2 id="hero2-date">Sabtu, 12 Oktober 2025</h2>
+                <button id="btnSaveDate" class="btn-undangan">
+                  Save the Date
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <button id="musicToggle" class="music-toggle">
+            <i data-feather="disc" class="disc-icon"></i>
+          </button>
+          <audio id="bgMusic" loop><source src="" type="audio/mpeg" /></audio>
+
+          <section class="section-kutipan" data-anim="fade-in">
+            <span class="quote-icon">❝</span>
+            <blockquote>
+              “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan
+              untukmu pasangan hidup dari jenismu sendiri.”
+            </blockquote>
+            <cite>Q.S. Ar-Rum: 21</cite>
+          </section>
+
+          <section class="section-mempelai">
+            <p class="invite-text" data-anim="fade-up">
+              Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
+              serta kerabat sekalian untuk menghadiri acara pernikahan kami:
+            </p>
+            <div class="photo-wrapper" data-anim="scale-in">
+              <img src="" id="img-mempelai-pria" alt="Foto Mempelai Pria" />
+            </div>
+            <h2
+              class="nama-mempelai"
+              id="nama-pria"
+              data-anim="fade-up"
+              data-anim-delay="100"
+            >
+              Diki Gunawan
+            </h2>
+            <p
+              class="info-keluarga"
+              id="ortu-pria"
+              data-anim="fade-up"
+              data-anim-delay="200"
+            >
+              Putra Kedua dari Bapak Dedi & Ibu Suartika
+            </p>
+            <a
+              href="#"
+              id="ig-pria"
+              target="_blank"
+              class="ig-icon"
+              data-anim="scale-in"
+              data-anim-delay="300"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </section>
+
+          <div class="and-symbol" data-anim="fade-in">&</div>
+
+          <section class="section-mempelai">
+            <div class="photo-wrapper" data-anim="scale-in">
+              <img src="" id="img-mempelai-wanita" alt="Foto Mempelai Wanita" />
+            </div>
+            <h2
+              class="nama-mempelai"
+              id="nama-wanita"
+              data-anim="fade-up"
+              data-anim-delay="100"
+            >
+              Meliana
+            </h2>
+            <p
+              class="info-keluarga"
+              id="ortu-wanita"
+              data-anim="fade-up"
+              data-anim-delay="200"
+            >
+              Putri Kedua dari Bapak Saepuloh & Ibu Isbiati
+            </p>
+            <a
+              href="#"
+              id="ig-wanita"
+              target="_blank"
+              class="ig-icon"
+              data-anim="scale-in"
+              data-anim-delay="300"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </section>
+
+          <section class="section-save-date">
+            <div class="save-date-img" data-anim="scale-in">
+              <img src="" id="img-prewedding-utama" alt="Save the Date" />
+            </div>
+            <h2 class="save-date-title" data-anim="fade-up">Save The Date</h2>
+            <div class="countdown" data-anim="fade-up">
+              <div><span id="days">0</span><br />Hari</div>
+              <div><span id="hours">0</span><br />Jam</div>
+              <div><span id="minutes">0</span><br />Menit</div>
+              <div><span id="seconds">0</span><br />Detik</div>
+            </div>
+            <div class="detail-resepsi" data-anim="fade-up">
+              <h3>Resepsi</h3>
+              <p id="tanggal-resepsi">SABTU, 12 OKTOBER 2025</p>
+              <p id="waktu-resepsi">
+                <strong>PUKUL : 10.00 WIB - Selesai</strong>
+              </p>
+              <p class="alamat" id="lokasi-resepsi">
+                Tempat : Gedung Olahraga (GOR)<br />Jl. Lewo Babakan 66-60,
+                Linggajaya, Kec. Mangkubumi<br />Kota Tasikmalaya
+              </p>
+              <a href="#" id="link-lokasi" class="btn-lokasi" target="_blank"
+                ><i data-feather="map-pin"></i>Lokasi Acara</a
+              >
+            </div>
+          </section>
+
+          <section class="section-love-story">
+            <div class="container-love-story">
+              <h2 class="title-love-story" data-anim="fade-up">Love Story</h2>
+              <div class="story-timeline">
+                <div class="story-item" data-anim="fade-left">
+                  <p>
+                    <strong>Pertemuan Pertama</strong><br />Kami pertama kali
+                    bertemu di kampus, dalam sebuah kegiatan organisasi yang
+                    mempertemukan banyak orang baru.
+                  </p>
+                </div>
+                <div class="story-item" data-anim="fade-right">
+                  <p>
+                    <strong>Komitmen Bersama</strong><br />Setelah banyak momen
+                    dilalui bersama, kami memutuskan untuk menjalin hubungan
+                    yang lebih serius dan saling berkomitmen.
+                  </p>
+                </div>
+                <div class="story-item" data-anim="fade-left">
+                  <p>
+                    <strong>Menuju Pernikahan</strong><br />Dengan doa dan
+                    dukungan dari keluarga dan sahabat, kami mantap melangkah ke
+                    jenjang pernikahan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-gallery" data-anim="fade-up">
+            <h2 class="title-love-story">Galeri</h2>
+            <p class="gallery-intro">
+              Beberapa kenangan manis kami yang ingin kami bagikan kepada Anda.
+            </p>
+            <div class="gallery-grid" id="gallery-grid-container"></div>
+            <div id="gallery-landscape-container"></div>
+          </section>
+
+          <div class="gift-wrapper">
+            <div
+              id="giftButtonContainer"
+              class="gift-button-container"
+              data-anim="fade-up"
+            >
+              <h2>Wedding Gift</h2>
+              <p>
+                Kehadiran dan doa restu Anda merupakan anugerah terindah bagi
+                kami...
+              </p>
+              <button id="btnGift" class="btn-gift">Kirim Hadiah</button>
+            </div>
+            <div id="giftSection" class="gift-section">
+              <div class="gift-card" id="gift-card-1"></div>
+              <div class="gift-card" id="gift-card-2"></div>
+            </div>
+          </div>
+
+          <section class="comment-section">
+            <div data-anim="fade-up">
+              <h2>Ucapkan Sesuatu</h2>
+              <p>Berikan Ucapan & Doa Restu</p>
+            </div>
+            <div class="comment-stats" data-anim="fade-up">
+              <div class="status hadir" id="hadirCount">
+                0<br /><span>Hadir</span>
+              </div>
+              <div class="status tidak-hadir" id="tidakHadirCount">
+                0<br /><span>Tidak Hadir</span>
+              </div>
+            </div>
+            <form id="commentForm" data-anim="fade-up">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nama"
+                required
+              />
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tulis ucapan dan doa Anda di sini..."
+                required
+              ></textarea>
+              <select id="kehadiran" name="kehadiran" required>
+                <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+              </select>
+              <button type="submit">Kirim Ucapan</button>
+            </form>
+            <div id="commentsList"></div>
+          </section>
+
+          <section id="penutup" class="penutup">
+            <img
+              src=""
+              id="img-prewedding-penutup"
+              alt="Penutup"
+              data-anim="scale-in"
+            />
+            <h2 class="small" data-anim="fade-up">Terima Kasih</h2>
+            <p data-anim="fade-up">
+              Merupakan suatu kebahagiaan dan kehormatan bagi kami...
+            </p>
+            <h1 data-anim="fade-up">Kami Yang Berbahagia</h1>
+            <h3 id="nama-penutup" data-anim="fade-up">Diki & Meli</h3>
+          </section>
+
+          <footer>
+            <div class="socials">
+              <a href="#"><i data-feather="instagram"></i></a>
+            </div>
+            <div class="credit">
+              <p>by <a href="">TemuHati</a></p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

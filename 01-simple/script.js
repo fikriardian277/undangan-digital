@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // === PUSAT KONTROL & DATA UNDANGAN (SEMUA DATA DIEDIT DI BAGIAN INI) ===
   // =========================================================================
   const CONFIG = {
+    // og: {
+    //   title: "Ardi & Rania Wedding",
+    //   description:
+    //     "Tanpa mengurangi rasa hormat, kami mengundang Anda untuk menghadiri acara pernikahan kami.",
+    //   image: "https://url-ke-gambar-cover-anda.com/assets/cover.png",
+    //   url: "https://url-undangan-anda.netlify.app/",
+    // },
     pageTitle: "Ardi & Rania Wedding",
     audio: "audio/Shane Filan - Beautiful in White.mp3",
     groom: {
@@ -11,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents: "Putra dari<br>Bapak Subagyo & Ibu Lestari",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
-      photo: "assets/mempelai-pria.png",
+      photo: "assets/mempelai-pria.jpg",
     },
     bride: {
       fullName: "Rania Safitri",
@@ -19,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       parents: "Putri Kedua dari<br>Bapak Endang & Ibu Amalia",
       instagram:
         "https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
-      photo: "assets/mempelai-wanita.png",
+      photo: "assets/mempelai-wanita.jpg",
     },
     event: {
       isoDate: "2025-10-12T10:00:00",
@@ -29,22 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
       gmapsUrl: "https://maps.app.goo.gl/FFHBLjHzhccGQCG88s",
     },
     images: {
-      cover: "assets/cover.png",
-      prewedding_utama: "assets/prewedding-utama.png",
-      prewedding_penutup: "assets/prewedding-penutup.png",
+      cover: "assets/cover.jpg",
+      prewedding_utama: "assets/prewedding-utama.jpg",
+      prewedding_penutup: "assets/prewedding-penutup.jpg",
       bg_gift: "assets/card-texture.png",
-      desktop_bg: "assets/cover.png",
-      mempelai_bg_1: "assets/mempelai-pria.png",
-      mempelai_bg_2: "assets/mempelai-wanita.png",
+      desktop_bg: "assets/cover.jpg",
+      mempelai_bg_1: "assets/mempelai-pria.jpg",
+      mempelai_bg_2: "assets/mempelai-wanita.jpg",
       gallery: [
-        "assets/galeri-1.png",
-        "assets/galeri-2.png",
-        "assets/galeri-3.png",
-        "assets/galeri-4.png",
-        "assets/galeri-5.png",
-        "assets/galeri-6.png",
+        "assets/galeri-1.jpg",
+        "assets/galeri-2.jpg",
+        "assets/galeri-3.jpg",
+        "assets/galeri-4.jpg",
+        "assets/galeri-5.jpg",
+        "assets/galeri-6.jpg",
       ],
-      loveStoryBg: "assets/cover.png", // Tambahkan ini
+      loveStoryBg: "assets/cover.jpg", // Tambahkan ini
       waveFrame: "assets/wave-frame.png",
     },
 
@@ -84,6 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
     set("page-title", "textContent", CONFIG.pageTitle);
     document.querySelector("#bgMusic source").src = CONFIG.audio;
     document.getElementById("bgMusic").load();
+    // setMeta("title", CONFIG.og.title);
+    // setMeta("description", CONFIG.og.description);
+    // setMeta("image", CONFIG.og.image);
+    // setMeta("url", CONFIG.og.url);
 
     const coupleNames = `${CONFIG.groom.fullName} & ${CONFIG.bride.fullName}`;
     const coupleShortNames = `${CONFIG.groom.shortName} & ${CONFIG.bride.shortName}`;

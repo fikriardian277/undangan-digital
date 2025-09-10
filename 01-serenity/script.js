@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- DATA UMUM ---
     pageTitle: "Ardi & Rania Wedding",
     audio: "assets/audio/Kina Grannis - Can't Help Falling In Love.mp3",
-    invitationCoverImage: "assets/images/cover.png",
-    mainContentParallaxImage: "assets/images/main.png",
+    invitationCoverImage: "assets/images/cover.jpg",
+    mainContentParallaxImage: "assets/images/main.jpg",
     // --- MEMPELAI ---
     groom: {
       shortName: "Ardi",
       fullName: "Ardi Pratama",
       parents: "Putra Pertama dari Bapak Subagyo & Ibu Lestari",
-      photo: "assets/images/mempelai-pria.png",
+      photo: "assets/images/mempelai-pria.jpg",
       instagram:
         "https://https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       shortName: "Rania",
       fullName: "Rania Safitri",
       parents: "Putri Kedua dari Bapak Endang & Ibu Amalia",
-      photo: "assets/images/mempelai-wanita.png ",
+      photo: "assets/images/mempelai-wanita.jpg ",
       instagram:
         "https://https://www.instagram.com/temuhati.kita?igsh=dmZ4cGJyMmZmZzM2",
     },
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hero: {
       introText: "THE WEDDING OF",
       date: "15 . 11 . 2025",
-      backgroundImage: "assets/images/cover.png",
+      backgroundImage: "assets/images/cover.jpg",
     },
 
     // --- KUTIPAN ---
@@ -92,12 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- GALERI FOTO ---
     gallery: [
-      "assets/images/galeri-1.png",
-      "assets/images/galeri-2.png",
-      "assets/images/galeri-3.png",
-      "assets/images/galeri-4.png",
-      "assets/images/galeri-5.png",
-      "assets/images/galeri-6.png",
+      "assets/images/galeri-1.jpg",
+      "assets/images/galeri-2.jpg",
+      "assets/images/galeri-3.jpg",
+      "assets/images/galeri-4.jpg",
+      "assets/images/galeri-5.jpg",
+      "assets/images/galeri-6.jpg",
     ],
 
     // --- HADIAH PERNIKAHAN ---
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- PENUTUP ---
     closing: {
       text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir untuk memberikan doa restu. Atas kehadiran serta doa restu yang telah diberikan, kami ucapkan terima kasih.",
-      backgroundImage: "assets/images/penutup.png",
+      backgroundImage: "assets/images/penutup.jpg",
     },
 
     // --- BACKEND UNTUK RSVP & BUKU TAMU ---

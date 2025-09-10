@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Undangan Pernikahan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Kait untuk Favicon (Ikon Tab Browser) -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <audio id="background-music" loop>
+      <source id="music-source" src="" type="audio/mpeg" />
+    </audio>
+    <button id="music-toggle-btn" class="hidden">
+      <i class="fas fa-compact-disc"></i>
+    </button>
+
+    <section id="hero-cover" class="hero">
+      <div class="hero-content">
+        <p>The Wedding Of</p>
+        <h1 id="cover-couple-names"></h1>
+        <div class="guest-info">
+          <p>Kepada Yth.</p>
+          <p class="guest-name" id="guest-name">Bapak/Ibu/Saudara/i</p>
+        </div>
+        <button id="open-invitation">
+          <i class="fas fa-envelope-open"></i>
+          <span>Buka Undangan</span>
+        </button>
+      </div>
+    </section>
+
+    <main id="main-content" class="hidden">
+      <div class="invitation-container">
+        <div class="photo-left"></div>
+
+        <div class="invitation-content">
+          <section id="hero-main" class="hero">
+            <div class="hero-content" data-anim="fade-up">
+              <p>We Are Getting Married</p>
+              <h1 id="main-couple-names"></h1>
+              <div class="date-info"><p id="event-date"></p></div>
+              <button id="save-the-date">
+                <i class="fas fa-calendar-check"></i><span>Save The Date</span>
+              </button>
+            </div>
+          </section>
+
+          <section id="kutipan">
+            <div class="container" data-anim="fade-up">
+              <blockquote id="quote-text"></blockquote>
+              <cite id="quote-source"></cite>
+            </div>
+          </section>
+
+          <section id="mempelai">
+            <div class="container">
+              <div class="mempelai-intro" data-anim="fade-up">
+                <h2 class="section-title">The Happy Couple</h2>
+                <p>
+                  Dengan memohon rahmat dan rida-Nya, kami bermaksud mengundang
+                  Anda untuk menghadiri acara pernikahan putra dan putri kami:
+                </p>
+              </div>
+              <div class="mempelai-container">
+                <div class="mempelai-card" data-anim="fade-right">
+                  <div class="mempelai-photo">
+                    <img id="groom-photo" src="" alt="Foto Mempelai Pria" />
+                  </div>
+                  <h3 id="groom-name"></h3>
+                  <p id="groom-parents"></p>
+                  <a
+                    id="groom-instagram"
+                    href="#"
+                    class="social-icon"
+                    target="_blank"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+                <div class="separator" data-anim="fade-in">&</div>
+                <div class="mempelai-card" data-anim="fade-left">
+                  <div class="mempelai-photo">
+                    <img id="bride-photo" src="" alt="Foto Mempelai Wanita" />
+                  </div>
+                  <h3 id="bride-name"></h3>
+                  <p id="bride-parents"></p>
+                  <a
+                    id="bride-instagram"
+                    href="#"
+                    class="social-icon"
+                    target="_blank"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="save-the-date-section">
+            <div class="container">
+              <div class="card-panel save-the-date-panel" data-anim="scale-in">
+                <div class="save-the-date-heading">
+                  <h2 class="section-title">Save The Date</h2>
+                  <p class="section-subtitle">
+                    Jangan sampai terlewat momen bahagia kami
+                  </p>
+                </div>
+                <div class="save-the-date-details">
+                  <div class="countdown">
+                    <div class="countdown-box">
+                      <span id="days">00</span>
+                      <p>Hari</p>
+                    </div>
+                    <div class="countdown-box">
+                      <span id="hours">00</span>
+                      <p>Jam</p>
+                    </div>
+                    <div class="countdown-box">
+                      <span id="minutes">00</span>
+                      <p>Menit</p>
+                    </div>
+                    <div class="countdown-box">
+                      <span id="seconds">00</span>
+                      <p>Detik</p>
+                    </div>
+                  </div>
+                  <div class="event-details">
+                    <h3 id="event-title"></h3>
+                    <p>
+                      <i class="fas fa-calendar-alt"></i
+                      ><span id="event-date-detail"></span>
+                    </p>
+                    <p>
+                      <i class="fas fa-clock"></i
+                      ><span id="event-time-detail"></span>
+                    </p>
+                    <p>
+                      <i class="fas fa-map-marker-alt"></i
+                      ><span id="event-location-detail"></span>
+                    </p>
+                    <a
+                      href="#"
+                      id="map-button"
+                      class="map-button"
+                      target="_blank"
+                      ><i class="fas fa-map"></i> Lihat Peta</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="love-story">
+            <div class="container">
+              <h2 class="section-title" data-anim="fade-up">Our Love Story</h2>
+              <div class="timeline" id="timeline-container"></div>
+            </div>
+          </section>
+
+          <section id="gallery">
+            <div class="container">
+              <h2 class="section-title" data-anim="fade-up">Our Moments</h2>
+              <p class="section-subtitle" data-anim="fade-up">
+                Kenangan manis yang akan selalu kami ingat.
+              </p>
+              <div class="gallery-grid" id="gallery-grid-container"></div>
+            </div>
+          </section>
+
+          <section id="wedding-gift">
+            <div class="container">
+              <h2 class="section-title" data-anim="fade-up">Wedding Gift</h2>
+              <p class="section-subtitle" data-anim="fade-up">
+                Doa restu Anda adalah hadiah terindah bagi kami...
+              </p>
+              <div class="gift-container" id="gift-container"></div>
+            </div>
+          </section>
+
+          <section id="guestbook">
+            <div class="container">
+              <h2 class="section-title" data-anim="fade-up">Guest Book</h2>
+              <p class="section-subtitle" data-anim="fade-up">
+                Your prayers and wishes mean the world to us.
+              </p>
+              <div
+                class="guestbook-form-container card-panel"
+                data-anim="fade-up"
+              >
+                <form id="comment-form">
+                  <input
+                    type="text"
+                    name="Nama"
+                    placeholder="Nama Anda"
+                    required
+                  />
+                  <textarea
+                    name="Ucapan"
+                    rows="4"
+                    placeholder="Tulis ucapan dan doa Anda di sini..."
+                    required
+                  ></textarea>
+                  <select name="Kehadiran" required>
+                    <option value="" disabled selected>
+                      Konfirmasi Kehadiran
+                    </option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                  </select>
+                  <button type="submit">Kirim Ucapan</button>
+                </form>
+              </div>
+              <div id="comments-list" data-anim="fade-up"></div>
+            </div>
+          </section>
+
+          <section id="penutup">
+            <div class="container">
+              <div class="closing-photo" data-anim="scale-in">
+                <img id="closing-photo" src="" alt="Foto Penutup" />
+              </div>
+              <h2 class="thank-you-title" data-anim="fade-up">Terimakasih</h2>
+              <p
+                class="thank-you-text"
+                id="closing-text"
+                data-anim="fade-up"
+              ></p>
+              <p class="closing-greeting" data-anim="fade-up">
+                Kami yang berbahagia,
+              </p>
+              <h3
+                class="couple-names"
+                id="closing-couple-names"
+                data-anim="fade-up"
+              ></h3>
+            </div>
+          </section>
+
+          <footer>
+            <div class="socials">
+              <a id="footer-instagram" href="#" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+            <p class="credit" id="footer-credit"></p>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
